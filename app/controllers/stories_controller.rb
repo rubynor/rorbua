@@ -7,6 +7,10 @@ class StoriesController < ApplicationController
     @stories = Story.all
   end
 
+  def my_stories
+    @stories = current_user.stories
+  end
+
   # GET /stories/1 or /stories/1.json
   def show
   end
