@@ -13,6 +13,7 @@ class StoriesController < ApplicationController
 
   # GET /stories/1 or /stories/1.json
   def show
+
   end
 
   # GET /stories/new
@@ -78,4 +79,5 @@ class StoriesController < ApplicationController
     def story_params
       params.require(:story).permit(:title, :description, :story_file, :user_id)
     end
+
 end
