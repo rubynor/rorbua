@@ -32,6 +32,9 @@ gem 'devise'
 # Active storage validator [https://github.com/aki77/activestorage-validator]
 gem 'activestorage-validator'
 
+# AWS
+gem "aws-sdk-s3", require: false
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
