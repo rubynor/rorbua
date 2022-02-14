@@ -92,5 +92,5 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   #lagt til samme i development, jeg la den til for devise når brukere har glemt passord
-  #config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.default_url_options = { host: 'rorbua.herokuapp.com'}
 end
