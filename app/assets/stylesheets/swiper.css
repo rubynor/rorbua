@@ -1,0 +1,51 @@
+.swiper-wrapper{
+	max-width: 100%;
+}
+
+.swiper-wrapper .swiper-slide{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.card-img-top{
+	border-radius: 1rem;
+}
+
+.card{
+	max-width: 100%;
+	min-width: 80%;
+	max-height: 100%;
+}
+
+.controls {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #FEFFFF;
+	border-radius: 20px;
+	box-shadow: 0px 0px 5px grey;
+}
+
+.controls button{
+	border-radius: 50%;
+	border: none;
+	background-color: #3AAFA9;
+	margin: 0 1rem;
+	height: 40px;
+	width: 40px;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+@media (min-width: 992px){
+	
+	.card-img-top {
+		max-width: 30%;
+		height: auto;
+	}
+
+}
+
