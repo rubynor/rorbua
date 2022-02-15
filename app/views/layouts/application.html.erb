@@ -16,10 +16,15 @@
 
     <!-- bootstrap -->
 
+    <!-- Google Material icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
     <!-- Rails følgefiler (?) -->
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
     <%= javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js' %>
+
+    <%= yield :head %>
   </head>
 
   <body>
@@ -43,8 +48,10 @@
 
         </div>
       </div>
-
+      <%= yield :audio_controls %>
     </div>
+
+
 
   </body>
 

@@ -1,20 +1,17 @@
-let btn_toggle_audio = document.querySelector('#button_toggle');
-let btn_next = document.querySelector('#button_next');
-let btn_prev = document.querySelector('#button_prev');
+const btn_toggle_audio = document.querySelector('#button_toggle');
+const btn_next = document.querySelector('#button_next');
+const btn_prev = document.querySelector('#button_prev');
 
 let playing = false;
-
-let audio = document.createElement('audio')
+const audio = document.createElement('audio');
 let audio_index = 0;
-let Stories = [
-  "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-  "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
-  "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"
-]
+
+var stories = document.querySelectorAll(".story_link");
+
 load_track(audio_index);
-console.log("js funker");
+
 function load_track(index){
-  audio.src = Stories[index];
+  audio.src = stories[index].innerHTML;
   audio.load();
 }
 
@@ -72,26 +69,19 @@ function pause_audio() {
   btn_toggle_audio.innerHTML = '<span class="material-icons">play_arrow</span>';
 }
 
-function prev_btn() {
-  prev_slide();
-}
-function next_btn() {
-  next_slide();
-}
-
 function prev() {
   if(audio_index > 0){
     load_track(--audio_index);
   }
   else {
-    audio_index = Stories.length-1
+    audio_index = stories.length-1
     load_track(audio_index);
   }
   play_audio();
 }
 
 function next() {
-  if( audio_index < Stories.length - 1){
+  if( audio_index < stories.length - 1){
     load_track(++audio_index);
   }
   else{
@@ -100,3 +90,8 @@ function next() {
   }
   play_audio();
 }
+
+// Events
+btn_toggle_audio.addEventListener("click", toggle_audio);
+btn_next.addEventListener("click", next_slide);
+btn_prev.addEventListener("click", prev_slide);
