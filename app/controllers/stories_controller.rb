@@ -11,6 +11,10 @@ class StoriesController < ApplicationController
     @stories = current_user.stories
   end
 
+  def play_story
+    @stories = Story.all
+  end
+
   # GET /stories/1 or /stories/1.json
   def show
 
@@ -67,6 +71,12 @@ class StoriesController < ApplicationController
   def correct_user
     @story = current_user.stories.find_by(id: params[:id])
     redirect_to stories_path, notice: "Not Authorized To Edit This Story" if @story.nil?
+  end
+
+  def to_partial
+    if play?
+      render 'stories/play_story'
+    end
   end
 
   private

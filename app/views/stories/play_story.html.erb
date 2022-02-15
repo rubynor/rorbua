@@ -1,0 +1,38 @@
+<%= content_for :head do %>
+  <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+  <%= javascript_import_module_tag "playscreen" %>
+<% end %>
+
+<%= content_for :audio_controls do %>
+  <div class="container-lg fixed-bottom text-center p-3">
+
+    <div class="controls px-2 py-2">
+
+      <button id="button_prev">
+        <span class="material-icons">skip_previous</span>
+      </button>
+
+      <button id="button_toggle">
+        <span class="material-icons">play_arrow</span>
+      </button>
+
+      <button id="button_next">
+        <span class="material-icons">skip_next</span>
+      </button>
+
+    </div>
+
+  </div>
+<% end %>
+
+<div class="swiper">
+  <div class="swiper-wrapper">
+
+    <% @stories.each do |story| %>
+
+      <%= render 'stories/story_play', story: story %>
+
+    <% end %>
+
+  </div>
+</div>
