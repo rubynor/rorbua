@@ -11,13 +11,15 @@ let audio_index = 0;
 var stories = document.querySelectorAll(".story_link");
 var like_paths = document.querySelectorAll(".story_like_path");
 var dislike_paths = document.querySelectorAll(".story_dislike_path");
+console.log(like_paths.length);
 
 load_track(audio_index);
 
 function load_track(index){
   audio.src = stories[index].innerHTML;
   audio.load();
-
+  console.log("index " + index);
+  console.log(like_paths[index].innerHTML);
   btn_like.innerHTML = like_paths[index].innerHTML;
   btn_dislike.innerHTML = dislike_paths[index].innerHTML;
 }

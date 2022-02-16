@@ -1,16 +1,67 @@
 <div class="swiper-slide">
   <div class="card text-center" style="width: 18rem;">
     <img src="https://picsum.photos/200" class="card-img-top" alt="Story image">
-    <div class="card-body">
-      <h5 class="card-title"><%= story.title %></h5>
-      <p class="card-text">
-        <%= story.description %>
-      </p>
-      <a href="#" class="btn btn-primary">idk, skal gjøre noe etterhvert kanskje</a>
+
+    <div class="row card-body position-relative">
+      <div class="col-8 text-start">
+        <h5 class="card-title"><%= story.title %></h5>
+        <p class="card-text"><%= story.description %></p>
+      </div>
+
+      <div class="col-4 position-absolute top-50 end-0 translate-middle-y">
+        <!-- Favorite buttons -->
+        <% favourite = current_user.favourites.find_by(story: story) %>
+        <% if favourite.nil? %>
+          <%= button_to favourites_path(story_id: story), class: "favourite_button" do %>
+            <span class="material-icons" style="color:white">favorite</span>
+          <% end %>
+        <% else %>
+          <%= button_to favourite, method: :delete, class: "favourite_button" do %>
+            <span class="material-icons" style="color: red">favorite</span>
+          <% end %>
+        <% end %>
+      </div>
     </div>
+
+    <div class="row">
+      <div class="col">
+
+      </div>
+    </div>
+
   </div>
 </div>
 
 <p class="story_link" hidden> <%= rails_blob_url(story.story_file) %> </p>
-<p class="story_like_path" hidden> <%= button_to "Like", likes_path, params: { like: {story_id: story.id }}, method: :post %> </p>
-<p class="story_dislike_path" hidden> <%= button_to "Dislike", dislikes_path, params: { dislike: {story_id: story.id }}, method: :post %> </p>
+<div class="story_like_path" hidden>
+
+  <% like = current_user.likes.find_by(story: story) %>
+  <% if like.nil? %>
+    <%= button_to likes_path, params: { like: {story_id: story.id }}, method: :post do %>
+      <span class="material-icons" style="color:white" >thumb_up</span>
+    <% end %>
+  <% else %>
+    <%= button_to like_path(like), method: :delete do %>
+      <span class="material-icons" style="color:royalblue">thumb_up</span>
+    <% end %>
+  <% end %>
+
+
+
+</div>
+<div class="story_dislike_path" hidden>
+
+  <% dislike = current_user.dislikes.find_by(story: story) %>
+  <% if dislike.nil? %>
+    <%= button_to dislikes_path, params: { dislike: {story_id: story.id }}, method: :post do %>
+      <span class="material-icons" style="color:white">thumb_down</span>
+    <% end %>
+  <% else %>
+    <%= button_to dislike_path(dislike), method: :delete do %>
+      <span class="material-icons" style="color: red">thumb_down</span>
+    <% end %>
+  <% end %>
+
+
+
+</div>

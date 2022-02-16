@@ -49,3 +49,16 @@
 
 }
 
+.favourite_button {
+	border-radius: 50%;
+	border: none;
+	background-color: #3AAFA9;
+	margin: 0 1rem;
+	height: 40px;
+	width: 40px;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
