@@ -16,8 +16,7 @@
                 <div class="card-body">
                   <h5 class="card-title"><%= story.title %></h5>
                   <p class="card-title"><%= story.user.username %></p>
-                  <p class="card-text" ><%= story.description %></p>
-                  <p class="card-text" ><small class="text-muted">Uploaded <%= story.created_at %></small></p>
+                  <p class="card-text" ><small class="text-muted">Uploaded <%= time_ago_in_words(story.created_at) %> ago </small></p>
                 </div>
               </div>
             </div>
