@@ -11,8 +11,8 @@
         Your browser does not support the audio element.
       </audio>
 
-      <p><%= story.likes.count %> likes</p>
-      <p><%= story.dislikes.count %> dislikes</p>
+      <p id="likes"><%= story.likes.count %> likes</p>
+      <p id="dislikes"><%= story.dislikes.count %> dislikes</p>
       <p class="card-text"><%= story.description %></p>
 
       <!-- signed in -->
@@ -20,16 +20,16 @@
         <!-- like og dislike buttons -->
         <% like = current_user.likes.find_by(story: story) %>
         <% if like.nil? %>
-          <%= button_to "Like", likes_path, params: { like: {story_id: story.id }}, method: :post %>
+          <%= button_to "Like", likes_path(format: :js), remote: true, params: { like: {story_id: story.id }} %>
         <% else %>
-          <%= button_to "Unlike", like_path(like), method: :delete %>
+          <%= button_to "Unlike", like_path(like), method: :delete, remote: true %>
         <% end %>
 
         <% dislike = current_user.dislikes.find_by(story: story) %>
         <% if dislike.nil? %>
-          <%= button_to "Dislike", dislikes_path, params: { dislike: {story_id: story.id }}, method: :post %>
+          <%= button_to "Dislike", dislikes_path, params: { dislike: {story_id: story.id }}, method: :post, remote: true %>
         <% else %>
-          <%= button_to "Undo dislike", dislike_path(dislike), method: :delete %>
+          <%= button_to "Undo dislike", dislike_path(dislike), method: :delete, remote: true %>
         <% end %>
 
         <!-- Favorite buttons -->
@@ -48,8 +48,8 @@
       <!-- not signed in -->
       <% else %>
 
-        <%= button_to "Like", likes_path, params: { like: {story_id: story.id }}, method: :post %>
-        <%= button_to "Dislike", dislikes_path, params: { dislike: {story_id: story.id }}, method: :post %>
+        <%= button_to "Like", likes_path, params: { like: {story_id: story.id }}, method: :post, remote: true %>
+        <%= button_to "Dislike", dislikes_path, params: { dislike: {story_id: story.id }}, method: :post, remote: true %>
         <%= button_to 'Add to Favorites', favourites_path(story_id: story) %>
 
       <% end %>

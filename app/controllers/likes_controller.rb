@@ -3,10 +3,14 @@ class LikesController < ApplicationController
 
   def create
     @like = current_user.likes.new(like_params)
-    if !@like.save
-      flash[:notice] = @like.errors.full_messages.to_sentence
+    respond_to do |format|
+      if @like.save
+        format.js
+        format.html { redirect_to @like.story }
+      else
+        flash[:notice] = @like.errors.full_messages.to_sentence
+      end
     end
-    redirect_to @like.story
   end
 
   def destroy

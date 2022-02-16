@@ -6,8 +6,11 @@
       <p class="card-text">
         <%= story.description %>
       </p>
-      <p class="story_link" hidden> <%= rails_blob_url(story.story_file) %> </p>
       <a href="#" class="btn btn-primary">idk, skal gjøre noe etterhvert kanskje</a>
     </div>
   </div>
 </div>
+
+<p class="story_link" hidden> <%= rails_blob_url(story.story_file) %> </p>
+<p class="story_like_path" hidden> <%= button_to "Like", likes_path, params: { like: {story_id: story.id }}, method: :post %> </p>
+<p class="story_dislike_path" hidden> <%= button_to "Dislike", dislikes_path, params: { dislike: {story_id: story.id }}, method: :post %> </p>
