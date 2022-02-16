@@ -13,3 +13,17 @@
  *= require_tree .
  *= require_self
  */
+
+:root {
+    --green: #3AAFA9;
+    --green-dark: #2B7A78;
+    --purple: #6200EE;
+    --blue: #5085A5;
+    --gray: #37474F;
+    --white: #FFFFFF;
+    --black: #000000;
+}
+
+.color_test {
+    color: var(--green);
+}
