@@ -8,7 +8,7 @@
         <p class="card-text"><%= story.description %></p>
       </div>
 
-      <div class="col-4 position-absolute top-50 end-0 translate-middle-y">
+      <div class="col-4 position-absolute top-50 end-0 translate-middle-y" id="<%= story.id %>">
         <!-- Favorite buttons -->
         <% favourite = current_user.favourites.find_by(story: story) %>
         <% if favourite.nil? %>

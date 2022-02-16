@@ -1,0 +1,9 @@
+<% if like %>
+  <%= button_to like_path(like), method: :delete do %>
+    <span class="material-icons" style="color:royalblue">thumb_up</span>
+  <% end %>
+<% else %>
+  <%= button_to likes_path, params: { like: {story_id: @like.story.id }}, method: :post do %>
+    <span class="material-icons" style="color:white" >thumb_up</span>
+  <% end %>
+<% end %>
