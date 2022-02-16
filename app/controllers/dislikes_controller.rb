@@ -3,17 +3,31 @@ class DislikesController < ApplicationController
 
   def create
     @dislike = current_user.dislikes.new(dislike_params)
-    if !@dislike.save
-      flash[:notice] = @dislike.errors.full_messages.to_sentence
+    respond_to do |format|
+      if @dislike.save
+        format.turbo_stream do
+          render turbo_stream: [
+            turbo_stream.update("button_dislike", partial: "dislikes/dislike_button", locals: {dislike: @dislike})
+          ]
+        end
+      else
+        flash[:notice] = @dislike.errors.full_messages.to_sentence
+      end
     end
-    redirect_to @dislike.story
+
   end
 
   def destroy
     @dislike = current_user.dislikes.find(params[:id])
-    story = @dislike.story
-    @dislike.destroy
-    redirect_to story
+    @story = @dislike.story
+    respond_to do |format|
+      @dislike.destroy
+      format.turbo_stream do
+        render turbo_stream: [
+          turbo_stream.update("button_dislike", partial: "dislikes/dislike_button", locals: {dislike: false})
+        ]
+      end
+    end
   end
 
   private
