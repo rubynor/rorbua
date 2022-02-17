@@ -1,4 +1,4 @@
-<div class="swiper-slide">
+<div class="swiper-slide" id="slide_<%= story.id %>">
   <div class="card text-center" style="width: 18rem;">
     <img src="https://picsum.photos/200" class="card-img-top" alt="Story image">
 
@@ -49,6 +49,7 @@
 
 
 </div>
+
 <div class="story_dislike_path" hidden>
 
   <% dislike = current_user.dislikes.find_by(story: story) %>

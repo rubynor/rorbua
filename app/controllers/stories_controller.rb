@@ -1,5 +1,6 @@
 class StoriesController < ApplicationController
-  before_action :set_story, only: %i[ show edit update destroy ]
+  before_action :set_story, only: %i[ show edit update destroy play ]
+  before_action :find_all_from_id_to_last, only: :play
   before_action :authenticate_user!, except: [:index, :show]
   before_action :correct_user, only: [:edit, :update, :destroy]
   # GET /stories or /stories.json
@@ -15,6 +16,10 @@ class StoriesController < ApplicationController
     @stories = Story.all
   end
 
+  def play
+    render :'stories/play_story'
+  end
+
   # GET /stories/1 or /stories/1.json
   def show
 
@@ -22,7 +27,6 @@ class StoriesController < ApplicationController
 
   # GET /stories/new
   def new
-    #@story = Story.new
     @story = current_user.stories.build
   end
 
@@ -89,5 +93,9 @@ class StoriesController < ApplicationController
     def story_params
       params.require(:story).permit(:title, :description, :story_file, :user_id)
     end
+
+  def find_all_from_id_to_last
+    @stories = Story.where('id >= ?', @story.id).limit(20)
+  end
 
 end
