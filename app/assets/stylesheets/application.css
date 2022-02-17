@@ -27,3 +27,11 @@
 .color_test {
     color: var(--green);
 }
+
+.nav-icon{
+    color: #FFFFFF;
+}
+
+.nav-icon:hover {
+    color:black
+}
