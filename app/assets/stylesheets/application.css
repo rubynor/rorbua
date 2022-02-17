@@ -35,3 +35,7 @@
 .nav-icon:hover {
     color:black
 }
+
+body {
+    padding:10px;
+}
