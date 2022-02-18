@@ -28,8 +28,11 @@
   </div>
 
   <div class="mb-3">
-    <%= f.submit 'Sign up', :class => 'btn btn-primary' %>
+    <div class="d-grid gap-2">
+      <%= f.submit 'Sign up', :class => 'btn btn-primary' %>
+    </div>
   </div>
+
 <% end %>
 
 <%= render "devise/shared/links" %>

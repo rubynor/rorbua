@@ -15,13 +15,12 @@
  */
 
 :root {
+    --green-light: #EEF7F7;
     --green: #3AAFA9;
     --green-dark: #2B7A78;
     --purple: #6200EE;
     --blue: #5085A5;
     --gray: #37474F;
-    --white: #FFFFFF;
-    --black: #000000;
 }
 
 .color_test {
@@ -36,6 +35,17 @@
     color:black
 }
 
-body {
-    padding:10px;
+/* welcome_msg */
+.welcome_msg {
+    color: black;
+    background-color: var(--green-light);
+    border: black;
+    text-align: center
+}
+
+.welcome_msg h1 {
+    font-family: "Dancing Script";
+    font-size: 44px;
+    font-style: normal;
+    font-variant: normal;
 }

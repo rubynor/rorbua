@@ -32,12 +32,15 @@
   </div>
 
   <div class="mb-3">
-    <%= f.submit 'Update', :class => 'btn btn-primary' %>
+    <div class="d-grid gap-2">
+      <%= f.submit 'Update', :class => 'btn btn-primary' %>
+    </div>
   </div>
+
 <% end %>
 
 <div class="mb-3">
-  <%= button_to "I want to cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, :class => 'btn btn-primary' %>
+  <%= button_to "I want to cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %>
 </div>
 
 <div class="mb-3">
