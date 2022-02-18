@@ -45,7 +45,10 @@
 
 .welcome_msg h1 {
     font-family: "Dancing Script";
-    font-size: 44px;
     font-style: normal;
     font-variant: normal;
+}
+
+.welcome_msg p {
+    font-size: 0.9em;
 }
