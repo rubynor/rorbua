@@ -1,12 +1,11 @@
-<p style="color: green"><%= notice %></p>
-
+<!-- Stories -->
 <div id="stories" class="feed_stories_container">
   <div class="container">
-    <% @stories.each do |story| %>
-      <%= link_to story do%>
+    <div class="row">
 
-        <div class="row">
-
+      <!-- List Stories -->
+      <% @stories.each do |story| %>
+        <%= link_to story do%>
           <div class="card mb-3">
             <div class="row g-0">
               <div class="col-md-4">
@@ -21,11 +20,9 @@
               </div>
             </div>
           </div>
-
-        </div>
-
+        <% end %>
       <% end %>
-    <% end %>
-  </div>
 
+    </div>
+  </div>
 </div>
