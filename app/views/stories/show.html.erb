@@ -1,6 +1,14 @@
-<p style="color: green"><%= notice %></p>
+<div class="container">
 
-<%= render @story %>
+  <div class="row">
+    <%= render @story %>
+  </div>
 
-<%= link_to "Previous", @story.previous, class: "btn btn-primary" %>
-<%= link_to "Next", @story.next, class: "btn btn-primary" %>
+  <%= link_to "Previous", @story.previous, class: "btn btn-primary" %>
+  <%= link_to "Next", @story.next, class: "btn btn-primary" %>
+
+</div>
+
+
+
+
