@@ -1,27 +1,18 @@
 const btn_toggle_audio = document.querySelector('#button_toggle');
 const btn_next = document.querySelector('#button_next');
 const btn_prev = document.querySelector('#button_prev');
-const btn_like = document.querySelector("#button_like");
-const btn_dislike = document.querySelector("#button_dislike");
 
-    let playing = false;
+let playing = false;
 const audio = document.createElement('audio');
 let audio_index = 0;
 
 var stories = document.querySelectorAll(".story_link");
-var like_paths = document.querySelectorAll(".story_like_path");
-var dislike_paths = document.querySelectorAll(".story_dislike_path");
-console.log(like_paths.length);
 
 load_track(audio_index);
 
 function load_track(index){
   audio.src = stories[index].innerHTML;
   audio.load();
-  console.log("index " + index);
-  console.log(like_paths[index].innerHTML);
-  btn_like.innerHTML = like_paths[index].innerHTML;
-  btn_dislike.innerHTML = dislike_paths[index].innerHTML;
 }
 
 const swiper = new Swiper('.swiper', {

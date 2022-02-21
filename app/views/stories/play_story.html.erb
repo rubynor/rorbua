@@ -3,35 +3,8 @@
   <%= javascript_import_module_tag "playscreen" %>
 <% end %>
 
-<%= content_for :audio_controls do %>
-  <div class="container-lg fixed-bottom text-center p-3">
+<%= render "layouts/audio_controls" %>
 
-    <div class="controls px-2 py-2">
-
-      <div id="button_dislike">
-
-      </div>
-
-      <button id="button_prev">
-        <span class="material-icons" style="color: white">skip_previous</span>
-      </button>
-
-      <button id="button_toggle">
-        <span class="material-icons" style="color: white">play_arrow</span>
-      </button>
-
-      <button id="button_next">
-        <span class="material-icons" style="color: white">skip_next</span>
-      </button>
-
-      <div id="button_like">
-
-      </div>
-
-    </div>
-
-  </div>
-<% end %>
 <%= link_to "Back", :back, class: "btn btn-success" %>
 <div class="swiper">
   <div class="swiper-wrapper">

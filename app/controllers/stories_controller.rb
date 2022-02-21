@@ -77,12 +77,6 @@ class StoriesController < ApplicationController
     redirect_to stories_path, notice: "Not Authorized To Edit This Story" if @story.nil?
   end
 
-  def to_partial
-    if play?
-      render 'stories/play_story'
-    end
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_story
