@@ -1,4 +1,4 @@
-<div class="swiper-slide" id="slide_<%= story.id %>">
+<div class="swiper-slide" id="<%= dom_id(story) %>">
   <div class="card text-center" style="width: 18rem;">
     <img src="https://picsum.photos/200" class="card-img-top" alt="Story image">
 
@@ -8,18 +8,17 @@
         <p class="card-text"><%= story.description %></p>
       </div>
 
-      <div class="col-4 position-absolute top-50 end-0 translate-middle-y" id="<%= story.id %>">
-        <!-- Favorite buttons -->
-        <% favourite = current_user.favourites.find_by(story: story) %>
-        <% if favourite.nil? %>
-          <%= button_to favourites_path(story_id: story), class: "favourite_button" do %>
-            <span class="material-icons" style="color:white">favorite</span>
-          <% end %>
-        <% else %>
-          <%= button_to favourite, method: :delete, class: "favourite_button" do %>
-            <span class="material-icons" style="color: red">favorite</span>
-          <% end %>
-        <% end %>
+      <div class="col-4 position-absolute top-50 end-0 translate-middle-y">
+        <div id="<%= "#{dom_id story}_favourite_btn" %>">
+          <%= render 'favourites/favourite_btn', story: story %>
+        </div>
+        <div id="<%= "#{dom_id story}_like_btn" %>">
+          <%= render "likes/like_button", story: story %>
+        </div>
+        <div id="<%= "#{dom_id story}_dislike_btn" %>">
+          <%= render 'dislikes/dislike_button', story: story %>
+        </div>
+
       </div>
     </div>
 

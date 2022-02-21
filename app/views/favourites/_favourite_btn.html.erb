@@ -1,9 +1,11 @@
-<% if favourite %>
-  <%= button_to favourite, method: :delete, class: "favourite_button" do %>
-    <span class="material-icons" style="color: red">favorite</span>
-  <% end %>
-<% else %>
+<!-- Favorite buttons -->
+<% favourite = current_user.favourites.find_by(story_id: story) %>
+<% if favourite.nil? %>
   <%= button_to favourites_path(story_id: story), class: "favourite_button" do %>
     <span class="material-icons" style="color:white">favorite</span>
+  <% end %>
+<% else %>
+  <%= button_to favourite, method: :delete, class: "favourite_button" do %>
+    <span class="material-icons" style="color: red">favorite</span>
   <% end %>
 <% end %>

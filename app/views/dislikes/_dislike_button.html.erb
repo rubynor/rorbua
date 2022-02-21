@@ -1,10 +1,9 @@
-<% if !dislike %>
-  <%= button_to dislikes_path, params: { dislike: {story_id: @story }}, method: :post do %>
+<% dislike = current_user.dislikes.find_by(story_id: story) %>
+<% if dislike.nil? %>
+  <%= button_to dislikes_path, params: { dislike: {story_id: story }}, method: :post do %>
     <span class="material-icons" style="color:white">thumb_down</span>
   <% end %>
-
 <% else %>
-
   <%= button_to dislike_path(dislike), method: :delete do %>
     <span class="material-icons" style="color: red">thumb_down</span>
   <% end %>

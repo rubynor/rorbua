@@ -1,4 +1,5 @@
 class FavouritesController < ApplicationController
+  include ActionView::RecordIdentifier
   before_action :authenticate_user!
 
   # GET /favourites or /favourites.json
@@ -16,7 +17,7 @@ class FavouritesController < ApplicationController
       if @favourite.save
         format.turbo_stream do
           render turbo_stream: [
-            turbo_stream.update(@favourite.story.id, partial: "favourites/favourite_btn", locals: {favourite: @favourite})
+            turbo_stream.update( "#{dom_id (@favourite.story)}_favourite_btn", partial: "favourites/favourite_btn", locals: {story: @favourite.story})
           ]
         end
       else
@@ -33,7 +34,7 @@ class FavouritesController < ApplicationController
       if @favourite.destroy
         format.turbo_stream do
           render turbo_stream: [
-            turbo_stream.update(@favourite.story.id, partial: "favourites/favourite_btn", locals: {story: story, favourite:false})
+            turbo_stream.update("#{dom_id (story)}_favourite_btn", partial: "favourites/favourite_btn", locals: {story: story})
           ]
         end
       else
