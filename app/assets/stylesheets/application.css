@@ -52,3 +52,15 @@
 .welcome_msg p {
     font-size: 0.9em;
 }
+
+/* rorbua h1 */
+.rorbua-heading {
+    font-family: "Dancing Script", serif;
+    font-size: 3.5em;
+    text-align: center;
+}
+
+.rorbua-sub-heading {
+    text-align: center;
+    color: gray;
+}

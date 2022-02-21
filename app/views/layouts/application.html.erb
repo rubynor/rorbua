@@ -37,7 +37,7 @@
     <%= render 'layouts/bottom_navbar' %>
 
     <!-- Welcome -->
-    <% if current_page?(root_path) && !user_signed_in? %>
+    <% if current_page?(root_path) %>
       <div class="alert alert-primary welcome_msg" >
         <h1>Welcome</h1>
         <p>
@@ -56,6 +56,10 @@
 
         <div class="col-lg-6">
           <!-- SETT NOTICE INN HER -->
+          <div class="container">
+            <p style="color: green"><%= notice %></p>
+          </div>
+
           <%= yield %>
           <!-- TEST user edit -->
           <% if user_signed_in? %>
