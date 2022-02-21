@@ -1,22 +1,20 @@
-<div class ="container">
-<%= link_to "Back", :back, class: "btn btn-secondary" %>
-  <br>
-  <br>
-  <h1>Favourites</h1>
-  <br>
-  <p> <strong>
-        <%= current_user.username %>
-      </strong>
-  </p>
-  <p> <strong>
-      <%= @favourites.size %> Videos
-    </strong>
-  </p>
-  <div id="favourites">
-    <% @favourites.each do |favourite| %>
-      <% story = favourite.story %>
-      <%= link_to story do%>
-        <div class="row">
+<div id="favourites">
+
+  <div class ="container">
+
+    <%= link_to "Back", :back, class: "btn btn-secondary" %>
+    <br>
+    <br>
+    <div class="row">
+
+      <h2>Favourites</h2>
+      <br>
+      <p> <strong><%= current_user.username %><br>
+      <%= @favourites.size %> Videos</strong></p>
+
+      <% @favourites.each do |favourite| %>
+        <% story = favourite.story %>
+        <%= link_to story do%>
           <div class="card mb-3">
             <div class="row g-0">
               <div class="col-md-4">
@@ -31,9 +29,10 @@
               </div>
             </div>
           </div>
-        </div>
+        <% end %>
+        <%= button_to "Remove from favourites", favourite, method: :delete %><br><br>
       <% end %>
-      <%= button_to "Remove from favourites", favourite, method: :delete %>
-    <% end %>
+
+    </div>
   </div>
 </div>

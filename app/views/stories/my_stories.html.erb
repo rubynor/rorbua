@@ -1,17 +1,19 @@
 <!-- Stories -->
 <div id="stories" class="feed_stories_container">
+
   <div class="container">
+
     <%= link_to "Back", :back, class: "btn btn-secondary" %>
     <br>
     <br>
     <div class="row">
 
-      <h1>My stories</h1>
+      <h2>My stories</h2>
       <br>
+
       <% @stories.each do |story| %>
 
-        <div class="row">
-
+        <%= link_to story do %>
           <div class="card mb-3">
             <div class="row g-0">
               <div class="col-md-4">
@@ -19,16 +21,14 @@
               </div>
               <div class="col-md-8">
                 <div class="card-body">
-                  <h5 class="card-title"><%=  link_to story.title, story, class:"card-title" %></h5>
+                  <h5 class="card-title"><%= story.title %></h5>
                   <p class="card-title"><%= story.user.username %></p>
                   <p class="card-text" ><small class="text-muted">Uploaded <%= time_ago_in_words(story.created_at) %> ago </small></p>
                 </div>
               </div>
             </div>
           </div>
-
-        </div>
-
+        <% end %>
       <% end %>
 
     </div>
