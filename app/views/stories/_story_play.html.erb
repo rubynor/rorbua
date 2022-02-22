@@ -1,30 +1,40 @@
 <div class="swiper-slide" id="<%= dom_id(story) %>">
-  <div class="card text-center" style="width: 18rem;">
-    <img src="https://picsum.photos/200" class="card-img-top" alt="Story image">
 
-    <div class="row card-body position-relative">
-      <div class="col-8 text-start">
+  <div class="card text-center p-4 p-sm-2 p-md-1 w-100 w-md-50" style="width: 18rem;">
+
+    <!-- Story bilde -->
+     <img src="https://media.istockphoto.com/photos/3d-rendering-of-big-bonfire-with-sparks-and-particles-in-front-of-picture-id1154106926?k=20&m=1154106926&s=612x612&w=0&h=qgUVv_LiPZohE5aVa7H9Wi-2Xxz5JwX5PevnG0QkGHw=" class="card-img-top img-fluid" alt="Story image">
+
+    <!-- Body -->
+    <div class="row card-body position-relative align-items-end">
+
+      <!-- Title og description -->
+      <div class="col-10 text-start p-3">
         <h5 class="card-title"><%= story.title %></h5>
-        <p class="card-text"><%= story.description %></p>
-      </div>
-
-      <div class="col-4 position-absolute top-50 end-0 translate-middle-y">
-        <div id="<%= "#{dom_id story}_favourite_btn" %>">
-          <%= render 'favourites/favourite_btn', story: story %>
-        </div>
-        <div id="<%= "#{dom_id story}_like_btn" %>">
-          <%= render "likes/like_button", story: story %>
-        </div>
-        <div id="<%= "#{dom_id story}_dislike_btn" %>">
-          <%= render 'dislikes/dislike_button', story: story %>
-        </div>
+        <hr>
+        <p class="card-text">
+          <%= story.description %>
+        </p>
 
       </div>
-    </div>
 
-    <div class="row">
-      <div class="col">
-
+      <!-- Knappene -->
+      <div class="col-2 p-1">
+        <div class="row my-1">
+          <div id="<%= "#{dom_id story}_favourite_btn" %>">
+            <%= render 'favourites/favourite_btn', story: story %>
+          </div>
+        </div>
+        <div class="row my-1">
+          <div id="<%= "#{dom_id story}_like_btn" %>">
+            <%= render "likes/like_button", story: story %>
+          </div>
+        </div>
+        <div class="row my-1">
+          <div id="<%= "#{dom_id story}_dislike_btn" %>">
+            <%= render 'dislikes/dislike_button', story: story %>
+          </div>
+        </div>
       </div>
     </div>
 
