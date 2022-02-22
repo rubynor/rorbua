@@ -6,9 +6,10 @@
     <div class="card-body">
       <h5 class="card-title"><%= story.title %></h5>
       <p class="card-text"><%= story.user.username %></p>
-      <p id="likes"><%= story.likes.count %> likes</p>
-      <p id="dislikes"><%= story.dislikes.count %> dislikes</p>
       <p class="card-text"><%= story.description %></p>
+      <audio controls>
+        <source src="<%= rails_blob_url(story.story_file) %>">
+      </audio>
 
       <!-- signed in -->
       <div class="row">
