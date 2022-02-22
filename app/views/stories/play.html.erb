@@ -1,0 +1,18 @@
+<%= content_for :head do %>
+  <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+  <%= javascript_import_module_tag "playscreen" %>
+<% end %>
+
+<%= render "layouts/audio_controls" %>
+
+<div class="swiper">
+  <div class="swiper-wrapper">
+
+    <% @stories.each do |story| %>
+
+      <%= render 'stories/story_play', story: story %>
+
+    <% end %>
+
+  </div>
+</div>

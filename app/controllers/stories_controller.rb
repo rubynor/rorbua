@@ -17,7 +17,7 @@ class StoriesController < ApplicationController
   end
 
   def play
-    render :'stories/play_story'
+
   end
 
   # GET /stories/1 or /stories/1.json
