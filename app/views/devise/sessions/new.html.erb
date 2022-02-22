@@ -20,14 +20,13 @@
         </div>
       <% end %>
 
-      <div class="mb-3">
+      <div class="mb-4">
         <div class="d-grid gap-2">
           <%= f.submit 'Log in', :class => 'btn btn-primary' %>
         </div>
       </div>
     <% end %>
 
-    <br>
     <div class="mb-3">
       <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
         Dont have an acount? <%= link_to "Sign up", new_registration_path(resource_name) %><br />

@@ -23,20 +23,23 @@
         <%= f.password_field :password, autocomplete: "new-password", class: "form-control"%>
       </div>
 
-      <div class="mb-3">
+      <div class="mb-5">
         <%= f.label :password_confirmation %><br />
         <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control"%>
       </div>
 
-      <div class="mb-3">
+      <div class="mb-4">
         <div class="d-grid gap-2">
           <%= f.submit 'Sign up', :class => 'btn btn-primary' %>
         </div>
       </div>
 
+      <div class="mb-3">
+        <p>Already have an account? <%= render "devise/shared/links" %><p>
+      </div>
+
     <% end %>
 
-    <p>Already have an account? <%= render "devise/shared/links" %><p>
   </div>
 </div>
 
