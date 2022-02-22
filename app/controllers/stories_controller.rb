@@ -3,9 +3,11 @@ class StoriesController < ApplicationController
   before_action :find_all_from_id_to_last, only: :play
   before_action :authenticate_user!, except: [:index, :show]
   before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :delete_from_aws, only: [:destroy]
+
   # GET /stories or /stories.json
   def index
-    @stories = Story.all
+    @stories = Story.all.order("created_at DESC")
   end
 
   def my_stories
@@ -70,6 +72,15 @@ class StoriesController < ApplicationController
       format.html { redirect_to stories_url, notice: "Story was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def delete_from_aws
+    s3 = Aws::S3::Client.new(
+      region: "eu-north-1",
+      access_key_id: Rails.application.credentials.dig(:aws, :access_key_id),
+      secret_access_key: Rails.application.credentials.dig(:aws, :secret_access_key)
+    )
+    s3.delete_object(bucket: 'rorbua', key: @story.story_file.key)
   end
 
   def correct_user

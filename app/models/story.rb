@@ -6,6 +6,7 @@ class Story < ApplicationRecord
   has_many :dislikes
 
   validates :title, :description, presence: true
+  validates :description, length: { maximum: 250 }
   validates :story_file, presence: true, blob:{ content_type: :audio } #For flere validations: https://github.com/aki77/activestorage-validator
 
   def next
@@ -15,5 +16,6 @@ class Story < ApplicationRecord
   def previous
     Story.where("id < ?", id).order(id: :desc).limit(1).first
   end
+
 
 end
