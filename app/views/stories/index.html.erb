@@ -1,9 +1,9 @@
 <div id="stories" class="feed_stories_container">
   <div class="container">
+    <div class="row">
+
     <% @stories.each do |story| %>
       <%= link_to play_path story do %>
-
-        <div class="row">
 
           <div class="card mb-3">
             <div class="row g-0">
@@ -14,13 +14,11 @@
                 <div class="card-body">
                   <h5 class="card-title"><%= story.title %></h5>
                   <p class="card-title"><%= story.user.username %></p>
-                  <p class="card-text" ><%= story.description %></p>
                   <p class="card-text" ><small class="text-muted">Uploaded <%= story.created_at %></small></p>
                 </div>
               </div>
             </div>
           </div>
-
         </div>
 
       <% end %>
