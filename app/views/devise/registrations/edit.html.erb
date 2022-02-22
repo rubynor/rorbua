@@ -29,21 +29,20 @@
         <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control"%>
       </div>
 
-      <div class="mb-3">
+      <div class="mb-5">
         <%= f.label :current_password %> <br />
         <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control"%>
       </div>
 
-      <div class="mb-3">
-        <div class="d-grid gap-2">
-          <%= f.submit 'Update', :class => 'btn btn-primary' %>
-        </div>
+      <div class="mb-4">
+        <%= f.submit 'Update', :class => 'btn btn-primary btn-block' %>
       </div>
 
     <% end %>
 
     <div class="mb-3">
-      <%= button_to "I want to cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %>
+      <%= button_to "I want to cancel my account", registration_path(resource_name), data: {
+        confirm: "Are you sure?" }, method: :delete, :class => 'btn btn-secondary btn-block' %>
     </div>
 
     <div class="mb-3">
