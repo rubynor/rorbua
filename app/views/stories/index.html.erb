@@ -2,6 +2,8 @@
 <div id="stories" class="feed_stories_container">
 
   <div class="container">
+    <% @stories.each do |story| %>
+      <%= link_to play_path story do %>
 
     <div class="row">
 

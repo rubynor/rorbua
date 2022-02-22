@@ -21,9 +21,7 @@ const swiper = new Swiper('.swiper', {
   // If we need pagination
   pagination: {
   el: '.swiper-pagination',
-  },
-  
-  loop: true
+  }
 
 });
 
@@ -60,13 +58,13 @@ function toggle_audio() {
 function play_audio() {
   playing = true;
   audio.play();
-  btn_toggle_audio.innerHTML = '<span class="material-icons">pause</span>'
+  btn_toggle_audio.innerHTML = '<span class="material-icons" style="color: white">pause</span>'
 }
 
 function pause_audio() {
   playing = false;
   audio.pause();
-  btn_toggle_audio.innerHTML = '<span class="material-icons">play_arrow</span>';
+  btn_toggle_audio.innerHTML = '<span class="material-icons" style="color: white">play_arrow</span>';
 }
 
 function prev() {
