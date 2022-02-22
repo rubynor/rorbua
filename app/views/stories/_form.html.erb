@@ -21,7 +21,7 @@
     <%= form.text_field :description, class: "form-control" %>
   </div>
 
-  <div class="mb-3">
+  <div class="mb-5">
     <%= form.label :story_file, class: "form-label" %>
     <%= form.file_field :story_file, class: "form-control" %>
   </div>
@@ -29,14 +29,10 @@
   <div>
     <%= form.number_field :user_id, id: :story_user_id, value: current_user.id, type: :hidden %>
   </div>
-  <br>
 
-  <div class="mb-3">
-    <div class="d-grid gap-2">
-      <%= form.submit class: 'btn btn-primary' %>
-    </div>
+  <div class="mb-4">
+      <%= form.submit class: 'btn btn-primary btn-block' %>
   </div>
-  <br>
 
 <% end %>
 
