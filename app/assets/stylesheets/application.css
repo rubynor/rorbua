@@ -59,3 +59,9 @@
     font-size: 3.5em;
     text-align: center;
 }
+
+.form-group-error {
+    padding: 2px;
+    color: red;
+    display: table;
+}

@@ -4,11 +4,11 @@
     <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
     <%= form_for(resource, as: resource_name, data: { turbo: false}, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-      <%= render "devise/shared/error_messages", resource: resource %>
 
       <div class="mb-3">
         <%= f.label :email %><br />
         <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control"%>
+        <%= error_message_on(f.object, :email) %>
       </div>
 
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -18,6 +18,7 @@
       <div class="mb-3">
         New <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
         <%= f.password_field :password, autocomplete: "new-password", class: "form-control"%>
+        <%= error_message_on(f.object, :password) %>
         <% if @minimum_password_length %>
 
           <em><%= @minimum_password_length %> characters minimum</em>
@@ -27,11 +28,13 @@
       <div class="mb-3">
         New <%= f.label :password_confirmation %><br />
         <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control"%>
+        <%= error_message_on(f.object, :password_confirmation) %>
       </div>
 
       <div class="mb-5">
         <%= f.label :current_password %> <br />
         <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control"%>
+        <%= error_message_on(f.object, :current_password) %>
       </div>
 
       <div class="mb-4">

@@ -1,29 +1,20 @@
 <%= form_with(model: story) do |form| %>
-  <% if story.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(story.errors.count, "error") %> prohibited this story from being saved:</h2>
-
-      <ul>
-        <% story.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
   <div class="mb-3">
     <%= form.label :title, class: "form-label" %>
     <%= form.text_field :title, class: "form-control" %>
+    <%= error_message_on(form.object, :title) %>
   </div>
 
   <div class="mb-3">
     <%= form.label :description, class: "form-label" %>
     <%= form.text_field :description, class: "form-control" %>
+    <%= error_message_on(form.object, :description) %>
   </div>
 
   <div class="mb-5">
     <%= form.label :story_file, class: "form-label" %>
     <%= form.file_field :story_file, class: "form-control" %>
+    <%= error_message_on(form.object, :story_file) %>
   </div>
 
   <div>
