@@ -1,14 +1,21 @@
 <!-- Favorite buttons -->
 <div class="counter">
-  <% favourite = current_user.favourites.find_by(story_id: story) %>
-  <% if favourite.nil? %>
-    <%= button_to favourites_path(story_id: story), class: "action_button" do %>
+
+  <% if user_signed_in? %>
+    <% favourite = current_user.favourites.find_by(story_id: story) %>
+    <% if favourite.nil? %>
+      <%= button_to favourites_path(story_id: story), class: "action_button" do %>
+        <span class="material-icons">favorite_border</span>
+      <% end %>
+    <% else %>
+      <%= button_to favourite, method: :delete, class: "action_button" do %>
+        <span class="material-icons" style="color: red">favorite</span>
+      <% end %>
+    <% end %>
+    <p><%= story.favourites.count %></p>
+  <% else %>
+    <%= button_to new_user_session_path, method: :get, class: "action_button" do %>
       <span class="material-icons">favorite_border</span>
     <% end %>
-  <% else %>
-    <%= button_to favourite, method: :delete, class: "action_button" do %>
-      <span class="material-icons" style="color: red">favorite</span>
-    <% end %>
   <% end %>
-  <p><%= story.favourites.count %></p>
 </div>

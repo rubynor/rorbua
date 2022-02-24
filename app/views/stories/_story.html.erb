@@ -13,7 +13,6 @@
 
       <!-- signed in -->
       <div class="row">
-        <% if user_signed_in? %>
 
           <div class="col">
             <!-- Favorite button -->
@@ -35,18 +34,11 @@
             </div>
           </div>
 
+        <% if user_signed_in? %>
           <!-- Edit story button -->
           <% if current_user.id == story.user_id %>
             <%= link_to "Edit this story", edit_story_path(story) %>
           <% end %>
-
-          <!-- not signed in -->
-        <% else %>
-
-          <%= button_to "Like", likes_path, params: { like: {story_id: story.id }}, method: :post, remote: true %>
-          <%= button_to "Dislike", dislikes_path, params: { dislike: {story_id: story.id }}, method: :post, remote: true %>
-          <%= button_to 'Add to Favorites', favourites_path(story_id: story) %>
-
         <% end %>
       </div>
 

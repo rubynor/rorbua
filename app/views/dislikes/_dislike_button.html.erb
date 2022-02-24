@@ -1,4 +1,6 @@
 <div class="counter">
+
+  <% if user_signed_in? %>
   <% dislike = current_user.dislikes.find_by(story_id: story) %>
   <% if dislike.nil? %>
     <%= button_to dislikes_path, params: { dislike: {story_id: story }}, method: :post, class: "action_button"  do %>
@@ -10,4 +12,9 @@
     <% end %>
   <% end %>
   <p><%= story.dislikes.count %></p>
+  <% else %>
+    <%= button_to new_user_session_path, method: :get, class: "action_button" do %>
+      <span class="material-icons">thumb_down_off_alt</span>
+    <% end %>
+  <% end %>
 </div>
