@@ -2,8 +2,8 @@ class Story < ApplicationRecord
   has_one_attached :story_file
   belongs_to :user
   has_many :favourites, dependent: :destroy
-  has_many :likes
-  has_many :dislikes
+  has_many :likes, dependent: :destroy
+  has_many :dislikes, dependent: :destroy
 
   validates :title, presence: true
   validates :title, length: { maximum: 50 }
