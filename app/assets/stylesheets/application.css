@@ -83,3 +83,13 @@
     text-decoration: none;
 }
 
+.logo {
+    color: white;
+    text-decoration: none;
+}
+
+.logo:hover {
+    text-decoration: none;
+    color: white;
+}
+
