@@ -8,7 +8,8 @@
       <%= render "form", story: @story %>
 
       <div class="mb-4">
-        <%= button_to "Delete story", @story, method: :delete, class: "btn btn-secondary btn-block" %>
+        <%= button_to "Delete story", @story, method: :delete, form: {data: {turbo_confirm: 'Are you sure?'}},
+                      class: "btn btn-secondary btn-block" %>
       </div>
 
       <div>
