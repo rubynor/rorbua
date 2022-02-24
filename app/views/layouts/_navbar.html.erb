@@ -14,7 +14,13 @@
       </a>
       <ul class="dropdown-menu dropdown-menu-end settings-tab">
           <li><%= link_to "Edit user settings",  edit_user_registration_path, class: "dropdown-item"%></li>
-          <li class="dropdown-item"><%= render "layouts/partials/sign_in_button" %></li>
+          <li class="dropdown-item">
+            <% if user_signed_in? %>
+              <%= button_to "Sign out", destroy_user_session_path, method: :delete %>
+            <% else %>
+              <%= link_to "Sign in", new_user_session_path, style: "color:black" %>
+            <% end %>
+          </li>
       </ul>
     </li>
     </ul>

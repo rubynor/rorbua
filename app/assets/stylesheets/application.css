@@ -79,3 +79,7 @@
     padding-left: 0;
 }
 
+.settings-tab a:hover {
+    text-decoration: none;
+}
+
