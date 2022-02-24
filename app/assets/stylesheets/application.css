@@ -65,3 +65,17 @@
     color: red;
     display: table;
 }
+
+.settings-tab li {
+    border: none;
+    background-color: transparent;
+    padding-top: 5px;
+}
+
+.settings-tab button {
+    border: none;
+    background-color: transparent;
+    padding-top: 5px;
+    padding-left: 0;
+}
+
