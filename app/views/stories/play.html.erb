@@ -44,6 +44,7 @@
 
 <script>
 
+  // Henter html tags fra siden
     var player = document.getElementById('<%= dom_id(@story) %>_audio');
     var progressbar = document.getElementById('<%= dom_id(@story) %>_audio_progress');
     var current_time = document.getElementById('<%= dom_id(@story) %>_audio_current_time');
@@ -53,16 +54,18 @@
     // Slik at all data som skal displayes blir displaya på riktig tidspunkt
     player.addEventListener("loadedmetadata", function () {
 
+        // Viser hvor lang storyen er, og setter tida til 00:00 / xx:yy, progressbar value = 0
         current_time.innerHTML = display_time(player.currentTime);
         total_time.innerHTML = display_time(player.duration);
         progressbar.value = this.currentTime/this.duration;
 
+        // Når story blir spilt av kjøres denne for å oppdatere displayen av tid
         player.addEventListener('timeupdate', function(){
-            current_time.innerHTML = display_time(player.currentTime);
-            total_time.innerHTML = display_time(player.duration);
-            progressbar.value = this.currentTime/this.duration;
+            current_time.innerHTML = display_time(player.currentTime); // Display ny tid
+            progressbar.value = this.currentTime/this.duration; // Oppdatere progressbar
         });
 
+        // Når progressbaren blir trykket på for å velge hvor i storyen
         progressbar.addEventListener("click", function (event) {
             var x = event.x;
             var offset = this.offsetLeft+ this.offsetParent.offsetLeft;
@@ -74,6 +77,7 @@
 
     });
 
+    // Toggle play/pause
     function toggle() {
         if (player.paused) {
             player.play()
@@ -85,18 +89,16 @@
         }
     }
 
-
-
+    // Når storyen er ferdig setter den pause ikonet til et play ikon, for å signalisere at du har hørt hele filen
     player.onended = function (){
         document.getElementById("button_toggle").innerHTML = "play_arrow";
     }
 
+    // Metode for å displaye tid, men i et fint format, f.eks (0:38 / 2:35)
     function display_time(time){
         var parsedTime = parseInt(time);
         var minutes = parseInt(parsedTime/60)
         var seconds = parsedTime%60;
-        if (minutes < 1)
-            minutes = "0" + minutes
         if (seconds < 10)
             seconds = "0"+seconds;
         return minutes + ":" + seconds;
