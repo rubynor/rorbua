@@ -49,6 +49,8 @@
     var current_time = document.getElementById('<%= dom_id(@story) %>_audio_current_time');
     var total_time = document.getElementById('<%= dom_id(@story) %>_audio_total_time');
 
+    // Når filen lydfilen sin metadata har blitt lastet inn, blir alle andre eventlisteners lagd
+    // Slik at all data som skal displayes blir displaya på riktig tidspunkt
     player.addEventListener("loadedmetadata", function () {
 
         current_time.innerHTML = display_time(player.currentTime);
@@ -63,7 +65,8 @@
 
         progressbar.addEventListener("click", function (event) {
             var x = event.x;
-            var offset = this.offsetLeft + this.offsetParent.offsetLeft;
+            var offset = this.offsetLeft+ this.offsetParent.offsetLeft;
+            offset += this.offsetParent.offsetParent.offsetLeft
             x -= offset;
             var time = x / this.offsetWidth * player.duration;
             player.currentTime = time;
