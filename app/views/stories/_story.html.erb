@@ -2,21 +2,25 @@
 
   <div class="card">
     <!-- <img src="..." class="card-img-top" alt="..."> -->
-    <li class="dropdown position-absolute top-0 end-0 mt-1" style="list-style-type: none;">
-      <a href="#" class="nav-link" data-bs-toggle="dropdown" role="button" aria-expanded="false">
-        <span class="material-icons" style="color:black;">more_vert</span>
-      </a>
-      <ul class="dropdown-menu dropdown-menu-end me-1">
-        <% if user_signed_in? %>
-          <!-- Edit story button -->
-          <% if current_user.id == story.user_id %>
-            <li>
-              <%= link_to "Edit this story", edit_story_path(story), class: "dropdown-item" %>
-            </li>
+    <!-- Fjern denne if-setninga når vi har implementert rapportering av innlegg -->
+    <% if user_signed_in? %>
+      <li class="dropdown position-absolute top-0 end-0 mt-1" style="list-style-type: none;">
+        <a href="#" class="nav-link" data-bs-toggle="dropdown" role="button" aria-expanded="false">
+          <span class="material-icons" style="color:black;">more_vert</span>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end me-1">
+          <% if user_signed_in? %>
+            <!-- Edit story button -->
+            <% if current_user.id == story.user_id %>
+              <li>
+                <%= link_to "Edit this story", edit_story_path(story), class: "dropdown-item" %>
+              </li>
+            <% end %>
           <% end %>
-        <% end %>
-      </ul>
-    </li>
+        </ul>
+      </li>
+    <% end %>
+    <!-- Og fjern denne end taggen -->
     <div class="card-body px-5">
       <h5 class="card-title"><%= story.title %></h5>
       <p class="card-text"><%= story.user.username %></p>
