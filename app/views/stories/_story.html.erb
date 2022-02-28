@@ -1,8 +1,8 @@
 <div id="<%= dom_id story %>" class="feed_story">
 
-  <div class="card mb-3">
+  <div class="card">
     <!-- <img src="..." class="card-img-top" alt="..."> -->
-    <div class="card-body">
+    <div class="card-body px-5">
       <h5 class="card-title"><%= story.title %></h5>
       <p class="card-text"><%= story.user.username %></p>
       <p class="card-text"><%= story.description %></p>
@@ -10,25 +10,26 @@
       <!-- signed in -->
       <div class="row">
 
-          <div class="col">
-            <!-- Favorite button -->
-            <div id="<%= "#{dom_id story}_favourite_btn" %>">
-              <%= render 'favourites/favourite_btn', story: story %>
-            </div>
-          </div>
-
           <!-- like og dislike buttons -->
           <div class="col">
-            <div id="<%= "#{dom_id story}_like_btn" %>">
+            <div id="<%= "#{dom_id story}_like_btn" %>" class="me-5">
               <%= render "likes/like_button", story: story %>
             </div>
           </div>
 
-          <div class="col">
-            <div id="<%= "#{dom_id story}_dislike_btn" %>">
-              <%= render 'dislikes/dislike_button', story: story %>
-            </div>
+        <div class="col">
+          <div id="<%= "#{dom_id story}_dislike_btn" %>">
+            <%= render 'dislikes/dislike_button', story: story %>
           </div>
+        </div>
+
+
+        <div class="col">
+          <!-- Favorite button -->
+          <div id="<%= "#{dom_id story}_favourite_btn" %>">
+            <%= render 'favourites/favourite_btn', story: story %>
+          </div>
+        </div>
 
         <% if user_signed_in? %>
           <!-- Edit story button -->
@@ -37,8 +38,7 @@
           <% end %>
         <% end %>
       </div>
-
-
+      <br>
       <p class="card-text"><small class="text-muted">Lastet opp <%= story.created_at %></small></p>
     </div>
   </div>

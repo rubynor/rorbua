@@ -16,20 +16,20 @@
 
     <div class="d-flex flex-row align-items-center justify-content-center my-1">
 
-      <% if @story.previous.nil? %>
+      <% if @story.previous_newer.nil? %>
         <button class="material-icons btn btn-primary disabled">skip_previous</button>
       <% else %>
-        <%= button_to "skip_previous", play_path(@story.previous), class: "material-icons btn btn-primary", style: "color: white", method: :get %>
+        <%= button_to "skip_previous", play_path(@story.previous_newer), class: "material-icons btn btn-primary", style: "color: white", method: :get %>
       <% end %>
 
       <button id="button_toggle" class="material-icons btn btn-primary mx-2" style="color: white" onclick="toggle()">
         play_arrow
       </button>
 
-      <% if @story.next.nil? %>
+      <% if @story.next_older.nil? %>
         <button class="material-icons btn btn-primary disabled">skip_next</button>
       <% else %>
-        <%= button_to "skip_next", play_path(@story.next), class: "material-icons btn btn-primary", style: "color: white", method: :get %>
+        <%= button_to "skip_next", play_path(@story.next_older), class: "material-icons btn btn-primary", style: "color: white", method: :get %>
       <% end %>
 
     </div>

@@ -19,9 +19,12 @@ class Story < ApplicationRecord
   end
 
   def next_older
-    previous
+    Story.where("id < ?", id).order(id: :desc).limit(1).first
   end
 
+  def previous_newer
+    Story.where("id > ?", id).order(id: :asc).limit(1).first
+  end
 
 
 end
