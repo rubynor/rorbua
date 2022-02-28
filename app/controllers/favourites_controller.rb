@@ -34,13 +34,13 @@ class FavouritesController < ApplicationController
       if @favourite.destroy
         format.turbo_stream do
           render turbo_stream: [
-            turbo_stream.update("#{dom_id (story)}_favourite_btn", partial: "favourites/favourite_btn", locals: {story: story})
+            turbo_stream.update("#{dom_id (story)}_favourite_btn",
+                            partial: "favourites/favourite_btn",
+                            locals: {story: story}),
+            turbo_stream.remove(@favourite)
           ]
         end
-      else
-
       end
-
     end
   end
 

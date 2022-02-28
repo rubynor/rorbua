@@ -1,0 +1,24 @@
+<div id="<%= dom_id favourite %>" class="favourite">
+
+  <%= link_to play_path favourite.story do%>
+    <div class="card mb-1">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <!-- <img src="..." class="img-fluid rounded-start" alt="..."> -->
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title"><%= favourite.story.title %></h5>
+            <p class="card-title"><%= favourite.story.user.username %></p>
+            <p class="card-text" ><small class="text-muted">Uploaded <%= time_ago_in_words(favourite.story.created_at) %> ago </small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="mb-4">
+    <%= button_to "Remove from favourites", favourite, method: :delete, class: 'btn btn-light btn-block' %>
+  </div>
+
+</div>

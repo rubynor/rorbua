@@ -1,40 +1,18 @@
-<div id="favourites">
+<div class ="container">
 
-  <div class ="container">
+  <br>
+  <div class="row">
 
+    <h2>Favourites</h2>
     <br>
-    <div class="row">
+    <p> <strong><%= current_user.username %><br>
+    <%= @favourites.size %> Videos</strong></p>
 
-      <h2>Favourites</h2>
-      <br>
-      <p> <strong><%= current_user.username %><br>
-      <%= @favourites.size %> Videos</strong></p>
-
+    <div id="favourites">
       <% @favourites.each do |favourite| %>
-        <% story = favourite.story %>
-        <%= link_to play_path story do%>
-          <div class="card mb-1">
-            <div class="row g-0">
-              <div class="col-md-4">
-                <!-- <img src="..." class="img-fluid rounded-start" alt="..."> -->
-              </div>
-              <div class="col-md-8">
-                <div class="card-body">
-                  <h5 class="card-title"><%= story.title %></h5>
-                  <p class="card-title"><%= story.user.username %></p>
-                  <p class="card-text" ><small class="text-muted">Uploaded <%= time_ago_in_words(story.created_at) %> ago </small></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        <% end %>
-
-        <div class="mb-4">
-          <%= button_to "Remove from favourites", favourite, method: :delete, class: 'btn btn-light btn-block' %>
-        </div>
-
+        <%= render favourite %>
       <% end %>
-
     </div>
+
   </div>
 </div>
