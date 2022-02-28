@@ -1,15 +1,11 @@
 <div id="<%= dom_id story %>" class="feed_story">
 
   <div class="card mb-3">
-    <%= link_to "Back", :back, class: "btn btn-success" %>
     <!-- <img src="..." class="card-img-top" alt="..."> -->
     <div class="card-body">
       <h5 class="card-title"><%= story.title %></h5>
       <p class="card-text"><%= story.user.username %></p>
       <p class="card-text"><%= story.description %></p>
-      <audio controls>
-        <source src="<%= rails_blob_url(story.story_file) %>">
-      </audio>
 
       <!-- signed in -->
       <div class="row">
