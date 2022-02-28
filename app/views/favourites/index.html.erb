@@ -14,7 +14,7 @@
 
       <% @favourites.each do |favourite| %>
         <% story = favourite.story %>
-        <%= link_to story do%>
+        <%= link_to play_path story do%>
           <div class="card mb-1">
             <div class="row g-0">
               <div class="col-md-4">
