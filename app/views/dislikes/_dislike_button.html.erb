@@ -11,10 +11,11 @@
       <span class="material-icons" style="color: red">thumb_down</span>
     <% end %>
   <% end %>
-  <p><%= story.dislikes.count %></p>
+
   <% else %>
     <%= button_to new_user_session_path, method: :get, class: "action_button" do %>
       <span class="material-icons">thumb_down_off_alt</span>
     <% end %>
   <% end %>
+  <p><%= story.dislikes.count %></p>
 </div>

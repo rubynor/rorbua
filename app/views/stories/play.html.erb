@@ -1,18 +1,106 @@
-<%= content_for :head do %>
-  <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
-  <%= javascript_import_module_tag "playscreen" %>
-<% end %>
+<div class="d-flex flex-column justify-content-center align-items-center p-1">
+  <div class="w-100 shadow">
+    <%= render @story %>
+  </div>
 
-<%= render "layouts/audio_controls" %>
+  <div class="card p-3 my-2 shadow w-75">
 
-<div class="swiper">
-  <div class="swiper-wrapper">
+    <div class="w-100">
+      <div class="d-flex flex-row align-items-center justify-content-center">
+        <p id="<%= dom_id(@story) %>_audio_current_time">00:00</p>
+        <p class="mx-1">/</p>
+        <p id="<%= dom_id(@story) %>_audio_total_time">00:00</p>
+      </div>
+      <progress id="<%= dom_id(@story) %>_audio_progress" max="1" value="0" class="w-100"></progress>
+    </div>
 
-    <% @stories.each do |story| %>
+    <div class="d-flex flex-row align-items-center justify-content-center my-1">
 
-      <%= render 'stories/story_play', story: story %>
+      <% if @story.previous_newer.nil? %>
+        <button class="material-icons btn btn-primary disabled">skip_previous</button>
+      <% else %>
+        <%= button_to "skip_previous", play_path(@story.previous_newer), class: "material-icons btn btn-primary", style: "color: white", method: :get %>
+      <% end %>
 
-    <% end %>
+      <button id="button_toggle" class="material-icons btn btn-primary mx-2" style="color: white" onclick="toggle()">
+        play_arrow
+      </button>
 
+      <% if @story.next_older.nil? %>
+        <button class="material-icons btn btn-primary disabled">skip_next</button>
+      <% else %>
+        <%= button_to "skip_next", play_path(@story.next_older), class: "material-icons btn btn-primary", style: "color: white", method: :get %>
+      <% end %>
+
+    </div>
+  </div>
+
+  <div>
+    <%= link_to "Back to home", root_path, class: "btn btn-secondary"%>
   </div>
 </div>
+
+<audio id="<%= dom_id(@story) %>_audio" src="<%= rails_blob_url(@story.story_file) %>" preload="metadata"></audio>
+
+<script>
+
+  // Henter html tags fra siden
+    var player = document.getElementById('<%= dom_id(@story) %>_audio');
+    var progressbar = document.getElementById('<%= dom_id(@story) %>_audio_progress');
+    var current_time = document.getElementById('<%= dom_id(@story) %>_audio_current_time');
+    var total_time = document.getElementById('<%= dom_id(@story) %>_audio_total_time');
+
+    // Når filen lydfilen sin metadata har blitt lastet inn, blir alle andre eventlisteners lagd
+    // Slik at all data som skal displayes blir displaya på riktig tidspunkt
+    player.addEventListener("loadedmetadata", function () {
+
+        // Viser hvor lang storyen er, og setter tida til 00:00 / xx:yy, progressbar value = 0
+        current_time.innerHTML = display_time(player.currentTime);
+        total_time.innerHTML = display_time(player.duration);
+        progressbar.value = this.currentTime/this.duration;
+
+        // Når story blir spilt av kjøres denne for å oppdatere displayen av tid
+        player.addEventListener('timeupdate', function(){
+            current_time.innerHTML = display_time(player.currentTime); // Display ny tid
+            progressbar.value = this.currentTime/this.duration; // Oppdatere progressbar
+        });
+
+        // Når progressbaren blir trykket på for å velge hvor i storyen
+        progressbar.addEventListener("click", function (event) {
+            var x = event.x;
+            var offset = this.offsetLeft+ this.offsetParent.offsetLeft;
+            offset += this.offsetParent.offsetParent.offsetLeft
+            x -= offset;
+            var time = x / this.offsetWidth * player.duration;
+            player.currentTime = time;
+        });
+
+    });
+
+    // Toggle play/pause
+    function toggle() {
+        if (player.paused) {
+            player.play()
+            document.getElementById("button_toggle").innerHTML = "pause";
+        }
+        else {
+            player.pause()
+            document.getElementById("button_toggle").innerHTML = "play_arrow";
+        }
+    }
+
+    // Når storyen er ferdig setter den pause ikonet til et play ikon, for å signalisere at du har hørt hele filen
+    player.onended = function (){
+        document.getElementById("button_toggle").innerHTML = "play_arrow";
+    }
+
+    // Metode for å displaye tid, men i et fint format, f.eks (0:38 / 2:35)
+    function display_time(time){
+        var parsedTime = parseInt(time);
+        var minutes = parseInt(parsedTime/60)
+        var seconds = parsedTime%60;
+        if (seconds < 10)
+            seconds = "0"+seconds;
+        return minutes + ":" + seconds;
+    }
+</script>

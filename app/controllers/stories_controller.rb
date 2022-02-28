@@ -1,7 +1,6 @@
 class StoriesController < ApplicationController
   before_action :set_story, only: %i[ show edit update destroy play ]
-  before_action :find_all_from_id_to_last, only: :play
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show, :play]
   before_action :correct_user, only: [:edit, :update, :destroy]
   before_action :delete_from_aws, only: [:destroy]
 
@@ -98,9 +97,5 @@ class StoriesController < ApplicationController
     def story_params
       params.require(:story).permit(:title, :description, :story_file, :user_id)
     end
-
-  def find_all_from_id_to_last
-    @stories = Story.where('id >= ?', @story.id).limit(20)
-  end
 
 end

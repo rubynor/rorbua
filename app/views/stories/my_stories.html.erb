@@ -2,9 +2,6 @@
 <div id="stories" class="feed_stories_container">
 
   <div class="container">
-
-    <%= link_to "Back", :back, class: "btn btn-secondary" %>
-    <br>
     <br>
     <div class="row">
 
@@ -13,7 +10,7 @@
 
       <% @stories.each do |story| %>
 
-        <%= link_to story do %>
+        <%= link_to play_path story do %>
           <div class="card mb-3">
             <div class="row g-0">
               <div class="col-md-4">
