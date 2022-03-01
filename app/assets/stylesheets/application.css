@@ -94,16 +94,3 @@
     text-decoration: none;
     color: white;
 }
-
-/* notice  */
-.notice, #notice {
-    background: #C4FFB8;
-    border-radius: 0.5em;
-    border: solid 0.1em black;
-    color: black;
-
-    margin-bottom: 1em;
-    padding: 1em 1.414em;
-    text-align: center;
-    margin-top: 10px;
-}
