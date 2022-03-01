@@ -11,7 +11,7 @@
     <%= error_message_on(form.object, :description) %>
   </div>
 
-  <div class="mb-5">
+  <div class="mb-5" id="file_input">
     <%= form.label :story_file, class: "form-label" %>
     <%= form.file_field :story_file, class: "form-control" %>
     <%= error_message_on(form.object, :story_file) %>
