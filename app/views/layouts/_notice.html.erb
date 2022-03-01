@@ -1,0 +1,12 @@
+<% if notice %>
+  <div class="alert" id="notice">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close" style="color:white;">&times;</a>
+    <%= notice %>
+  </div>
+<% end %>
+
+<script>
+    $("#notice").fadeTo(6000, 500).fadeOut(500, function(){
+        $("#notice").fadeOut(500);
+    });
+</script>

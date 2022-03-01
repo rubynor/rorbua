@@ -58,11 +58,6 @@
         </div>
 
         <div class="col">
-          <!-- SETT NOTICE INN HER -->
-          <div class="container">
-            <p style="color: green"><%= notice %></p>
-          </div>
-
           <%= yield %>
         </div>
 
@@ -71,6 +66,11 @@
 
       </div>
     </div>
-  </body>
 
+    <%= render 'layouts/notice' %>
+
+  </body>
 </html>
+
+
+
