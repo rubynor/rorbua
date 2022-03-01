@@ -34,6 +34,7 @@
 
     <%= render 'layouts/navbar' %>
     <%= render 'layouts/sidebar' %>
+    <%= render 'layouts/notice' %>
     <%= render 'layouts/bottom_navbar' %>
 
     <!-- Welcome -->
@@ -50,7 +51,7 @@
       </div>
     <% end %>
 
-    <div class="container primary-container mb-5 mb-lg-0">
+    <div class="container mb-5 mb-lg-0" id="primary-container">
 
       <div class="row">
 
@@ -66,8 +67,6 @@
 
       </div>
     </div>
-
-    <%= render 'layouts/notice' %>
 
   </body>
 </html>
