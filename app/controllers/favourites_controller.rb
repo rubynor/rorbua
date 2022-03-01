@@ -28,6 +28,8 @@ class FavouritesController < ApplicationController
 
   # DELETE /favourites/1 or /favourites/1.json
   def destroy
+    @favourites = Favourite.where(user_id: current_user)
+
     @favourite = Favourite.find(params[:id])
     story = @favourite.story
     respond_to do |format|
@@ -37,7 +39,10 @@ class FavouritesController < ApplicationController
             turbo_stream.update("#{dom_id (story)}_favourite_btn",
                             partial: "favourites/favourite_btn",
                             locals: {story: story}),
-            turbo_stream.remove(@favourite)
+            turbo_stream.remove(@favourite),
+            turbo_stream.update("favourites_counter",
+                                partial: "favourites/favourites_counter",
+                                locals: {favourites: @favourites})
           ]
         end
       end
