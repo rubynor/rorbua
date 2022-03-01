@@ -27,23 +27,23 @@
       <p class="card-text"><%= story.description %></p>
 
       <!-- signed in -->
-      <div class="row">
+      <div class="row d-flex align-items-top justify-content-center">
 
           <!-- like og dislike buttons -->
-          <div class="col">
-            <div id="<%= "#{dom_id story}_like_btn" %>" class="me-5">
+          <div class="col-3 col-md">
+            <div id="<%= "#{dom_id story}_like_btn" %>">
               <%= render "likes/like_button", story: story %>
             </div>
           </div>
 
-        <div class="col">
+        <div class="col-3 col-md">
           <div id="<%= "#{dom_id story}_dislike_btn" %>">
             <%= render 'dislikes/dislike_button', story: story %>
           </div>
         </div>
 
 
-        <div class="col">
+        <div class="col-3 col-md">
           <!-- Favorite button -->
           <div id="<%= "#{dom_id story}_favourite_btn" %>">
             <%= render 'favourites/favourite_btn', story: story %>
