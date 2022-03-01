@@ -41,7 +41,7 @@ class StoriesController < ApplicationController
     @story = current_user.stories.build(story_params)
     respond_to do |format|
       if @story.save
-        format.html { redirect_to play_path(@story) }
+        format.html { redirect_to play_path(@story), notice: "Story was created" }
         format.json { render :show, status: :created, location: @story }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -54,7 +54,7 @@ class StoriesController < ApplicationController
   def update
     respond_to do |format|
       if @story.update(story_params)
-        format.html { redirect_to play_path(@story) }
+        format.html { redirect_to play_path(@story), notice: "Story was updated" }
         format.json { render :show, status: :ok, location: @story }
       else
         format.html { render :edit, status: :unprocessable_entity }
