@@ -1,21 +1,12 @@
 
-
-
-
-
-
-
-
-
-
 <div class="container">
 
   <div class="row">
     <%= render @story %>
   </div>
 
-  <%= link_to "Previous", @story.next, class: "btn btn-primary" %>
-  <%= link_to "Next", @story.previous, class: "btn btn-primary" %>
+  <%= link_to "Forrige", @story.next, class: "btn btn-primary" %>
+  <%= link_to "Neste", @story.previous, class: "btn btn-primary" %>
 
 </div>
 

@@ -13,10 +13,6 @@ class StoriesController < ApplicationController
     @stories = current_user.stories
   end
 
-  def play_story
-    @stories = Story.all
-  end
-
   def play
 
   end
@@ -41,7 +37,7 @@ class StoriesController < ApplicationController
     @story = current_user.stories.build(story_params)
     respond_to do |format|
       if @story.save
-        format.html { redirect_to play_path(@story), notice: "Story was created" }
+        format.html { redirect_to play_path(@story), notice: "Story ble opprettet." }
         format.json { render :show, status: :created, location: @story }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -54,7 +50,7 @@ class StoriesController < ApplicationController
   def update
     respond_to do |format|
       if @story.update(story_params)
-        format.html { redirect_to play_path(@story), notice: "Story was updated" }
+        format.html { redirect_to play_path(@story), notice: "Story er oppdatert." }
         format.json { render :show, status: :ok, location: @story }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -68,7 +64,7 @@ class StoriesController < ApplicationController
     @story.destroy
 
     respond_to do |format|
-      format.html { redirect_to stories_url, notice: "Story was successfully destroyed." }
+      format.html { redirect_to stories_url, notice: "Story slettet." }
       format.json { head :no_content }
     end
   end
@@ -84,7 +80,7 @@ class StoriesController < ApplicationController
 
   def correct_user
     @story = current_user.stories.find_by(id: params[:id])
-    redirect_to stories_path, notice: "Not Authorized To Edit This Story" if @story.nil?
+    redirect_to stories_path, notice: "Du har ikke tilgang til å endre denne storyen" if @story.nil?
   end
 
   private

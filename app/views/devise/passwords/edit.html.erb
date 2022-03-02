@@ -2,13 +2,13 @@
   <div class="container">
     <div class="row">
 
-      <h2>Change your password</h2>
+      <h2>Endre passordet ditt</h2>
 
       <%= form_for(resource, as: resource_name, data: { turbo: false},url: password_path(resource_name), html: { method: :put }) do |f| %>
         <%= f.hidden_field :reset_password_token %>
 
         <div class="mb-3">
-          <%= f.label :password, "New password" %><br />
+          <%= f.label :password, "Nytt passord" %><br />
           <% if @minimum_password_length %>
             <em>(<%= @minimum_password_length %> characters minimum)</em><br />
           <% end %>
@@ -17,13 +17,13 @@
         </div>
 
         <div class="mb-3">
-          <%= f.label :password_confirmation, "Confirm new password" %><br />
+          <%= f.label :password_confirmation, "Bekreft nytt passord" %><br />
           <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
           <%= error_message_on(f.object, :password_confirmation) %>
         </div>
 
         <div class="mb-3 actions">
-          <%= f.submit "Change my password", :class => 'btn btn-primary' %>
+          <%= f.submit "Endre passord", :class => 'btn btn-primary' %>
         </div>
       <% end %>
 

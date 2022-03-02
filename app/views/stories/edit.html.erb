@@ -3,18 +3,18 @@
   <div class="container">
     <div class="row">
 
-      <h1>Editing story</h1>
+      <h1>Endre på story</h1>
 
       <%= render "form", story: @story %>
 
       <div class="mb-4">
-        <%= button_to "Delete story", @story, method: :delete, form: {data: {turbo_confirm: 'Are you sure?'}},
+        <%= button_to "Slett story", @story, method: :delete, form: {data: {turbo_confirm: 'Are you sure?'}},
                       class: "btn btn-secondary btn-block" %>
       </div>
 
       <div>
-        <%= link_to "Show this story", @story %> |
-        <%= link_to "Back to stories", stories_path %>
+        <%= link_to "Vis story", @story %> |
+        <%= link_to "Tilbake til stories", stories_path %>
       </div>
 
     </div>
