@@ -3,6 +3,7 @@ class StoriesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show, :play]
   before_action :correct_user, only: [:edit, :update, :destroy]
   before_action :delete_from_aws, only: [:destroy]
+  rescue_from ActiveRecord::RecordNotFound, with: :invalid_story
 
   # GET /stories or /stories.json
   def index
@@ -91,6 +92,11 @@ class StoriesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_story
       @story = Story.find(params[:id])
+    end
+
+    def invalid_story
+      logger.error "Attempt to access invalid story #{params[:id]}"
+      redirect_to stories_path, notice: 'Ugyldig story'
     end
 
     # Only allow a list of trusted parameters through.
