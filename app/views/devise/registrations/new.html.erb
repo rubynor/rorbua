@@ -1,11 +1,11 @@
 <div class="container">
   <div class="row">
 
-    <h2>Register</h2>
+    <h2>Registrer</h2>
     <%= form_for(resource, as: resource_name, data: { turbo: false}, url: registration_path(resource_name)) do |f| %>
 
       <div class="mb-3">
-        <%= f.label :username %><br />
+        <%= f.label :username, "Brukernavn" %><br />
         <%= f.text_field :username, autofocus: true, autocomplete: "Username", class: "form-control"%>
         <%= error_message_on(f.object, :username) %>
       </div>
@@ -17,26 +17,26 @@
       </div>
 
       <div class="mb-3">
-        <%= f.label :password %>
+        <%= f.label :password, "Passord" %>
         <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <em>(<%= @minimum_password_length %> tegn minimum)</em>
         <% end %><br />
         <%= f.password_field :password, autocomplete: "new-password", class: "form-control"%>
         <%= error_message_on(f.object, :password) %>
       </div>
 
       <div class="mb-5">
-        <%= f.label :password_confirmation %><br />
+        <%= f.label :password_confirmation, "Bekreft passord" %><br />
         <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control"%>
         <%= error_message_on(f.object, :password_confirmation) %>
       </div>
 
       <div class="mb-4">
-        <%= f.submit 'Sign up', :class => 'btn btn-primary btn-block' %>
+        <%= f.submit 'Registrer', :class => 'btn btn-primary btn-block' %>
       </div>
 
       <div class="mb-3">
-        <p>Already have an account? <%= render "devise/shared/links" %><p>
+        <p>Har du allerede en konto? <%= render "devise/shared/links" %><p>
       </div>
 
     <% end %>

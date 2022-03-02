@@ -10,7 +10,7 @@
           <div class="card-body">
             <h5 class="card-title"><%= favourite.story.title %></h5>
             <p class="card-title"><%= favourite.story.user.username %></p>
-            <p class="card-text" ><small class="text-muted">Uploaded <%= time_ago_in_words(favourite.story.created_at) %> ago </small></p>
+            <p class="card-text" ><small class="text-muted">Lasted opp <%= time_tag(favourite.story.created_at) %></small></p>
           </div>
         </div>
       </div>
@@ -18,7 +18,7 @@
   <% end %>
 
   <div class="mb-4">
-    <%= button_to "Remove from favourites", favourite, method: :delete, class: 'btn btn-light btn-block' %>
+    <%= button_to "Fjern fra favoritter", favourite, method: :delete, class: 'btn btn-light btn-block' %>
   </div>
 
 </div>
