@@ -1,6 +1,7 @@
 class LikesController < ApplicationController
   include ActionView::RecordIdentifier
   before_action :authenticate_user!, only: [:create, :destroy]
+  before_action :check_if_dislike, only: :create
 
   def create
     @like = current_user.likes.new(like_params)
@@ -8,7 +9,8 @@ class LikesController < ApplicationController
       if @like.save
         format.turbo_stream do
           render turbo_stream: [
-            turbo_stream.update("#{dom_id @like.story}_like_btn", partial: "likes/like_button", locals: {story: @like.story})
+            turbo_stream.update("#{dom_id @like.story}_like_btn", partial: "likes/like_button", locals: {story: @like.story}),
+            turbo_stream.update("#{dom_id (@like.story)}_dislike_btn", partial: "dislikes/dislike_button", locals: {story: @like.story})
           ]
         end
         format.html { redirect_to @like.story }
@@ -35,6 +37,13 @@ class LikesController < ApplicationController
 
     def like_params
       params.require(:like).permit(:story_id)
+    end
+
+    def check_if_dislike
+      dislike = current_user.dislikes.find_by(like_params)
+      if dislike
+        dislike.destroy
+      end
     end
 
 end
