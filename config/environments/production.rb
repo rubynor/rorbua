@@ -3,6 +3,21 @@ require "active_support/core_ext/integer/time"
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              'smtp.gmail.com',
+    port:                 587,
+    domain:               'example.com',
+    user_name:            Rails.application.credentials.dig(:GMAIL, :USERNAME),
+    password:             Rails.application.credentials.dig(:GMAIL, :PASSWORD),
+    authentication:       'plain',
+    enable_starttls_auto: true,
+    open_timeout:         5,
+    read_timeout:         5
+  }
+
+  config.action_mailer.default_url_options = { :host => 'rorbua.herokuapp.com' }
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 
@@ -92,5 +107,4 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   #lagt til samme i development, jeg la den til for devise når brukere har glemt passord
-  config.action_mailer.default_url_options = { host: 'rorbua.herokuapp.com'}
 end
