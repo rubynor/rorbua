@@ -1,6 +1,7 @@
 class DislikesController < ApplicationController
   include ActionView::RecordIdentifier
   before_action :authenticate_user!, only: [:create, :destroy]
+  before_action :check_if_like, only: :create
 
   def create
     @dislike = current_user.dislikes.new(dislike_params)
@@ -8,7 +9,8 @@ class DislikesController < ApplicationController
       if @dislike.save
         format.turbo_stream do
           render turbo_stream: [
-            turbo_stream.update("#{dom_id (@dislike.story)}_dislike_btn", partial: "dislikes/dislike_button", locals: {story: @dislike.story})
+            turbo_stream.update("#{dom_id (@dislike.story)}_dislike_btn", partial: "dislikes/dislike_button", locals: {story: @dislike.story}),
+            turbo_stream.update("#{dom_id @dislike.story}_like_btn", partial: "likes/like_button", locals: {story: @dislike.story})
           ]
         end
       else
@@ -38,5 +40,11 @@ class DislikesController < ApplicationController
     params.require(:dislike).permit(:story_id)
   end
 
+  def check_if_like
+    like = current_user.likes.find_by(dislike_params)
+    if like
+      like.destroy
+    end
+  end
 
 end
