@@ -3,20 +3,19 @@ require "active_support/core_ext/integer/time"
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  config.action_mailer.default_url_options = { host: 'https://rorbua.herokuapp.com/', protocol: 'https'}
+  config.action_mailer.perform_deliveries = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address:              'smtp.gmail.com',
     port:                 587,
     domain:               'example.com',
-    user_name:            Rails.application.credentials.dig(:GMAIL, :USERNAME),
-    password:             Rails.application.credentials.dig(:GMAIL, :PASSWORD),
+    user_name:            Rails.application.credentials.dig(:gmail_smtp, :user_name),
+    password:             Rails.application.credentials.dig(:gmail_smtp, :password),
     authentication:       'plain',
     enable_starttls_auto: true,
     open_timeout:         5,
-    read_timeout:         5
-  }
-
-  config.action_mailer.default_url_options = { :host => 'rorbua.herokuapp.com' }
+    read_timeout:         5 }
 
   # Code is not reloaded between requests.
   config.cache_classes = true
