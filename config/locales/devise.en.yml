@@ -5,7 +5,7 @@ en:
     confirmations:
       confirmed: "Emailen din har blitt bekreftet."
       send_instructions: "Du vil motta en email med instrukser for hvordan bekrefte emailen din om et par minutter"
-      send_paranoid_instructions: "Hvis emailen din finnes i databsen vår, vil du motta en email med instrukeser for hvordan bekrefte emailen din om et par minutter."
+      send_paranoid_instructions: "Hvis emailen din finnes i databasen vår, vil du motta en email med instrukser for hvordan bekrefte emailen din om et par minutter."
     failure:
       already_authenticated: "Du er allerede logget inn"
       inactive: "Kontoen din er ikke aktivert ennå"
