@@ -11,7 +11,7 @@ class StoriesController < ApplicationController
   end
 
   def my_stories
-    @stories = current_user.stories
+    @stories = current_user.stories.order("created_at DESC")
   end
 
   def play
