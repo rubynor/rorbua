@@ -1,18 +1,18 @@
 <%= form_with(model: story) do |form| %>
   <div class="mb-3">
-    <%= form.label :title, t('.title'), class: "form-label" %>
+    <%= form.label :title, "Tittel", class: "form-label" %>
     <%= form.text_field :title, class: "form-control" %>
     <%= error_message_on(form.object, :title) %>
   </div>
 
   <div class="mb-3">
-    <%= form.label :description, t('.description'), class: "form-label" %>
+    <%= form.label :description, "Beskrivelse", class: "form-label" %>
     <%= form.text_area :description, class: "form-control", :size => "50x5" %>
     <%= error_message_on(form.object, :description) %>
   </div>
 
   <div class="mb-5" id="file_input">
-    <%= form.label :story_file, t('.choose_file'), class: "form-label" %>
+    <%= form.label :story_file, "Velg fil", class: "form-label" %>
     <%= form.file_field :story_file, class: "form-control" %>
     <%= error_message_on(form.object, :story_file) %>
   </div>
@@ -22,7 +22,7 @@
   </div>
 
   <div class="mb-4">
-      <%= form.submit t('.create_story') , class: 'btn btn-primary btn-block' %>
+      <%= form.submit "Opprett story", class: 'btn btn-primary btn-block' %>
   </div>
 
 <% end %>

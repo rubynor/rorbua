@@ -30,32 +30,4 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  favourites:
-    favourite:
-      uploaded: "Uploaded"
-      remove_from_favourites: "Remove from favourites"
-    favourites_counter:
-      videoes: "videoes"
-    index:
-      title: "Favourites"
-
-  stories:
-    form:
-      title: "Title"
-      description: "Description"
-      choose_file: "Choose file"
-      create_story: "Create story"
-    story:
-      edit_story: "Edit story"
-      uploaded: "Uploaded"
-    index:
-      uploaded: "Uploaded"
-    my_stories:
-      title: "My stories"
-      uploaded: "Uploaded"
-    new:
-      title: "New story"
-      back_to_stories: "Back to stories"
-    play:
-      autoplay_next: "Autoplay next"
-      back_to_home: "Back to home"
+  hello: "Hello world"

@@ -13,7 +13,7 @@
             <!-- Edit story button -->
             <% if current_user.id == story.user_id %>
               <li>
-                <%= link_to t('.edit_story'), edit_story_path(story), class: "dropdown-item" %>
+                <%= link_to "Endre story", edit_story_path(story), class: "dropdown-item" %>
               </li>
             <% end %>
           <% end %>
@@ -52,8 +52,10 @@
 
       </div>
       <br>
-      <p class="card-text"><small class="text-muted"> <%= t('.uploaded') %> <%= story.created_at %></small></p>
+      <p class="card-text"><small class="text-muted">Lastet opp <%= story.created_at %></small></p>
     </div>
   </div>
 
 </div>
+
+
