@@ -15,7 +15,10 @@ class StoriesController < ApplicationController
   end
 
   def play
-
+    if cookies[:volume].nil?
+      cookies[:volume] = 75
+    end
+    @volume = cookies[:volume]
   end
 
   # GET /stories/1 or /stories/1.json

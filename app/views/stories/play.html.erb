@@ -3,7 +3,7 @@
     <%= render @story %>
   </div>
 
-  <div class="card p-3 my-2 shadow w-75" data-controller="audioplayer">
+  <div class="card p-3 my-2 shadow w-75 audio-controls" data-controller="audioplayer">
     <div class="w-100">
       <div class="d-flex flex-row align-items-center justify-content-center">
         <p data-audioplayer-target="current_time">00:00</p>
@@ -32,6 +32,15 @@
       <% end %>
 
     </div>
+
+    <div class="w-100">
+      <div class="d-flex justify-content-center w-100">
+        <span class="material-icons">volume_down</span>
+        <input type="range" id="volume-control" class="w-75 mx-1" data-audioplayer-target="volume" value="<%= @volume %>">
+        <span class="material-icons">volume_up</span>
+      </div>
+    </div>
+
     <div class="form-check form-switch d-flex justify-content-center">
       <div>
         <% if cookies[:autoplay] == "true" %>
@@ -44,6 +53,7 @@
         <label class="form-check-label" for="autoplay">Autoplay next</label>
       </div>
     </div>
+
     <audio data-audioplayer-target="audio" src="<%= rails_blob_url(@story.story_file) %>" preload="metadata"></audio>
   </div>
 
