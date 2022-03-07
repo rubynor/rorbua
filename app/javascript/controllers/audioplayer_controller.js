@@ -10,6 +10,8 @@ export default class extends Controller {
         var progressbar = this.progressbarTarget;
         var autoplay = document.getElementById("autoplay");
 
+        var self = this
+
         audio.addEventListener("loadedmetadata", function () {
 
             current_time.innerHTML = display_time(audio.currentTime);
@@ -41,6 +43,8 @@ export default class extends Controller {
                     document.getElementById("button_toggle").innerHTML = "play_arrow";
             }
 
+            self.play();
+
         })
 
 
@@ -56,7 +60,6 @@ export default class extends Controller {
     }
 
     toggle(){
-
         var player = this.audioTarget;
         if (player.paused) {
             this.play();
@@ -73,9 +76,11 @@ export default class extends Controller {
     }
 
     play(){
-        var player = this.audioTarget;
-        player.play()
+        console.log("starting play");
         document.getElementById("button_toggle").innerHTML = "pause";
+        console.log("playing");
+        console.log(document.getElementById("button_toggle").innerHTML);
+        this.audioTarget.play()
     }
 
 }
