@@ -15,7 +15,7 @@ gem "aws-sdk-s3", require: false
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
 
-#File Validators
+#File Validators https://github.com/musaffa/file_validators
 gem 'file_validators'
 
 #jquery
