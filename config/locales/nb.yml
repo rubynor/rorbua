@@ -29,33 +29,33 @@
 # To learn more, please read the Rails Internationalization guide
 # available at https://guides.rubyonrails.org/i18n.html.
 
-en:
+nb:
   favourites:
     favourite:
-      uploaded: "Uploaded"
-      remove_from_favourites: "Remove from favourites"
+      uploaded: "Lastet opp"
+      remove_from_favourites: "Fjern fra favoritter"
     favourites_counter:
-      videoes: "videoes"
+      videoes: "videoer"
     index:
-      title: "Favourites"
+      title: "Favoritter"
 
   stories:
     form:
-      title: "Title"
-      description: "Description"
-      choose_file: "Choose file"
-      create_story: "Create story"
+      title: "Tittel"
+      description: "Beskrivelse"
+      choose_file: "Velg fil"
+      create_story: "Opprett story"
     story:
-      edit_story: "Edit story"
-      uploaded: "Uploaded"
+      edit_story: "Endre story"
+      uploaded: "Lastet opp"
     index:
-      uploaded: "Uploaded"
+      uploaded: "Lastet opp"
     my_stories:
-      title: "My stories"
-      uploaded: "Uploaded"
+      title: "Mine stories"
+      uploaded: "Lastet opp"
     new:
-      title: "New story"
-      back_to_stories: "Back to stories"
+      title: "Ny story"
+      back_to_stories: "Tilbake til stories"
     play:
-      autoplay_next: "Autoplay next"
-      back_to_home: "Back to home"
+      autoplay_next: "Spill av neste automatisk"
+      back_to_home: "Tilbake til hjem"

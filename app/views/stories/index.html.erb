@@ -15,7 +15,7 @@
                 <div class="card-body">
                   <h5 class="card-title"><%= story.title %></h5>
                   <p class="card-title"><%= story.user.username %></p>
-                  <p class="card-text" ><small class="text-muted">Lastet opp <%= time_tag(story.created_at) %></small></p>
+                  <p class="card-text" ><small class="text-muted"> <%= t('.uploaded') %> <%= time_tag(story.created_at) %></small></p>
                 </div>
               </div>
 
