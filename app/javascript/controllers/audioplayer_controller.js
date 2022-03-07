@@ -8,6 +8,7 @@ export default class extends Controller {
         var current_time = this.current_timeTarget;
         var total_time = this.total_timeTarget;
         var progressbar = this.progressbarTarget;
+        var autoplay = document.getElementById("autoplay");
 
         audio.addEventListener("loadedmetadata", function () {
 
@@ -30,10 +31,16 @@ export default class extends Controller {
                 audio.currentTime = time;
             });
 
-            // Når story blir spilt av kjøres denne for å oppdatere displayen av tid
+            // Når story er ferdig blir du enten sendt videre eller så blir det displaya at ingenting blir spilt
             audio.onended = function (){
-                document.getElementById("button_toggle").innerHTML = "play_arrow";
+                if(autoplay.checked)
+                    setTimeout(function (){
+                        document.getElementById("btn-next").click();
+                    }, 1000);
+                else
+                    document.getElementById("button_toggle").innerHTML = "play_arrow";
             }
+
         })
 
 
@@ -52,8 +59,7 @@ export default class extends Controller {
 
         var player = this.audioTarget;
         if (player.paused) {
-            player.play()
-            document.getElementById("button_toggle").innerHTML = "pause";
+            this.play();
         }
         else {
             player.pause()
@@ -61,6 +67,15 @@ export default class extends Controller {
         }
     }
 
+    toggle_autoplay(){
+        var autoplay = document.getElementById("autoplay");
+        document.cookie = "autoplay="+autoplay.checked;
+    }
 
+    play(){
+        var player = this.audioTarget;
+        player.play()
+        document.getElementById("button_toggle").innerHTML = "pause";
+    }
 
 }
