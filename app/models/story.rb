@@ -7,14 +7,9 @@ class Story < ApplicationRecord
 
   validates :title, presence: true
   validates :title, length: { maximum: 50 }
-  validates :description, length: { maximum: 250, too_long: "%{count} tegn er maks" }
-  validate :acceptable_audio
-
-  def acceptable_audio
-    unless story_file.audio?
-      errors.add(:story_file, "Ugyldig filformat. Du kan konvertere filen din om til MP3 med denne linken: https://cloudconvert.com/mp3-converter")
-    end
-  end
+  validates :description, length: { maximum: 250, too_long: "%{count} characters is the maximum allowed" }
+  validates :story_file, presence: true, blob:{ content_type: :audio, content_type: :video  } #For flere validations: https://github.com/aki77/activestorage-validator
+  validates :story_file, file_size: { less_than: 50.megabytes }
 
   def next
     Story.where("id > ?", id).order(id: :asc).limit(1).first
@@ -31,6 +26,5 @@ class Story < ApplicationRecord
   def previous_newer
     Story.where("id > ?", id).order(id: :asc).limit(1).first
   end
-
 
 end
