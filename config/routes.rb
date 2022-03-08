@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :stories
   resources :likes, only: [:create, :destroy]
   resources :dislikes, only: [:create, :destroy]
-  resources :playlists, only: [:create, :destroy, :index, :new] do
+  resources :playlists, only: [:create, :destroy, :index, :new, :show] do
     member do
       post :new
     end

@@ -1,5 +1,6 @@
 class PlaylistsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_playlist, only: [:show, :destroy]
 
   def index
     @playlists = current_user.playlists.order("created_at DESC")
@@ -31,14 +32,18 @@ class PlaylistsController < ApplicationController
   end
 
   def destroy
-
+    respond_to do |format|
+      if @playlist.destroy
+        format.turbo_stream do
+          render turbo_stream: [
+            turbo_stream.remove(@playlist)
+          ]
+        end
+      end
+    end
   end
 
-  def add
-
-  end
-
-  def remove
+  def show
 
   end
 
@@ -46,6 +51,10 @@ class PlaylistsController < ApplicationController
 
   def playlist_params
     params.require(:playlist).permit(:title)
+  end
+
+  def set_playlist
+    @playlist = current_user.playlists.find(params[:id])
   end
 
 end

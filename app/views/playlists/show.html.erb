@@ -1,0 +1,10 @@
+<h2><%= @playlist.title %></h2>
+
+<ul>
+  <% @playlist.playlist_stories.each do |playlist_story| %>
+    <% story = playlist_story.story %>
+    <li>
+      <%= story.title %>
+    </li>
+  <% end %>
+</ul>
