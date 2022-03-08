@@ -16,11 +16,11 @@ export default class extends Controller {
         audio.addEventListener("loadedmetadata", function () {
 
             // Hvis info når data er lastet inn
-            audio.volume = progressbar.value / 100;
+
             current_time.innerHTML = display_time(audio.currentTime);
             total_time.innerHTML = display_time(audio.duration);
             progressbar.value = this.currentTime/this.duration;
-
+            audio.volume = volume.value / 100;
             // Spill av story når data er lastet inn
             self.play();
 
