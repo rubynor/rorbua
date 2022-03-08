@@ -1,0 +1,65 @@
+# Additional translations at https://github.com/heartcombo/devise/wiki/I18n
+
+nb:
+  devise:
+    confirmations:
+      confirmed: "Emailen din har blitt bekreftet."
+      send_instructions: "Du vil motta en email med instrukser for hvordan bekrefte emailen din om et par minutter"
+      send_paranoid_instructions: "Hvis emailen din finnes i databasen vår, vil du motta en email med instrukser for hvordan bekrefte emailen din om et par minutter."
+    failure:
+      already_authenticated: "Du er allerede logget inn"
+      inactive: "Kontoen din er ikke aktivert ennå"
+      invalid: "Ugyldig %{authentication_keys} eller passord."
+      locked: "Kontoen din er låst"
+      last_attempt: "Du har ett forsøk til før kontoen blir låst"
+      not_found_in_database: "Ugyldig %{authentication_keys} eller passord."
+      timeout: "Økten din har gått ut. Logg inn igjen for å fortsette"
+      unauthenticated: "Du må logge inn eller registrere deg for å fortsette"
+      unconfirmed: "Du må bekrefte emailen din for å fortsette"
+    mailer:
+      confirmation_instructions:
+        subject: "Bekreftelse instrukser"
+      reset_password_instructions:
+        subject: "Tilbakestill passord instrukser"
+      unlock_instructions:
+        subject: "Låse opp instrukser"
+      email_changed:
+        subject: "Email forandret"
+      password_change:
+        subject: "Passord forandret"
+    omniauth_callbacks:
+      failure: "Kunne ikke autentisere deg fra %{kind} fordi \"%{reason}\"."
+      success: "Vellykket autentisering fra %{kind} konto."
+    passwords:
+      no_token: "Du har ikke tilgang til denne siden uten å komme fra en tilbakestill passord email. Hvis du kommer fra en tilbakestillings email, vennligst sjekk at du brukte hele URL som ble gitt."
+      send_instructions: "Du vil motta en email med instrukser på hvordan tilbakestille passordet ditt om et par minutter."
+      send_paranoid_instructions: "Hvis emailen din finnes i databasen vår, vil du motta en mail for passordgjenoppretting om et par minutter."
+      updated: "Passorder ditt har blitt endret. Du er nå logget inn."
+      updated_not_active: "Passordet ditt har blitt forandret."
+    registrations:
+      destroyed: "Hade! Kontoen din har blitt slettet. Vi håper å se deg igjen snart."
+      signed_up: "Velkommen! Du har nå registrert deg."
+      signed_up_but_inactive: "Du har nå registrert deg, men vi kunne ikke logge deg inn fordi du ikke har aktivert kontoen din."
+      signed_up_but_locked: "Du har nå registrert deg, men vi kunne ikke logge deg inn fordi kontoen din er låst"
+      signed_up_but_unconfirmed: "En melding med en bekreftelses link har blit sendt til emailen din. Venligst følg linken får å aktivere kontoen din."
+      update_needs_confirmation: "Du har oppdatert kontoen din, men vi trenger å bekrefte den nye emailen din. Vennligst sjekk emailen din og følg bekreftelseslinken for å bekrefte emailen."
+      updated: "Kontoen din har blitt oppdatert."
+      updated_but_not_signed_in: "Kontoen din har blitt oppdatert, men siden passordet ditt er endret, må du logge inn på nytt."
+    sessions:
+      signed_in: "Logget inn."
+      signed_out: "Logget ut."
+      already_signed_out: "Logget ut"
+    unlocks:
+      send_instructions: "Du vil motta en email med instrukser for hvordan låse opp kontoen din om et par minutter."
+      send_paranoid_instructions: "Hvis kontoen din finnes, vil du motta en email med instrukser for hvordan låse opp kontoen din om et par minutter."
+      unlocked: "Kontoen din har blitt låst opp. Logg inn for å fortsette."
+  errors:
+    messages:
+      already_confirmed: "ble allerede bekreftet, vennligst prøv å logge inn"
+      confirmation_period_expired: "må bli bekreftet innen %{period}, vennligst spør om en ny en"
+      expired: "har utgått, vennligst spør om en ny en"
+      not_found: "ikke funnet"
+      not_locked: "var ikke lukket"
+      not_saved:
+        one: "1 feil forhindret dette %{resource} i å bli lagret:"
+        other: "%{count} feil forhindrer dette %{resource} i å bli lagret:"

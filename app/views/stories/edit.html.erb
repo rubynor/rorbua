@@ -8,13 +8,13 @@
       <%= render "form", story: @story %>
 
       <div class="mb-4">
-        <%= button_to "Slett story", @story, method: :delete, form: {data: {turbo_confirm: 'Are you sure?'}},
+        <%= button_to t('.delete_story'), @story, method: :delete, form: {data: {turbo_confirm: 'Are you sure?'}},
                       class: "btn btn-secondary btn-block" %>
       </div>
 
       <div>
-        <%= link_to "Vis story", @story %> |
-        <%= link_to "Tilbake til stories", stories_path %>
+        <%= link_to t('.show_story'), @story %> |
+        <%= link_to t('.back_to_stories'), stories_path %>
       </div>
 
     </div>

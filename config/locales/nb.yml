@@ -30,14 +30,68 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 nb:
+
+  devise:
+    passwords:
+      edit:
+        title: "Endre passordet ditt"
+        new_password: "Nytt passord"
+        confirm_new_password: "Bekreft nytt passord"
+        change password: "Endre passord"
+      new:
+        title: "Glemt passord?"
+        send_me_instructions: 'Send meg instukser for tilbakestilling'
+    registrations:
+      edit:
+        title: "Endre konto"
+        new_password: "Nytt passord"
+        leave_empty: "(la stå tom viss du ikke vil endre)"
+        letters_minimum: "tegn minimum"
+        confirm_new_password: "Bekreft nytt passord"
+        current_password: "Current password"
+        update_account: "Oppdater konto"
+        i_want_to_delete_my_acount: "Jeg vil slette kontoen min"
+        are_you_sure: "Er du sikker på at du vil slette kontoen din?"
+        back: "Tilbake"
+      new:
+        username: "Brukernavn"
+        password: "Passord"
+        confirm_password: "Bekreft passord"
+        already_have_an_account: "Har du allerede en konto?"
+        log_in: "Logg inn"
+    sessions:
+      new:
+        password: "Passord"
+        remember_me: "Husk meg"
+        log_in: "Logg inn"
+        dont_have_an_account: "Har du ikke bruker?"
+        register: "Registrer deg"
+        forgotte_password: "Glemt passord?"
+    shared:
+      links:
+        log_in: "Logg inn"
+        register: "Registrer deg"
+
   favourites:
     favourite:
       uploaded: "Lastet opp"
+      ago: "siden"
       remove_from_favourites: "Fjern fra favoritter"
     favourites_counter:
       videoes: "videoer"
     index:
       title: "Favoritter"
+
+  layouts:
+    navbar:
+      edit_user_settings: "Endre konto instillinger"
+      log_out: "Logg ut"
+      log_in: "Logg inn"
+    sidebar:
+      home: "Hjem"
+      new_story: "Ny story"
+      my_stories: "Mine stories"
+      favoutites: "Favoritter"
 
   stories:
     form:
@@ -48,14 +102,34 @@ nb:
     story:
       edit_story: "Endre story"
       uploaded: "Lastet opp"
+      ago: "siden"
+    edit:
+      delete_story: "Slett story"
+      show_story: "Vis story"
+      back_to_stories: "Tilbake til stories"
     index:
       uploaded: "Lastet opp"
+      ago: "siden"
     my_stories:
       title: "Mine stories"
       uploaded: "Lastet opp"
+      ago: "siden"
     new:
       title: "Ny story"
       back_to_stories: "Tilbake til stories"
     play:
       autoplay_next: "Spill av neste automatisk"
       back_to_home: "Tilbake til hjem"
+
+  activerecord:
+    attributes:
+      story:
+        email: "E-mail address"
+    errors:
+      models:
+        story:
+          attributes:
+            title:
+              blank: "Kan ikke være tom"
+            story_file:
+              content_type: "Ugyldig filformat"

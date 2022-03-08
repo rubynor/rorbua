@@ -14,14 +14,14 @@
             <span class="material-icons" style="color:white">account_circle</span>
           </a>
           <ul class="dropdown-menu dropdown-menu-end settings-tab">
-                <li><%= link_to "Endre konto instillinger",  edit_user_registration_path, class: "dropdown-item"%></li>
+                <li><%= link_to t(".edit_user_settings"),  edit_user_registration_path, class: "dropdown-item"%></li>
               <li class="dropdown-item">
-                  <%= button_to "Logg ut", destroy_user_session_path, method: :delete %>
+                  <%= button_to t(".log_out"), destroy_user_session_path, method: :delete %>
               </li>
           </ul>
         </li>
       <% else %>
-        <%= link_to "Logg inn", new_user_session_path, class: "nav-item btn btn-info" %>
+        <%= link_to t(".log_in"), new_user_session_path, class: "nav-item btn btn-info" %>
       <% end %>
     </ul>
   </div>

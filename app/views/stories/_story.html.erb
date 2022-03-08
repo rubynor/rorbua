@@ -52,7 +52,8 @@
 
       </div>
       <br>
-      <p class="card-text"><small class="text-muted"> <%= t('.uploaded') %> <%= story.created_at %></small></p>
+      <p class="card-text" ><small class="text-muted"> <%= t('.uploaded') %>
+        <%= time_ago_in_words(story.created_at) %> <%= t('.ago') %> </small></p>
     </div>
   </div>
 

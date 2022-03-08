@@ -60,5 +60,9 @@
 
     <%= render 'layouts/notice' %>
 
+    <% @language = Language.new(name: "en") %>
+    <%= render 'languages/form', language: @language %>
+    <% @language = Language.new(name: "nb") %>
+    <%= render 'languages/form', language: @language %>
   </body>
 </html>
