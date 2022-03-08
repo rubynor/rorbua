@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :favourites, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :dislikes, dependent: :destroy
+  has_many :playlists, dependent: :destroy
 
   validates :username, presence: true
   validates :username, uniqueness: true

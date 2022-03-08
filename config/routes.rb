@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :stories
   resources :likes, only: [:create, :destroy]
   resources :dislikes, only: [:create, :destroy]
+  resources :playlists, only: [:create, :index, :new]
   get 'my_stories', to: 'stories#my_stories'
   get 'play/:id', to: 'stories#play', as: 'play'
 
