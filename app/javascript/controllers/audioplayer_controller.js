@@ -13,11 +13,10 @@ export default class extends Controller {
 
         var self = this
 
-
-
         audio.addEventListener("loadedmetadata", function () {
 
             // Hvis info når data er lastet inn
+            audio.volume = progressbar.value / 100;
             current_time.innerHTML = display_time(audio.currentTime);
             total_time.innerHTML = display_time(audio.duration);
             progressbar.value = this.currentTime/this.duration;
