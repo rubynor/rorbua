@@ -4,6 +4,7 @@ class Story < ApplicationRecord
   has_many :favourites, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :dislikes, dependent: :destroy
+  has_many :playlist_stories
 
   validates :title, presence: true
   validates :title, length: { maximum: 50 }

@@ -3,7 +3,7 @@
   <div class="card">
     <!-- <img src="..." class="card-img-top" alt="..."> -->
     <!-- Fjern denne if-setninga når vi har implementert rapportering av innlegg -->
-    <% if user_signed_in? %>
+
       <li class="dropdown position-absolute top-0 end-0 mt-1" style="list-style-type: none;">
         <a href="#" class="nav-link" data-bs-toggle="dropdown" role="button" aria-expanded="false">
           <span class="material-icons" style="color:black;">more_vert</span>
@@ -16,10 +16,14 @@
                 <%= link_to "Endre story", edit_story_path(story), class: "dropdown-item" %>
               </li>
             <% end %>
+
+            <li><%= %></li>
+
+          <% else %>
+            <li class="dropdown-item">Legg til i spilleliste</li>
           <% end %>
         </ul>
       </li>
-    <% end %>
     <!-- Og fjern denne end taggen -->
     <div class="card-body px-5">
       <h5 class="card-title"><%= story.title %></h5>

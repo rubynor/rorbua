@@ -4,7 +4,12 @@ Rails.application.routes.draw do
   resources :stories
   resources :likes, only: [:create, :destroy]
   resources :dislikes, only: [:create, :destroy]
-  resources :playlists, only: [:create, :index, :new]
+  resources :playlists, only: [:create, :destroy, :index, :new] do
+    member do
+      post :new
+    end
+  end
+  resources :playlist_stories, only: [:create, :destroy]
   get 'my_stories', to: 'stories#my_stories'
   get 'play/:id', to: 'stories#play', as: 'play'
 

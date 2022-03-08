@@ -1,4 +1,4 @@
 class Playlist < ApplicationRecord
   belongs_to :user
-  has_many :stories
+  has_many :playlist_stories
 end

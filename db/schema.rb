@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_08_093649) do
+ActiveRecord::Schema.define(version: 2022_03_08_110442) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -69,6 +69,15 @@ ActiveRecord::Schema.define(version: 2022_03_08_093649) do
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
+  create_table "playlist_stories", force: :cascade do |t|
+    t.integer "story_id", null: false
+    t.integer "playlist_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["playlist_id"], name: "index_playlist_stories_on_playlist_id"
+    t.index ["story_id"], name: "index_playlist_stories_on_story_id"
+  end
+
   create_table "playlists", force: :cascade do |t|
     t.string "title"
     t.integer "user_id", null: false
@@ -107,5 +116,7 @@ ActiveRecord::Schema.define(version: 2022_03_08_093649) do
   add_foreign_key "favourites", "users"
   add_foreign_key "likes", "stories"
   add_foreign_key "likes", "users"
+  add_foreign_key "playlist_stories", "playlists"
+  add_foreign_key "playlist_stories", "stories"
   add_foreign_key "playlists", "users"
 end
