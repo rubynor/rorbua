@@ -52,12 +52,15 @@
 
           <div class="d-flex flex-column p-1">
             <div class="btn-group dropdown">
-              <span type="button" class="btn btn-secondary material-icons" data-bs-toggle="dropdown" aria-expanded="false" style="color:black;background-color: transparent; border: none">
+              <span type="button" class="btn btn-secondary material-icons" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false" style="color:black;background-color: transparent; border: none">
                 playlist_add
               </span>
               <ul class="dropdown-menu dropdown-menu-end">
+                <li class="dropdown-header"><h6>Legg til i spilleliste</h6></li>
+                <li id="new_playlist" class="dropdown-item">Ny spilleliste</li>
+                <li><hr class="dropdown-divider"></li>
                 <% current_user.playlists.each do |playlist| %>
-                  <li class="dropdown-item">
+                  <li class="dropdown-item" data-bs-toggle="dropdown">
                     <%= button_to playlist.title, playlist_stories_path(story_id: story, playlist_id: playlist), class:"dropdown-item" %>
                   </li>
                 <% end %>
