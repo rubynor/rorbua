@@ -1,9 +1,11 @@
-<h1>Her er du på indexsiden</h1>
+<h1 class="py-2">Mine spillelister</h1>
 
 <div id="playlists">
   <% @playlists.each do |playlist| %>
     <%= render "playlists/partials/test_playlist", playlist: playlist %>
   <% end %>
 </div>
+<div id="new_playlist_div">
 
+</div>
 <%= render "playlists/partials/new_playlist_btn" %>

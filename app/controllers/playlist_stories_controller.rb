@@ -1,4 +1,5 @@
 class PlaylistStoriesController < ApplicationController
+  before_action :set_variables, only: :play
 
   def create
     story = Story.find(params[:story_id])
@@ -17,10 +18,23 @@ class PlaylistStoriesController < ApplicationController
 
   end
 
+  def play
+    if cookies[:volume].nil?
+      cookies[:volume] = 75
+    end
+    @volume = cookies[:volume]
+  end
+
   private
 
   def playliststory_params
     params.require(:playlist_story).permit(:story_id)
+  end
+
+  def set_variables
+    logger.debug params
+    @playlist_story = PlaylistStory.find_by(id: params[:id])
+    logger.debug @playlist_story.nil?
   end
 
 end

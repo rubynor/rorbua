@@ -19,6 +19,7 @@ class StoriesController < ApplicationController
       cookies[:volume] = 75
     end
     @volume = cookies[:volume]
+    $story = @story
   end
 
   # GET /stories/1 or /stories/1.json

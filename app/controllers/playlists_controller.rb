@@ -1,6 +1,6 @@
 class PlaylistsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_playlist, only: [:show, :destroy]
+  before_action :set_playlist, only: [:show, :destroy, :play]
 
   def index
     @playlists = current_user.playlists.order("created_at DESC")
@@ -11,7 +11,19 @@ class PlaylistsController < ApplicationController
     respond_to do |format|
       format.turbo_stream do
         render turbo_stream: [
-          turbo_stream.update("btn-new-playlist", partial: "playlists/form", locals: { playlist: @playlist })
+          turbo_stream.append("new_playlist_div", partial: "playlists/form", locals: { playlist: @playlist }),
+          turbo_stream.update("btn-new-playlist", partial: "playlists/partials/form_cancel_btn", locals: { playlist: @playlist })
+        ]
+      end
+    end
+  end
+
+  def cancel
+    respond_to do |format|
+      format.turbo_stream do
+        render turbo_stream: [
+          turbo_stream.update("btn-cancel-playlist-form", partial: "playlists/partials/new_playlist_btn"),
+          turbo_stream.remove("playlist-form")
         ]
       end
     end
@@ -24,7 +36,9 @@ class PlaylistsController < ApplicationController
         format.turbo_stream do
           render turbo_stream: [
             turbo_stream.prepend("playlists", partial: "playlists/partials/test_playlist", locals: {playlist: @playlist}),
-            turbo_stream.update("playlist-form", partial: "playlists/partials/new_playlist_btn")
+            turbo_stream.prepend("playlists_list_group", partial: "playlists/partials/playlist_list_group", locals: {playlist: @playlist}),
+            turbo_stream.update("btn-cancel-playlist-form", partial: "playlists/partials/new_playlist_btn"),
+            turbo_stream.remove("playlist-form")
           ]
         end
       end
@@ -45,6 +59,10 @@ class PlaylistsController < ApplicationController
 
   def show
 
+  end
+
+  def play
+    redirect_to playlist_play_story_path id: @playlist.playlist_stories.last
   end
 
   private

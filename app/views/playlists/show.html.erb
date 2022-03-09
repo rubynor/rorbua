@@ -1,12 +1,11 @@
 <h2><%= @playlist.title %></h2>
+<h4><%= @playlist.id %></h4>
 
-<ul>
-  <% @playlist.playlist_stories.each do |playlist_story| %>
+<% @playlist.playlist_stories.each do |playlist_story| %>
+  <%= link_to playlist_play_story_path playlist_story do %>
     <% story = playlist_story.story %>
-    <li>
-      <%= story.title %>
-    </li>
+    <%= render "stories/partials/story_card", story: story %>
   <% end %>
-</ul>
+<% end %>
 
-<button class="btn btn-primary" onclick="alert('Denne funksjonaliteten er under utvikling')">Spill av stories</button>
+<%= link_to "Spill av spilleliste", playlist_play_path, id: @playlist, class:"btn btn-primary" %>
