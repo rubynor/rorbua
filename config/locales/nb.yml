@@ -29,5 +29,16 @@
 # To learn more, please read the Rails Internationalization guide
 # available at https://guides.rubyonrails.org/i18n.html.
 
-en:
-  hello: "Hello world"
+nb:
+  activerecord:
+    attributes:
+      story:
+        email: "E-mail address"
+    errors:
+      models:
+        story:
+          attributes:
+            title:
+              blank: "Kan ikke være tom"
+            story_file:
+              content_type: "Ugyldig filformat"

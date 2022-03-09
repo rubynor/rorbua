@@ -1,6 +1,6 @@
 # Additional translations at https://github.com/heartcombo/devise/wiki/I18n
 
-en:
+nb:
   devise:
     confirmations:
       confirmed: "Emailen din har blitt bekreftet."
