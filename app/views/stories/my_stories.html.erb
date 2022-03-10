@@ -8,6 +8,12 @@
       <h2>Mine stories</h2>
       <br>
 
+      <strong><%= current_user.username %></strong>
+
+      <div class="mb-3">
+        <strong><%= @stories.size %> videoer</strong>
+      </div>
+
       <% @stories.each do |story| %>
 
         <%= link_to play_path story do %>
@@ -32,16 +38,3 @@
     </div>
   </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
