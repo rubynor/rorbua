@@ -62,7 +62,7 @@ class PlaylistsController < ApplicationController
   end
 
   def play
-    redirect_to playlist_play_story_path id: @playlist.playlist_stories.last
+    redirect_to playlist_play_story_path id: @playlist.playlist_stories.last, playlist_id: @playlist
   end
 
   private

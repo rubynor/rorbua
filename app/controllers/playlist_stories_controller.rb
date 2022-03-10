@@ -1,5 +1,5 @@
 class PlaylistStoriesController < ApplicationController
-  before_action :set_variables, only: :play
+  before_action :set_variables, only: [:play, :destroy]
 
   def create
     story = Story.find(params[:story_id])
@@ -15,7 +15,13 @@ class PlaylistStoriesController < ApplicationController
   end
 
   def destroy
-
+    respond_to do |format|
+      if @playlist_story.destroy
+        # TODO (Legg til notice her når story blir lagt til i playlist)
+      else
+        flash[:notice] = @playlist_story.errors.full_messages.to_sentence
+      end
+    end
   end
 
   def play
@@ -32,9 +38,7 @@ class PlaylistStoriesController < ApplicationController
   end
 
   def set_variables
-    logger.debug params
     @playlist_story = PlaylistStory.find_by(id: params[:id])
-    logger.debug @playlist_story.nil?
   end
 
 end

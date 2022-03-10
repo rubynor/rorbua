@@ -1,8 +1,7 @@
 <h2><%= @playlist.title %></h2>
-<h4><%= @playlist.id %></h4>
 
-<% @playlist.playlist_stories.each do |playlist_story| %>
-  <%= link_to playlist_play_story_path playlist_story do %>
+<% @playlist.playlist_stories.reverse_each do |playlist_story| %>
+  <%= link_to playlist_play_story_path playlist_story, playlist_id: playlist_story.playlist do %>
     <% story = playlist_story.story %>
     <%= render "stories/partials/story_card", story: story %>
   <% end %>
