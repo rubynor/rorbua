@@ -21,9 +21,12 @@
     <%= form.number_field :user_id, id: :story_user_id, value: current_user.id, type: :hidden %>
   </div>
 
+  <div class="field" id = "checkboxes">
+    <%= collection_check_boxes(:story, :category_ids, Category.all, :id, :name) %>
+  </div>
+
   <div class="mb-4">
       <%= form.submit class: 'btn btn-primary btn-block' %>
   </div>
 
 <% end %>
-
