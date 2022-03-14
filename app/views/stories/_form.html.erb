@@ -21,9 +21,17 @@
     <%= form.number_field :user_id, id: :story_user_id, value: current_user.id, type: :hidden %>
   </div>
 
+  <div class ="field" id="checkboxes">
+    <%= form.label :story, "Velg en til flere kategorier:", class: "form-label" %>
+    <br>
+    <%= collection_check_boxes(:story, :category_ids, Category.all, :id, :name) do |b|
+      b.label(:"data-value" => b.value) { b.check_box + b.label }
+    end %>
+    <%= error_message_on(form.object, :category_ids) %>
+  </div>
+
   <div class="mb-4">
       <%= form.submit class: 'btn btn-primary btn-block' %>
   </div>
 
 <% end %>
-

@@ -1,4 +1,4 @@
-class StoriesController < ApplicationController
+  class StoriesController < ApplicationController
   before_action :set_story, only: %i[ show edit update destroy play ]
   before_action :authenticate_user!, except: [:index, :show, :play]
   before_action :correct_user, only: [:edit, :update, :destroy]
@@ -100,7 +100,7 @@ class StoriesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def story_params
-      params.require(:story).permit(:title, :description, :story_file, :user_id)
+      params.require(:story).permit(:title, :description, :story_file, :user_id, {:category_ids=>[]})
     end
 
 end
