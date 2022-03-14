@@ -10,6 +10,13 @@ Rails.application.routes.draw do
     get 'my_stories', to: 'stories#my_stories'
     get 'play/:id', to: 'stories#play', as: 'play'
 
+    resources :languages do
+      collection do
+        post :change
+      end
+    end
+
+
     # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
     # Defines the root path route ("/")

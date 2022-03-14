@@ -1,0 +1,7 @@
+<%= form_with url: change_languages_path, method: :post do |form|%>
+  <div class="input-group" style="width:160px">
+    <%= form.collection_select :language_id, Language.all, :id, :name, {},
+                               { class: "form-select", style: "width:70px" } %>
+    <%= form.submit "Change", class: "btn btn-secondary", style: "width:80px" %>
+  </div>
+<% end %>
