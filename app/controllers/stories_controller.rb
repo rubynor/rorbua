@@ -42,6 +42,8 @@ class StoriesController < ApplicationController
     @story = current_user.stories.build(story_params)
     respond_to do |format|
       if @story.save
+        my_videos = current_user.playlists.find_by("title = 'Mine opplastninger'")
+        my_videos.playlist_stories.build(story: @story).save
         format.html { redirect_to play_path(@story), notice: "Story ble opprettet." }
         format.json { render :show, status: :created, location: @story }
       else

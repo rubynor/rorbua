@@ -65,14 +65,26 @@ class PlaylistsController < ApplicationController
     redirect_to playlist_play_story_path id: @playlist.playlist_stories.last, playlist_id: @playlist
   end
 
+  def my_stories
+    @playlist = current_user.playlists.find_by("title='Mine opplastninger'")
+    Rails.logger.debug @playlist
+    redirect_to @playlist
+    end
+
+  def my_favourites
+    @playlist = current_user.playlists.find_by("title='Favoritter'")
+    redirect_to @playlist
+  end
+
   private
 
   def playlist_params
-    params.require(:playlist).permit(:title)
+    params.require(:playlist).permit(:title, :public, :display)
   end
 
   def set_playlist
     @playlist = current_user.playlists.find(params[:id])
+    Rails.logger.debug @playlist.title
   end
 
 end

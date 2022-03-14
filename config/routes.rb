@@ -11,7 +11,8 @@ Rails.application.routes.draw do
   end
   post "cancel_playlist_form", to:"playlists#cancel", as: 'cancel_playlist_form'
   resources :playlist_stories, only: [:create, :destroy]
-  get 'my_stories', to: 'stories#my_stories'
+  get 'my_stories', to: 'playlists#my_stories', as: "my_stories"
+  get 'my_favourites', to: 'playlists#my_favourites', as: "my_favourites"
   get 'play/:id', to: 'stories#play', as: 'play'
   get 'playlist/play/:id', to: 'playlists#play', as: 'playlist_play'
   get 'playlist/:playlist_id/:id', to: 'playlist_stories#play', as: 'playlist_play_story'

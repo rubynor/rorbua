@@ -15,7 +15,8 @@
             <div id="new_playlist_div">
 
             </div>
-            <% current_user.playlists.reverse_each do |playlist| %>
+            <% playlists = current_user.playlists.where("display = true") %>
+            <% playlists.reverse_each do |playlist| %>
 
               <%= button_to playlist.title, playlist_stories_path(story_id: story, playlist_id: playlist), class:"list-group-item list-group-item-action" %>
 
