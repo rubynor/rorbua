@@ -94,4 +94,8 @@ export default class extends Controller {
         this.audioTarget.play()
     }
 
+    disconnect() {
+        this.audioTarget.pause()
+    }
+
 }
