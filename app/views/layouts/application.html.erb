@@ -36,12 +36,14 @@
     <%= render 'layouts/sidebar' %>
     <%= render 'layouts/bottom_navbar' %>
 
-    <!-- Welcome -->
+    <%= render 'layouts/bottom_navbar' %>
+
+  <!-- Welcome -->
     <% if current_page?(root_path) %>
       <%= render "layouts/welcome_alert" %>
     <% end %>
 
-    <div class="container mb-5 mb-lg-0" id="primary-container">
+  <div class="container mb-5 mb-lg-0" id="primary-container">
 
       <div class="row">
 

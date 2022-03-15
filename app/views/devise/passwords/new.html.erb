@@ -2,7 +2,7 @@
 
 <div class="container">
   <div class="row">
-    <h2>Glemt passord?</h2>
+    <h2> <%= t(".title") %> </h2>
 
     <%= form_for(resource, as: resource_name, data: { turbo: false}, url: password_path(resource_name), html: { method: :post }) do |f| %>
 
@@ -13,7 +13,7 @@
       </div>
 
       <div class="mb-3">
-        <%= f.submit 'Send meg instukser for tilbakestilling', :class => 'btn btn-primary btn-block' %>
+        <%= f.submit t(".send_me_instructions"), :class => 'btn btn-primary btn-block' %>
       </div>
 
     <% end %>
@@ -23,8 +23,3 @@
 
   </div>
 </div>
-
-
-
-
-
