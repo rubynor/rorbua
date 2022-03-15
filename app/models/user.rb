@@ -14,14 +14,6 @@ class User < ApplicationRecord
   validates :username, uniqueness: true
   validates :username, length: { maximum: 50 }
 
-  def self.createPrevious
-    users = User.all
-    users.each do |user|
-      user.create_playlists
-      user.playlists.add_previous(user)
-    end
-  end
-
   private
 
   def create_playlists
