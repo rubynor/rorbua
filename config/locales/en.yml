@@ -92,7 +92,7 @@ en:
       home: "Home"
       new_story: "New story"
       my_stories: "My stories"
-      favoutites: "Favourites"
+      favorites: "Favorites"
 
   stories:
     form:
