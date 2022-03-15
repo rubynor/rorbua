@@ -102,19 +102,15 @@ nb:
       create_story: "Opprett story"
     story:
       edit_story: "Endre story"
-      uploaded: "Lastet opp for"
-      ago: "siden"
+    story_card:
+        uploaded: "Lastet opp for"
+        ago: "siden"
     edit:
       delete_story: "Slett story"
       show_story: "Vis story"
       back_to_stories: "Tilbake til stories"
-    index:
-      uploaded: "Lastet opp for"
-      ago: "siden"
     my_stories:
       title: "Mine stories"
-      uploaded: "Lastet opp for"
-      ago: "siden"
     new:
       title: "Ny story"
       back_to_stories: "Tilbake til stories"

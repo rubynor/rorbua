@@ -102,19 +102,15 @@ en:
       create_story: "Create story"
     story:
       edit_story: "Edit story"
+    story_card:
       uploaded: "Uploaded"
       ago: "ago"
     edit:
       delete_story: "Delete story"
       show_story: "Show story"
       back_to_stories: "Back to stories"
-    index:
-      uploaded: "Uploaded"
-      ago: "ago"
     my_stories:
       title: "My stories"
-      uploaded: "Uploaded"
-      ago: "ago"
     new:
       title: "New story"
       back_to_stories: "Back to stories"
