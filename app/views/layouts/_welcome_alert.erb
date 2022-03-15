@@ -3,7 +3,7 @@
 
         <h1>Velkommen</h1>
 
-        <button type="button" class="close position-absolute top-0 end-0 p-3" data-dismiss="alert" aria-label="Close">
+        <button type="button" onclick="setCookie('sin_user_message',true,365)" class="close position-absolute top-0 end-0 p-3" data-dismiss="alert" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
 
@@ -15,14 +15,14 @@
 </div>
 
 <script>
+    //eraseCookie('returning_user')
     // vis melding
-    var returning_user=getCookie("returning_user");//"bobthegreat@gmail.com
-    if (returning_user == null) {
+    var sin_user_message=getCookie("sin_user_message");//"bobthegreat@gmail.com
+    if (sin_user_message == null) {
         document.getElementById("welcome").style.display = "block";
     }
     // sett coockie
-    setCookie("returning_user",true,365);
-    //eraseCookie('returning_user')
+
 
     function setCookie(name,value,days) {
         var expires = "";
@@ -33,6 +33,7 @@
         }
         document.cookie = name + "=" + (value || "")  + expires + "; path=/";
     }
+
     function getCookie(name) {
         var nameEQ = name + "=";
         var ca = document.cookie.split(';');
