@@ -41,6 +41,8 @@ class PlaylistsController < ApplicationController
             turbo_stream.remove("playlist-form")
           ]
         end
+      else
+        format.html { redirect_to playlists_path, notice: "Playlist med samme tittel eksisterer allerede" }
       end
     end
   end
