@@ -3,9 +3,8 @@ class LanguagesController < ApplicationController
 
   # POST /languages or /languages.json
   def change
-    @language = Language.find(params[:language_id])
-    puts "CCCCCCCCCCCCCCCCCCCCC #{@language.name}"
-    session[:locale] = I18n.locale = @language.name
+    puts "CCCCCCCCCCCCCCCCCCCCC #{params[:set_locale]}"
+    session[:locale] = I18n.locale = params[:set_locale]
     redirect_back(fallback_location: root_path)
   end
 

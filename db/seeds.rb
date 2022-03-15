@@ -9,3 +9,4 @@
 #
 Language.create(name: "en")
 Language.create(name: "nb")
+Category.create(name: "Morsom")

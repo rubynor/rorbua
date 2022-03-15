@@ -1,7 +1,7 @@
-<%= form_with url: change_languages_path, method: :post do |form|%>
-  <div class="input-group" style="width:160px">
-    <%= form.collection_select :language_id, Language.all, :id, :name, {},
-                               { class: "form-select", style: "width:70px" } %>
-    <%= form.submit "Change", class: "btn btn-secondary", style: "width:80px" %>
-  </div>
-<% end %>
+
+<aside>
+  <%= form_tag change_languages_path, class: 'locale' do %>
+    <%= select_tag 'set_locale', options_for_select(LANGUAGES, I18n.locale.to_s),
+                   onchange: 'this.form.submit()', class: "form-select"%>
+  <% end %>
+</aside>
