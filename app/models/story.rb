@@ -13,6 +13,7 @@ class Story < ApplicationRecord
   validates :story_file, file_size: { less_than: 50.megabytes }
   validate :category_is_selected
 
+
   def next
     Story.where("id > ?", id).order(id: :asc).limit(1).first
   end
