@@ -44,6 +44,7 @@ nb:
     registrations:
       edit:
         title: "Endre konto"
+        username: "Brukernavn"
         new_password: "Nytt passord"
         leave_empty: "(la stå tom viss du ikke vil endre)"
         letters_minimum: "tegn minimum"
@@ -84,7 +85,7 @@ nb:
 
   layouts:
     navbar:
-      edit_user_settings: "Endre konto instillinger"
+      edit_user_settings: "Endre kontoinstillinger"
       log_out: "Logg ut"
       log_in: "Logg inn"
     sidebar:
