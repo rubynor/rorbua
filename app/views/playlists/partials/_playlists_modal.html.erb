@@ -10,15 +10,17 @@
         <% if user_signed_in? %>
 
 
+          <div id="new_playlist_div">
 
+          </div>
           <div class="list-group mt-2" id="playlists_list_group">
-            <div id="new_playlist_div">
 
-            </div>
             <% playlists = current_user.playlists.where("display = true") %>
             <% playlists.reverse_each do |playlist| %>
 
-              <%= button_to playlist.title, playlist_stories_path(story_id: story, playlist_id: playlist), class:"list-group-item list-group-item-action" %>
+              <%= button_to playlist_stories_path(story_id: story, playlist_id: playlist), hidden:true do%>
+                <button class="list-group-item list-group-item-action" data-bs-dismiss="modal" type="button"><%= playlist.title %></button>
+              <% end %>
 
             <% end %>
           </div>

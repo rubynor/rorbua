@@ -7,7 +7,9 @@ class PlaylistStoriesController < ApplicationController
     @playlist_story = playlist.playlist_stories.build(story: story)
     respond_to do |format|
       if @playlist_story.save
-        # TODO (Legg til notice her når story blir lagt til i playlist)
+        format.turbo_stream do
+
+        end
       else
         flash[:notice] = @playlist_story.errors.full_messages.to_sentence
       end

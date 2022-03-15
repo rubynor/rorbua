@@ -1,3 +1,3 @@
-
-<%= button_to playlist.title, playlist_stories_path(story_id: $story, playlist_id: playlist), class:"list-group-item list-group-item-action" %>
-
+<%= button_to playlist_stories_path(story_id: $story, playlist_id: playlist), hidden:true do%>
+  <button class="list-group-item list-group-item-action" data-bs-dismiss="modal" type="submit"><%= playlist.title %></button>
+<% end %>
