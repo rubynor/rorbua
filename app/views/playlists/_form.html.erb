@@ -3,7 +3,7 @@
 
     <div class="mb-3">
       <%= form.label :title, "Tittel", class: "form-label" %>
-      <%= form.text_field :title, class: "form-control" %>
+      <%= form.text_field :title, autofocus:true, class: "form-control" %>
       <%= error_message_on(form.object, :title) %>
     </div>
 
