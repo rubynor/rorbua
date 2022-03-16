@@ -4,14 +4,13 @@
   <%= link_to "Spill av spilleliste", playlist_play_story_path(@playlist.playlist_stories.last), playlist_id: @playlist, class:"btn btn-primary" %>
 <% else %>
   <h5>This playlist is empty</h5>
-  <%= link_to "Discover new stories", root_path, class:"btn btn-secondary my-3" %>
+  <%= link_to "Utforsk stories", root_path, class:"btn btn-secondary my-3" %>
 <% end %>
 
-<div class="mt-3 mb-4">
-  <% @playlist.playlist_stories.reverse_each do |playlist_story| %>
-    <%= link_to playlist_play_story_path playlist_story, playlist_id: playlist_story.playlist do %>
-      <% story = playlist_story.story %>
-      <%= render "stories/partials/story_card", story: story %>
-    <% end %>
+<% @playlist.playlist_stories.reverse_each do |playlist_story| %>
+  <%= link_to playlist_play_story_path playlist_story, playlist_id: playlist_story.playlist do %>
+    <% story = playlist_story.story %>
+    <%= render "stories/partials/story_card", story: story %>
   <% end %>
-</div>
+<% end %>
+
