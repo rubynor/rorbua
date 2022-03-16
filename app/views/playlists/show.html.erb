@@ -1,18 +1,28 @@
-<h2><%= @playlist.title %></h2>
 
-<% if @playlist.playlist_stories.count > 0 %>
-  <%= link_to "Spill av spilleliste", playlist_play_story_path(@playlist.playlist_stories.last), playlist_id: @playlist, class:"btn btn-primary" %>
-<% else %>
-  <h5>This playlist is empty</h5>
-  <%= link_to "Utforsk stories", root_path, class:"btn btn-secondary my-3" %>
-<% end %>
+<div class="row py-2">
+  <div class="col">
+    <h2><%= @playlist.title %></h2>
+  </div>
+
+  <div class="col text-end">
+    <% if @playlist.playlist_stories.count > 0 %>
+      <%= link_to "Spill av spilleliste", playlist_play_story_path(@playlist, @playlist.playlist_stories.last), class:"btn btn-primary" %>
+    <% else %>
+      <h5>This playlist is empty</h5>
+      <%= link_to "Utforsk stories", root_path, class:"btn btn-secondary my-3" %>
+    <% end %>
+  </div>
+
+</div>
 
 <% @playlist.playlist_stories.reverse_each do |playlist_story| %>
   <div class="card border-0" id="<%= dom_id playlist_story %>">
 
     <%= link_to playlist_play_story_path playlist_story, playlist_id: playlist_story.playlist do %>
       <% story = playlist_story.story %>
-      <%= render "stories/partials/story_card", story: story %>
+      <div class="no-link">
+        <%= render "stories/partials/story_card", story: story %>
+      </div>
     <% end %>
 
     <li class="dropdown position-absolute top-0 end-0 mt-1" style="list-style-type: none;">
@@ -22,7 +32,13 @@
       <ul class="dropdown-menu dropdown-menu-end me-1">
         <% if user_signed_in? %>
 
-          <% if current_user == @playlist.user %>
+          <% if @playlist.title == "Mine opplastninger" and current_user == @playlist.user %>
+
+            <%= link_to "Endre story", edit_story_path(playlist_story.story), class: "dropdown-item" %>
+
+          <% end %>
+
+          <% if current_user == @playlist.user and @playlist.title != "Favoritter" and @playlist.title != "Mine opplastninger" %>
 
             <%= button_to "Fjern fra spilleliste", playlist_story_path(playlist_story), method: :delete, class:"dropdown-item" %>
 
