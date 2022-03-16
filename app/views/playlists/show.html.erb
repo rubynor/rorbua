@@ -11,5 +11,5 @@
   <%= link_to "Spill av spilleliste", playlist_play_story_path(@playlist.playlist_stories.last), playlist_id: @playlist, class:"btn btn-primary" %>
 <% else %>
   <h5>This playlist is empty</h5>
-  <%= link_to "Discover new stories", root_path, class:"btn btn-secondary my-3" %>
+  <%= link_to "Utforsk stories", root_path, class:"btn btn-secondary my-3" %>
 <% end %>

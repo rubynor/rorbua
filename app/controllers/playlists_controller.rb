@@ -42,7 +42,7 @@ class PlaylistsController < ApplicationController
           ]
         end
       else
-        format.html { redirect_to playlists_path, notice: "Playlist med samme tittel eksisterer allerede" }
+        format.html { redirect_to playlists_path, notice: "Finnes spilleliste med dette navnet" }
       end
     end
   end
