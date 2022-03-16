@@ -3,18 +3,28 @@
   <br>
   <div class="row">
 
-    <h2> <%= t('.title') %></h2>
-
-    <strong><%= current_user.username %></strong>
-
-    <div id="favourites_counter" class="mb-3">
-      <%= render 'favourites_counter' %>
+    <div class="col-0 col-md-2 p-0 m-0">
     </div>
 
-    <div id="favourites">
-      <% @favourites.each do |favourite| %>
-        <%= render favourite %>
-      <% end %>
+    <div class="col">
+
+      <h2> <%= t('.title') %></h2>
+
+      <strong><%= current_user.username %></strong>
+
+      <div id="favourites_counter" class="mb-3">
+        <%= render 'favourites_counter' %>
+      </div>
+
+      <div id="favourites">
+        <% @favourites.each do |favourite| %>
+          <%= render favourite %>
+        <% end %>
+      </div>
+
+      <div class="col-0 col-md-2 p-0 m-0">
+      </div>
+
     </div>
 
   </div>

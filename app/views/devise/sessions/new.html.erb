@@ -1,40 +1,48 @@
 <div class="container">
   <div class="row">
 
-    <h1 class="rorbua-heading-lg">Storytime</h1>
-    <%= form_for(resource, as: resource_name, data: { turbo: false}, url: session_path(resource_name)) do |f| %>
-      <div class="mb-3">
-        <%= f.label :email %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control"%>
-      </div>
+    <div class="col-0 col-md-2 p-0 m-0">
+    </div>
 
-      <div class="mb-3">
-        <%= f.label :password, t(".password") %><br />
-        <%= f.password_field :password, autocomplete: "current-password", class: "form-control"%>
-      </div>
-
-      <% if devise_mapping.rememberable? %>
+    <div class="col">
+      <h1 class="rorbua-heading-lg">Storytime</h1>
+      <%= form_for(resource, as: resource_name, data: { turbo: false}, url: session_path(resource_name)) do |f| %>
         <div class="mb-3">
-          <%= f.check_box :remember_me, id: "flexCheckDefault"%>
-          <%= f.label :remember_me, t(".remember_me") %>
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control"%>
+        </div>
+
+        <div class="mb-3">
+          <%= f.label :password, t(".password") %><br />
+          <%= f.password_field :password, autocomplete: "current-password", class: "form-control"%>
+        </div>
+
+        <% if devise_mapping.rememberable? %>
+          <div class="mb-3">
+            <%= f.check_box :remember_me, id: "flexCheckDefault"%>
+            <%= f.label :remember_me, t(".remember_me") %>
+          </div>
+        <% end %>
+
+        <div class="mb-4">
+          <%= f.submit t(".log_in"), :class => 'btn btn-primary btn-block' %>
         </div>
       <% end %>
 
-      <div class="mb-4">
-        <%= f.submit t(".log_in"), :class => 'btn btn-primary btn-block' %>
+      <div class="mb-3">
+        <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+          <%= t(".dont_have_an_account") %> <%= link_to t(".register"), new_registration_path(resource_name) %><br />
+        <% end %>
       </div>
-    <% end %>
 
-    <div class="mb-3">
-      <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-        <%= t(".dont_have_an_account") %> <%= link_to t(".register"), new_registration_path(resource_name) %><br />
-      <% end %>
+      <div class="mb-3">
+        <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+          <%= link_to t(".forgotte_password"), new_password_path(resource_name) %><br />
+        <% end %>
+      </div>
     </div>
 
-    <div class="mb-3">
-      <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-        <%= link_to t(".forgotte_password"), new_password_path(resource_name) %><br />
-      <% end %>
+    <div class="col-0 col-md-2 p-0 m-0">
     </div>
 
   </div>
