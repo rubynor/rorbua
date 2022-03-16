@@ -8,9 +8,29 @@
 <% end %>
 
 <% @playlist.playlist_stories.reverse_each do |playlist_story| %>
-  <%= link_to playlist_play_story_path playlist_story, playlist_id: playlist_story.playlist do %>
-    <% story = playlist_story.story %>
-    <%= render "stories/partials/story_card", story: story %>
-  <% end %>
+  <div class="card border-0" id="<%= dom_id playlist_story %>">
+
+    <%= link_to playlist_play_story_path playlist_story, playlist_id: playlist_story.playlist do %>
+      <% story = playlist_story.story %>
+      <%= render "stories/partials/story_card", story: story %>
+    <% end %>
+
+    <li class="dropdown position-absolute top-0 end-0 mt-1" style="list-style-type: none;">
+      <a href="#" class="nav-link" data-bs-toggle="dropdown" role="button" aria-expanded="false">
+        <span class="material-icons" style="color:black;">more_vert</span>
+      </a>
+      <ul class="dropdown-menu dropdown-menu-end me-1">
+        <% if user_signed_in? %>
+
+          <% if current_user == @playlist.user %>
+
+            <%= button_to "Fjern fra spilleliste", playlist_story_path(playlist_story), method: :delete, class:"dropdown-item" %>
+
+          <% end %>
+
+        <% end %>
+      </ul>
+    </li>
+  </div>
 <% end %>
 

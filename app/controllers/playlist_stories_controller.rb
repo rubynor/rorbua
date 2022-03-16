@@ -19,7 +19,11 @@ class PlaylistStoriesController < ApplicationController
   def destroy
     respond_to do |format|
       if @playlist_story.destroy
-        # TODO (Legg til notice her når story blir lagt til i playlist)
+        format.turbo_stream do
+          render turbo_stream: [
+            turbo_stream.remove(@playlist_story)
+          ]
+        end
       else
         flash[:notice] = @playlist_story.errors.full_messages.to_sentence
       end
