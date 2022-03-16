@@ -13,7 +13,7 @@
             <!-- Edit story button -->
             <% if current_user.id == story.user_id %>
               <li>
-                <%= link_to "Endre story", edit_story_path(story), class: "dropdown-item" %>
+                <%= link_to t('.edit_story'), edit_story_path(story), class: "dropdown-item" %>
               </li>
             <% end %>
           <% end %>
@@ -52,11 +52,9 @@
 
       </div>
       <br>
-      <p class="card-text" ><small class="text-muted"> Lastet opp for
-        <%= time_ago_in_words(story.created_at) %> siden  </small></p>
+      <p class="card-text" ><small class="text-muted"> <%= t('.uploaded') %>
+        <%= time_ago_in_words(story.created_at) %> <%= t('.ago') %> </small></p>
     </div>
   </div>
 
 </div>
-
-

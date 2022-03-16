@@ -5,7 +5,7 @@
     <%= form_for(resource, as: resource_name, data: { turbo: false}, url: registration_path(resource_name)) do |f| %>
 
       <div class="mb-3">
-        <%= f.label :username, "Brukernavn" %><br />
+        <%= f.label :usernamet, t(".username") %><br />
         <%= f.text_field :username, autofocus: true, autocomplete: "Username", class: "form-control"%>
         <%= error_message_on(f.object, :username) %>
       </div>
@@ -17,7 +17,7 @@
       </div>
 
       <div class="mb-3">
-        <%= f.label :password, "Passord" %>
+        <%= f.label :password, t(".password") %>
         <% if @minimum_password_length %>
           <em>(<%= @minimum_password_length %> tegn minimum)</em>
         <% end %><br />
@@ -26,7 +26,7 @@
       </div>
 
       <div class="mb-5">
-        <%= f.label :password_confirmation, "Bekreft passord" %><br />
+        <%= f.label :password_confirmation, t(".confirm_password")  %><br />
         <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control"%>
         <%= error_message_on(f.object, :password_confirmation) %>
       </div>
@@ -36,20 +36,10 @@
       </div>
 
       <div class="mb-3">
-        <p>Har du allerede en konto? <%= render "devise/shared/links" %><p>
+        <p> <%= t(".already_have_an_account") %> <%= render "devise/shared/links" %> <p>
       </div>
 
     <% end %>
 
   </div>
 </div>
-
-
-
-
-
-
-
-
-
-
