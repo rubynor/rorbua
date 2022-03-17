@@ -1,0 +1,30 @@
+<!-- Stories -->
+<div id="stories" class="feed_stories_container">
+
+  <div class="container">
+    <br>
+    <div class="row">
+
+      <h2> <%= t('.title') %></h2>
+      <br>
+
+      <% @stories.each do |story| %>
+        <%= render 'stories/story_card', story: story %>
+      <% end %>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+

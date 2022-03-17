@@ -1,29 +1,51 @@
-<%= form_with(model: story) do |form| %>
-  <div class="mb-3">
-    <%= form.label :title, "Tittel", class: "form-label" %>
-    <%= form.text_field :title, class: "form-control" %>
-    <%= error_message_on(form.object, :title) %>
-  </div>
+<div id="story-form">
+  <%= form_with(model: story) do |form| %>
+    <div class="mb-3">
+      <%= form.label :title, t('.title'), class: "form-label" %>
+      <span class="material-icons mx-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Legg til en tittel for ditt innlegg">
+      info_outline
+    </span>
+      <%= form.text_field :title, class: "form-control" %>
+      <%= error_message_on(form.object, :title) %>
+    </div>
 
-  <div class="mb-3">
-    <%= form.label :description, "Beskrivelse", class: "form-label" %>
-    <%= form.text_area :description, class: "form-control", :size => "50x5" %>
-    <%= error_message_on(form.object, :description) %>
-  </div>
+    <div class="mb-3">
+      <%= form.label :description, t('.description'), class: "form-label" %>
+      <span class="material-icons mx-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Legg til en beskrivelse for ditt innlegg (valgfritt)">
+      info_outline
+    </span>
+      <%= form.text_area :description, class: "form-control", :size => "50x5" %>
+      <%= error_message_on(form.object, :description) %>
+    </div>
 
-  <div class="mb-5" id="file_input">
-    <%= form.label :story_file, "Velg fil", class: "form-label" %>
-    <%= form.file_field :story_file, class: "form-control" %>
-    <%= error_message_on(form.object, :story_file) %>
-  </div>
+    <div class="mb-5" id="file_input" >
+      <%= form.label :story_file, t('.choose_file'), class: "form-label" %>
+      <span class="material-icons mx-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Her legger du inn en lydfil andre kan høre på">
+      info_outline
+    </span>
+      <%= form.file_field :story_file, class: "form-control" %>
+      <%= error_message_on(form.object, :story_file) %>
+    </div>
 
-  <div>
-    <%= form.number_field :user_id, id: :story_user_id, value: current_user.id, type: :hidden %>
-  </div>
+    <div>
+      <%= form.number_field :user_id, id: :story_user_id, value: current_user.id, type: :hidden %>
+    </div>
 
-  <div class="mb-4">
-      <%= form.submit "Opprett story", class: 'btn btn-primary btn-block' %>
-  </div>
+    <div class ="field" id="checkboxes">
+      <%= form.label :story, "Velg en til flere kategorier:", class: "form-label" %>
+      <span class="material-icons mx-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Legg til en eller flere kategorier">
+      info_outline
+    </span>
+      <br>
+      <%= collection_check_boxes(:story, :category_ids, Category.all, :id, :name) do |b|
+        b.label(:"data-value" => b.value) { b.check_box + b.label }
+      end %>
+      <%= error_message_on(form.object, :category_ids) %>
+    </div>
 
-<% end %>
+    <div class="mb-4">
+      <%= form.submit class: 'btn btn-primary btn-block' %>
+    </div>
 
+  <% end %>
+</div>

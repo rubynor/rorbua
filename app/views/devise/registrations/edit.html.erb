@@ -3,9 +3,15 @@
 
     <!-- <h2>Endre <%= resource_name.to_s.humanize %></h2> -->
 
-    <h2>Endre konto</h2>
+    <h2> <%= t(".title") %> </h2>
 
     <%= form_for(resource, as: resource_name, data: { turbo: false}, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+
+      <div class="mb-3">
+        <%= f.label :username, t(".username") %><br />
+        <%= f.text_field :username, autofocus: true, class: "form-control"%>
+        <%= error_message_on(f.object, :email) %>
+      </div>
 
       <div class="mb-3">
         <%= f.label :email %><br />
@@ -18,44 +24,44 @@
       <% end %>
 
       <div class="mb-3">
-        <%= f.label :password, "Nytt passord" %> <i>(la stå tom om du ikke ønsker å endre)</i><br />
+        <%= f.label :password, t(".new_password") %> <i> <%= t(".leave_empty") %> </i><br />
         <%= f.password_field :password, autocomplete: "new-password", class: "form-control"%>
         <%= error_message_on(f.object, :password) %>
         <% if @minimum_password_length %>
 
-          <em><%= @minimum_password_length %> tegn minimum</em>
+          <em><%= @minimum_password_length %> <%= t(".letters_minimum") %> </em>
         <% end %>
       </div>
 
       <div class="mb-3">
-        <%= f.label :password_confirmation, "Bekreft nytt passord" %><br />
+        <%= f.label :password_confirmation, t(".confirm_new_password") %><br />
         <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control"%>
         <%= error_message_on(f.object, :password_confirmation) %>
       </div>
 
       <div class="mb-5">
-        <%= f.label :current_password, "Nåværende passord" %> <br />
+        <%= f.label :current_password, t(".current_password") %> <br />
         <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control"%>
         <%= error_message_on(f.object, :current_password) %>
       </div>
 
       <div class="mb-4">
-        <%= f.submit 'Oppdater', :class => 'btn btn-primary btn-block' %>
+        <%= f.submit t(".update_account"), :class => 'btn btn-primary btn-block' %>
       </div>
-
     <% end %>
 
     <div class="mb-3">
-      <%= button_to "Jeg vil slette kontoen min", registration_path(resource_name), method: :delete,
-                    form: {data: {turbo_confirm: 'Are you sure?'}}, :class => 'btn btn-secondary btn-block' %>
+      <%= button_to t(".i_want_to_delete_my_acount"), registration_path(resource_name), method: :delete,
+                    form: {data: {turbo_confirm: t(".are_you_sure") }}, :class => 'btn btn-secondary btn-block' %>
     </div>
 
     <div class="mb-3">
-      <%= link_to "Tilbake", :back %>
+      <%= link_to t(".back"), :back %>
     </div>
 
   </div>
 </div>
+
 
 
 

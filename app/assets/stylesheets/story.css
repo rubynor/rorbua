@@ -1,0 +1,14 @@
+#checkboxes input {
+    margin-right: 2px;
+}
+
+#checkboxes label {
+    margin-right: 10px;
+}
+
+#story-form span:hover {
+    border: none;
+    opacity: 0.6;
+    transition: 0.3s;
+    cursor: pointer;
+}
