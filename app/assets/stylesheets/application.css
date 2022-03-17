@@ -23,6 +23,16 @@
     --gray: #37474F;
 }
 
+.no-link{
+    text-decoration: none;
+    color: black;
+}
+
+.no-link:hover {
+    text-decoration: none;
+    color: black;
+}
+
 .color_test {
     color: var(--green);
 }

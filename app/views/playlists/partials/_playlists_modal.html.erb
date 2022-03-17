@@ -1,0 +1,39 @@
+<div class="modal fade" id="playlist-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Legg til i spilleliste</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body ">
+
+        <% if user_signed_in? %>
+
+
+          <div id="new_playlist_div">
+
+          </div>
+          <div class="list-group mt-2" id="playlists_list_group">
+
+            <% playlists = current_user.playlists.where("display = true") %>
+            <% playlists.reverse_each do |playlist| %>
+
+              <%= button_to playlist_stories_path(story_id: story, playlist_id: playlist), hidden:true do%>
+                <button class="list-group-item list-group-item-action" data-bs-dismiss="modal" type="submit"><%= playlist.title %></button>
+              <% end %>
+
+            <% end %>
+          </div>
+
+        <% else %>
+          Du må logge inn for å legge til i spilleliste
+        <% end %>
+
+      </div>
+      <div class="modal-footer">
+        <%= render "playlists/partials/new_playlist_btn" %>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

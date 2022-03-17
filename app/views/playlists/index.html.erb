@@ -1,0 +1,13 @@
+<h1 class="py-2">Mine spillelister</h1>
+
+<div id="new_playlist_div">
+
+</div>
+<%= render "playlists/partials/new_playlist_btn" %>
+
+<div id="playlists" class="my-2">
+  <% playlists = @playlists %>
+  <% playlists.each do |playlist| %>
+    <%= render "playlists/partials/test_playlist", playlist: playlist %>
+  <% end %>
+</div>
