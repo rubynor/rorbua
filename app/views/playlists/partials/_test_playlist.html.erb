@@ -1,0 +1,17 @@
+
+<div class="card mt-2" id="<%= dom_id playlist %>">
+    <% if playlist.title != "Favoritter" and playlist.title != "Mine opplastninger" %>
+      <li class="dropdown position-absolute top-0 end-0 mt-1" style="list-style-type: none;">
+        <a href="#" class="nav-link" data-bs-toggle="dropdown" role="button" aria-expanded="false">
+          <span class="material-icons" style="color:black;">more_vert</span>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end me-1 justify-content-center">
+          <%= button_to "Slett spilleliste", playlist, method: :delete, class:"dropdown-item", style:"color:red", form: {data: {turbo_confirm: 'Er du sikker?'}}%>
+        </ul>
+      </li>
+    <% end %>
+    <div class="card-body">
+      <h3 class="card-title"><%= link_to playlist.title, playlist, style: "text-decoration:none; color:black" %></h3>
+      <p><%= playlist.playlist_stories.count %> stories</p>
+    </div>
+</div>

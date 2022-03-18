@@ -44,9 +44,12 @@
 
 
         <div class="col-3 col-md">
-          <!-- Favorite button -->
-          <div id="<%= "#{dom_id story}_favourite_btn" %>">
-            <%= render 'favourites/favourite_btn', story: story %>
+
+          <div class="d-flex p-1">
+            <span type="button" class="btn btn-secondary material-icons" data-bs-toggle="modal" data-bs-target="#playlist-modal" aria-expanded="false" style="color:black;background-color: transparent; border: none">
+              playlist_add
+            </span>
+            <p class="p-2">Lagre</p>
           </div>
         </div>
 
@@ -58,3 +61,5 @@
   </div>
 
 </div>
+
+<%= render "playlists/partials/playlists_modal", story: story %>

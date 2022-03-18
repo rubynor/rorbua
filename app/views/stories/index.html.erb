@@ -5,8 +5,12 @@
     <div class="row">
 
     <% @stories.each do |story| %>
-      <%= render 'stories/story_card', story: story %>
-    <% end %>
+      <%= link_to play_path story do %>
+
+          <%= render "stories/partials/story_card", story: story %>
+
+        <% end %>
+      <% end %>
 
     </div>
   </div>
