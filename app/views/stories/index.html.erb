@@ -1,15 +1,9 @@
 <div id="stories">
-
   <div class="container-fluid">
-
     <div class="row">
 
-    <% @stories.each do |story| %>
-      <%= link_to play_path story do %>
-
-          <%= render "stories/partials/story_card", story: story %>
-
-        <% end %>
+      <% @stories.each do |story| %>
+        <%= render "stories/story_card", story: story %>
       <% end %>
 
     </div>
