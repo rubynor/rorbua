@@ -108,12 +108,12 @@ nb:
     edit:
       delete_story: "Slett story"
       show_story: "Vis story"
-      back_to_stories: "Tilbake til stories"
+      back_to_stories: "Tilbake"
     my_stories:
       title: "Mine stories"
     new:
       title: "Ny story"
-      back_to_stories: "Tilbake til stories"
+      back_to_stories: "Tilbake til startsiden"
     play:
       autoplay_next: "Spill av neste automatisk"
       back_to_home: "Tilbake til hjem"
