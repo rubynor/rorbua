@@ -4,9 +4,9 @@
 
     <% @stories.each do |story| %>
       <%= link_to play_path story do %>
-
+        <div class="no-link">
           <%= render "stories/partials/story_card", story: story %>
-
+        </div>
         <% end %>
       <% end %>
 
