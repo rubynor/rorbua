@@ -35,16 +35,15 @@
 
     <%= render 'layouts/navbar' %>
     <%= render 'layouts/sidebar' %>
-    <%= render 'layouts/bottom_navbar' %>
 
-    <%= render 'layouts/bottom_navbar' %>
 
-  <!-- Welcome -->
+
+
     <% if current_page?(root_path) %>
       <%= render "layouts/welcome_alert" %>
     <% end %>
 
-  <div class="container mb-5 mb-lg-0" id="primary-container">
+  <div class="container mb-lg-0" id="primary-container">
 
       <div class="row">
 
@@ -53,6 +52,8 @@
 
         <div class="col">
           <%= yield %>
+          <%= yield :audio_ghost %>
+          <%= yield :bot_nav %>
         </div>
 
         <div class="col-0 col-md-2 p-0 m-0">
@@ -61,6 +62,10 @@
       </div>
     </div>
 
+    <div class="fixed-bottom">
+      <%= yield :audio_controls %>
+      <%= render 'layouts/bottom_navbar' %>
+    </div>
     <%= render 'layouts/notice' %>
 
   </body>

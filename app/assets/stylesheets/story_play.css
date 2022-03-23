@@ -1,0 +1,15 @@
+.play-story-container{
+
+}
+
+.play-story-container img {
+    max-width: 100%;
+    max-height: 300px;
+    border-radius: 7%;
+    object-fit: contain;
+}
+
+.play-story-container > div {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
