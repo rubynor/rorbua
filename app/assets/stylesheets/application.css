@@ -125,6 +125,8 @@
     }
 }
 
-.small-container {
-    max-width: 600px;
+@media screen and (min-width: 990px) {
+    .small-container {
+        width: 50%;
+    }
 }
