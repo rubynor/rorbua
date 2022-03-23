@@ -23,7 +23,7 @@
     <!-- Og fjern denne end taggen -->
     <div class="card-body px-5">
       <h5 class="card-title"><%= story.title %></h5>
-      <p class="card-text"><%= story.user.username %></p>
+      <%= link_to story.user.username, profile_path(story.user), class: "card-text" %>
       <p class="card-text"><%= story.description %></p>
 
       <!-- signed in -->
