@@ -124,3 +124,9 @@
         width: 400px;
     }
 }
+
+@media screen and (min-width: 990px) {
+    .small-container {
+        width: 50%;
+    }
+}
