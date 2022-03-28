@@ -1,9 +1,6 @@
-<%= content_for :audio_controls do %>
-
+<% content_for :audio_controls do %>
     <div class="row align-items-center justify-content-center mb-lg-4">
-
       <div class="col col-md-8 col-lg-5">
-
         <div class="card shadow w-100 audio-controls px-2" data-controller="audioplayer">
           <audio data-audioplayer-target="audio" src="<%= rails_blob_url(@story.story_file) %>" preload="metadata"></audio>
           <div class="w-100 mt-1">
@@ -30,11 +27,8 @@
                 </div>
               </div>
             </div>
-
-
             <progress data-audioplayer-target="progressbar" max="1" value="0" class="w-100 m-0"></progress>
           </div>
-
           <div class="row justify-content-center mt-0">
             <div class="col-12 text-align-center">
                 <div class="d-flex flex-row align-content-center justify-content-center">
@@ -43,11 +37,9 @@
                   <% else %>
                     <%= button_to "skip_previous", play_path(@story.previous_newer), class: "material-icons btn btn-sm btn-primary", style: "color: white", id:"btn-prev", method: :get %>
                   <% end %>
-
                   <button id="button_toggle" class="material-icons btn btn-sm btn-primary mx-2" style="color: white" data-action="click->audioplayer#toggle">
                     play_arrow
                   </button>
-
                   <% if @story.next_older.nil? %>
                     <button class="material-icons btn btn-sm btn-primary disabled">skip_next</button>
                   <% else %>
@@ -55,7 +47,6 @@
                   <% end %>
                 </div>
             </div>
-
             <div class="d-none d-lg-flex col-8 col-lg-6 col-xl-5">
               <div class="d-flex justify-content-center w-100">
                 <span class="material-icons">volume_down</span>
@@ -63,12 +54,8 @@
                 <span class="material-icons">volume_up</span>
               </div>
             </div>
-
           </div>
-
         </div>
-
       </div>
     </div>
-
 <% end %>

@@ -53,7 +53,6 @@
         <div class="col">
           <%= yield %>
           <%= yield :audio_ghost %>
-          <%= yield :bot_nav %>
         </div>
 
         <div class="col-0 col-md-2 p-0 m-0">
@@ -61,12 +60,13 @@
 
       </div>
     </div>
+    <%= render 'layouts/notice' %>
 
-    <div class="fixed-bottom">
+    <div class="fixed-bottom bg-blue">
       <%= yield :audio_controls %>
       <%= render 'layouts/bottom_navbar' %>
     </div>
-    <%= render 'layouts/notice' %>
+
 
   </body>
 </html>
