@@ -1,5 +1,23 @@
-<p style="color: green"><%= notice %></p>
+<div class="text-center">
+  <br>
 
-<img class="img-responsive center-block d-block mx-auto" alt="Sample Image" style="width:200px" src="https://www.pngitem.com/pimgs/m/627-6275754_chad-profile-pic-profile-photo-circle-png-transparent.png">
+  <div class="mb-4">
+    <% if @user.user_image.attached? %>
+      <%= image_tag url_for(@user.user_image), alt: "Image", class: "profile-img" %>
+    <% else %>
+      <div class="mb-1">
+        <%= image_tag "user.png" %>
+      </div>
+      <%= link_to "Last opp profilbilde",  edit_user_registration_path, class: "btn btn-secondary" %>
+    <% end %>
+  </div>
 
-<h3 class="text-center"><%= @user.username %></h3>
+  <div class="mb-3">
+    <h3> <%= @user.username %> </h3>
+    <p> <%= @user.stories.size %> <%= "story".pluralize(@user.stories.size) %> </p>
+
+    <% if @user == current_user %>
+      <%= link_to "Endre min konto",  edit_user_registration_path, class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

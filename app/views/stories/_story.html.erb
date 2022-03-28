@@ -22,9 +22,19 @@
     <% end %>
     <!-- Og fjern denne end taggen -->
     <div class="card-body px-5">
-      <h5 class="card-title"><%= story.title %></h5>
-      <%= link_to story.user.username, profile_path(story.user), class: "card-text" %>
-      <p class="card-text"><%= story.description %></p>
+      <h5 class="card-title mb-3" ><%= story.title %></h5>
+
+      <div class="row mb-3" >
+        <% if story.user.user_image.attached? %>
+          <div style="width:60px">
+            <%= image_tag url_for( story.user.user_image), alt: "Image", class: "medium-profile-img" %>
+          </div>
+        <% end %>
+        <div class="col">
+          <%= link_to story.user.username, profile_path(story.user), class: "card-text" %>
+          <p class="card-text"><%= story.description %></p>
+        </div>
+      </div>
 
       <!-- signed in -->
       <div class="row d-flex align-items-top justify-content-center">

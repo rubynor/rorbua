@@ -1,7 +1,5 @@
-<div class="container small-container">">
+<div class="container small-container">
   <div class="row">
-
-    <!-- <h2>Endre <%= resource_name.to_s.humanize %></h2> -->
 
     <h2> <%= t(".title") %> </h2>
 
@@ -11,6 +9,12 @@
         <%= f.label :username, t(".username") %><br />
         <%= f.text_field :username, autofocus: true, class: "form-control"%>
         <%= error_message_on(f.object, :email) %>
+      </div>
+
+      <div class="mb-3">
+        <%= f.label :user_image, "Profilbilde", class: "form-label" %>
+        <%= f.file_field :user_image, class: "form-control" %>
+        <%= error_message_on(f.object, :profile_img) %>
       </div>
 
       <div class="mb-3">
