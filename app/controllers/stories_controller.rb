@@ -20,6 +20,7 @@
     end
     @volume = cookies[:volume]
     $story = @story
+    get_suggestions
   end
 
   # GET /stories/1 or /stories/1.json
@@ -94,6 +95,10 @@
     # Use callbacks to share common setup or constraints between actions.
     def set_story
       @story = Story.find(params[:id])
+    end
+
+    def get_suggestions
+      @suggestions = Story.joins(:categories).where.not(id:@story).distinct.order("RANDOM()").limit(5)
     end
 
     def invalid_story

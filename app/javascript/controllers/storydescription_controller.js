@@ -16,7 +16,6 @@ export default class extends Controller {
         this.desc_truncTarget.hidden = true;
         this.show_lessTarget.hidden = false;
         this.show_moreTarget.hidden = true;
-        window.scrollTo(0, document.body.scrollHeight);
     }
 
     hideDesc(){
@@ -24,7 +23,6 @@ export default class extends Controller {
         this.desc_truncTarget.hidden = false;
         this.show_lessTarget.hidden = true;
         this.show_moreTarget.hidden = false;
-        window.scrollTo(0, 0);
     }
 
 }
