@@ -13,3 +13,31 @@
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
+progress{
+    height: 12px;
+    background-color: #FAFAFA;
+    border-radius: 10px;
+}
+
+/* chrome og safari */
+
+progress::-webkit-progress-bar {
+    border: solid 1px black;
+    border-radius: 10px;
+    background-color: #FAFAFA;
+}
+
+progress::-webkit-progress-value {
+    border-radius: 10px;
+    background-color: #443D45;
+}
+
+/* Mozilla firefox */
+
+progress::-moz-progress-bar {
+    border-radius: 10px;
+    background: #443D45;
+}
+
+

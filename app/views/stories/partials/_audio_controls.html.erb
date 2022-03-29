@@ -1,7 +1,7 @@
 <% content_for :audio_controls do %>
     <div class="row align-items-center justify-content-center mb-lg-4">
       <div class="col col-md-8 col-lg-5">
-        <div class="card shadow w-100 audio-controls px-2 border-dark py-1" data-controller="audioplayer">
+        <div class="card shadow w-100 audio-controls px-2 border-secondary py-1"  data-controller="audioplayer">
           <audio data-audioplayer-target="audio" src="<%= rails_blob_url(@story.story_file) %>" preload="metadata"></audio>
           <div class="w-100 mt-1">
             <div class="row">
@@ -31,19 +31,19 @@
           </div>
           <div class="row justify-content-center mt-0">
             <div class="col-12 text-align-center">
-                <div class="d-flex flex-row align-content-center justify-content-center">
+                <div class="d-flex flex-row align-items-center justify-content-center">
                   <% if @story.previous_newer.nil? %>
-                    <button class="material-icons btn btn-sm btn-primary disabled">skip_previous</button>
+                    <button class="material-icons btn btn-sm btn-dark disabled p-1 rounded-circle p-lg-2">skip_previous</button>
                   <% else %>
-                    <%= button_to "skip_previous", play_path(@story.previous_newer), class: "material-icons btn btn-sm btn-primary", style: "color: white", id:"btn-prev", method: :get %>
+                    <%= button_to "skip_previous", play_path(@story.previous_newer), class: "material-icons btn btn-sm btn-dark p-1 rounded-circle p-lg-2", style: "color: white", id:"btn-prev", method: :get %>
                   <% end %>
-                  <button id="button_toggle" class="material-icons btn btn-sm btn-primary mx-2" style="color: white" data-action="click->audioplayer#toggle">
+                  <button id="button_toggle" class="material-icons btn btn-sm btn-dark mx-2 p-2 rounded-circle p-lg-2" style="color: white" data-action="click->audioplayer#toggle">
                     play_arrow
                   </button>
                   <% if @story.next_older.nil? %>
-                    <button class="material-icons btn btn-sm btn-primary disabled">skip_next</button>
+                    <button class="material-icons btn btn-sm btn-dark disabled p-1 rounded-circle p-lg-2">skip_next</button>
                   <% else %>
-                    <%= button_to "skip_next", play_path(@story.next_older), class: "material-icons btn btn-sm btn-primary", style: "color: white", id:"btn-next", method: :get %>
+                    <%= button_to "skip_next", play_path(@story.next_older), class: "rounded-circle material-icons btn btn-sm btn-dark p-1 p-lg-2", style: "color: white", id:"btn-next", method: :get %>
                   <% end %>
                 </div>
             </div>
