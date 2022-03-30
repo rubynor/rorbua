@@ -36,7 +36,7 @@
     <%= render 'layouts/navbar' %>
     <%= render 'layouts/sidebar' %>
 
-
+  <!-- Welcome -->
     <% if current_page?(root_path) %>
       <%= render "layouts/welcome_alert" %>
     <% end %>
@@ -44,20 +44,16 @@
     <div class="container-fluid mb-lg-0" id="primary-container">
       <div class="row">
 
-        <div class="col-12 col-xxl-1 p-0 m-0">
-          <%= yield :left %>
+        <div class="col-0 col-xl-1 p-0 m-0">
         </div>
 
         <div class="col">
           <%= yield %>
-          <div class="d-none d-lg-block">
-            <%= yield :audio_ghost %>
-          </div>
-
-          <div class="col-0 col-xxl-1 p-0 m-0">
-          </div>
-
         </div>
+
+        <div class="col-0 col-xxl-1 p-0 m-0">
+        </div>
+
       </div>
     </div>
 
