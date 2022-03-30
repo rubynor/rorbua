@@ -42,10 +42,9 @@
     <% end %>
 
     <div class="container-fluid mb-lg-0" id="primary-container">
-
       <div class="row">
 
-        <div class="col-12 col-lg-2 col-xxl-1 p-0 m-0">
+        <div class="col-12 col-xxl-1 p-0 m-0">
           <%= yield :left %>
         </div>
 
@@ -55,9 +54,10 @@
             <%= yield :audio_ghost %>
           </div>
 
-        <div class="col-0 col-xxl-1 p-0 m-0">
-        </div>
+          <div class="col-0 col-xxl-1 p-0 m-0">
+          </div>
 
+        </div>
       </div>
     </div>
 
@@ -67,7 +67,6 @@
       <%= yield :audio_controls %>
       <%= render 'layouts/bottom_navbar' %>
     </div>
-
 
   </body>
 </html>
