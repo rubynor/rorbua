@@ -47,6 +47,7 @@ class PlaylistStoriesController < ApplicationController
     @playlist_story = PlaylistStory.find_by(id: params[:id])
     @playlist = @playlist_story.playlist
     @story = @playlist_story.story
+    @suggestions = Story.joins(:categories).where.not(id:@story).distinct.order("RANDOM()").limit(8)
   end
 
 end

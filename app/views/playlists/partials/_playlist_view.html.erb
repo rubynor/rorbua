@@ -1,21 +1,19 @@
-<%= content_for :right do %>
-  <div class="container-fluid mb-2">
-    <br>
-    <h3>Neste i spilleliste <%= @playlist.title %></h3>
-    <div class="list-group">
-      <% @playlist.playlist_stories.reverse_each do |ps| %>
+<div class="container-fluid mb-2">
+  <br>
+  <h4>Neste i spilleliste</h4>
+  <div class="list-group">
+    <% @playlist.playlist_stories.reverse_each do |ps| %>
       <% story = ps.story %>
-        <% if story == @story %>
-          <div class="list-group-item list-group-item-action active">
-            <h4><%= story.title %></h4>
-          </div>
-        <% else %>
-          <div class="list-group-item list-group-item-action">
-            <h4><%= story.title %></h4>
-          </div>
-        <% end %>
-
+      <% if story == @story %>
+        <div class="list-group-item list-group-item-action active">
+          <h6><%= story.title %></h6>
+        </div>
+      <% else %>
+        <div class="list-group-item list-group-item-action">
+          <h6><%= story.title %></h6>
+        </div>
       <% end %>
-    </div>
+
+    <% end %>
   </div>
-<% end %>
+</div>
