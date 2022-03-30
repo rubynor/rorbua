@@ -2,8 +2,20 @@
   <div class="container-fluid mb-2">
     <br>
     <h3>Neste i spilleliste <%= @playlist.title %></h3>
-    <div class="row">
-      <h4>nice spilleliste wow</h4>
+    <div class="list-group">
+      <% @playlist.playlist_stories.reverse_each do |ps| %>
+      <% story = ps.story %>
+        <% if story == @story %>
+          <div class="list-group-item list-group-item-action active">
+            <h4><%= story.title %></h4>
+          </div>
+        <% else %>
+          <div class="list-group-item list-group-item-action">
+            <h4><%= story.title %></h4>
+          </div>
+        <% end %>
+
+      <% end %>
     </div>
   </div>
 <% end %>
