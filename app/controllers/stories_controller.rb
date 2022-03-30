@@ -105,7 +105,7 @@
     end
 
     def get_suggestions
-      @suggestions = Story.joins(:categories).where.not(id:@story).distinct.order("RANDOM()").limit(8)
+      @suggestions = Story.joins(:categories).where.not(id:@story).distinct.order("RANDOM()").limit(6)
     end
 
     def invalid_story

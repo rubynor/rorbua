@@ -2,18 +2,22 @@
   <br>
   <h4>Neste i spilleliste</h4>
   <div class="list-group">
-    <% @playlist.playlist_stories.reverse_each do |ps| %>
+    <% @next_in_playlist.each do |ps| %>
+
       <% story = ps.story %>
-      <% if story == @story %>
-        <div class="list-group-item list-group-item-action active">
-          <h6><%= story.title %></h6>
-        </div>
-      <% else %>
+
+      <%= link_to playlist_play_story_path(@playlist, ps) do %>
         <div class="list-group-item list-group-item-action">
           <h6><%= story.title %></h6>
+          <small><%= story.user.username %></small>
         </div>
       <% end %>
 
+    <% end %>
+    <% if @stories_left > 5 %>
+      <div class="list-group-item diabled m-0 pt-0">
+        <small class="text-muted">+<%= @stories_left %> stories</small>
+      </div>
     <% end %>
   </div>
 </div>
