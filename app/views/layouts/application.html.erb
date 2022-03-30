@@ -37,17 +37,15 @@
     <%= render 'layouts/sidebar' %>
 
 
-
-
     <% if current_page?(root_path) %>
       <%= render "layouts/welcome_alert" %>
     <% end %>
 
-  <div class="container mb-lg-0" id="primary-container">
+    <div class="container-fluid mb-lg-0" id="primary-container">
 
       <div class="row">
 
-        <div class="col-12 col-lg-2 p-0 m-0">
+        <div class="col-12 col-lg-2 col-xxl-1 p-0 m-0">
           <%= yield :left %>
         </div>
 
@@ -57,15 +55,12 @@
             <%= yield :audio_ghost %>
           </div>
 
-        </div>
-
-        <div class="col-12 col-lg-3">
-          <%= yield :right %>
-          <%= yield :audio_ghost %>
+        <div class="col-0 col-xxl-1 p-0 m-0">
         </div>
 
       </div>
     </div>
+
     <%= render 'layouts/notice' %>
 
     <div class="fixed-bottom bg-blue">
