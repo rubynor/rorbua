@@ -1,7 +1,19 @@
-<%= render "stories/partials/suggestions" %>
-<%= render "stories/partials/story_play" %>
 <%= render "stories/partials/audio_controls"%>
 <%= render "playlists/partials/playlists_modal", story: @story %>
-<%= content_for :audio_ghost do %>
-  <div class="col-12" style="height: 170px"></div>
-<% end %>
+
+<div class="row">
+  <div class="col-12">
+
+  </div>
+
+  <div class="col-12 col-md-8 col-lg-9">
+    <%= render "stories/partials/story_play" %>
+  </div>
+
+  <div class="col-12 col-md-4 col-lg-3">
+    <%= render "stories/partials/suggestions" %>
+  </div>
+</div>
+
+
+<div class="col-12" style="height: 170px"></div>
