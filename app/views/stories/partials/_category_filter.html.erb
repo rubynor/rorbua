@@ -8,7 +8,7 @@
       <div class="modal-body ">
           <%= form_with url: "/search", method: :get do |form| %>
             <div class ="field" id="checkboxes">
-              <%= form.collection_check_boxes(:category_ids, Category.all, :id, :name) do |b|
+              <%= form.collection_check_boxes(:search_ids, Category.all, :id, :name) do |b|
                 b.label class:"form-check" do
                   b.check_box(class:"form-check-input") + b.text
                 end

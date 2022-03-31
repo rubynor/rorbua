@@ -6,7 +6,7 @@
 
   # GET /stories or /stories.json
   def index
-    @search = params[:category_ids]
+    @search = params[:search_ids]
     index_sort(@search)
   end
 
