@@ -5,7 +5,7 @@
   <div class="row align-items-center">
     <!-- bilde -->
     <div style="width:100px">
-      <% if @user.user_image.attached? && @user.user_image %>
+      <% if @user.user_image.attached? || @user.user_image %>
         <%= image_tag url_for(@user.user_image), alt: "Image", class: "profile-img profile-img-lg" %>
       <% else %>
         <%= image_tag "user.png", style: "width:80px" %>
