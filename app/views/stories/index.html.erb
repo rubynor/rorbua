@@ -1,5 +1,12 @@
+<%= render "stories/partials/category_filter"%>
+
 <div id="stories" class="feed_stories_container">
   <div class="container-fluid">
+    <div class="col-sm-6 items">
+      <span type="button" class="btn btn-secondary material-icons" data-bs-toggle="modal" data-bs-target="#category-modal" aria-expanded="false" style="color:black;background-color: transparent; border: none">
+        filter_list
+      </span>
+    </div>
     <div class="row">
 
       <% @stories.each do |story| %>
