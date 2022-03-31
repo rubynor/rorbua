@@ -100,7 +100,7 @@
 
     def get_suggestions
       @suggestions = Story.joins(:categories).where(categories: @story.categories).where.not(id:@story).distinct.order("RANDOM()").limit(6)
-      if @suggestions.count > 5
+      if @suggestions.count < 5
         @suggestions = Story.order("RANDOM()").limit(6)
       end
       @next = @suggestions.first
