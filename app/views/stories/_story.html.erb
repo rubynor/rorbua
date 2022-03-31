@@ -26,7 +26,7 @@
 
       <div class="row mb-3" >
         <div style="width:60px">
-          <%= link_to profile_path(story.user) do %>
+          <%= link_to profile_stories_path(story.user) do %>
             <% if story.user.user_image.attached? %>
               <%= image_tag url_for( story.user.user_image), alt: "Image", class: "profile-img profile-img-md" %>
             <% else %>
@@ -36,7 +36,7 @@
         </div>
 
         <div class="col">
-          <%= link_to story.user.username, profile_path(story.user), class: "card-text" %>
+          <%= link_to story.user.username, profile_stories_path(story.user), class: "card-text" %>
           <p class="card-text"><%= story.description %></p>
         </div>
       </div>

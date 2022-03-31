@@ -8,7 +8,7 @@
       <% if @user.user_image.attached? %>
         <%= image_tag url_for(@user.user_image), alt: "Image", class: "profile-img profile-img-lg" %>
       <% else %>
-        <%= image_tag "user.png" %>
+        <%= image_tag "user.png", style: "width:80px" %>
       <% end %>
     </div>
     <!-- brukernavn og antall stories -->
@@ -30,7 +30,7 @@
       <div class="row py-2 text-center">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
+            <li class="nav-item">
               <%= link_to "Stories", profile_stories_path(@user), class: "nav-link" %>
             </li>
             <li class="nav-item">

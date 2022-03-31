@@ -3,12 +3,13 @@
 <!-- alle bruker sine spillelister -->
 <div class="container small-container">
 
-  <h1 class="py-2">Mine spillelister</h1>
+  <h1 class="py-2">Spillelister</h1>
 
-  <div id="new_playlist_div">
-
-  </div>
-  <%= render "playlists/partials/new_playlist_btn" %>
+  <% if @user == current_user %>
+    <div id="new_playlist_div">
+      <%= render "playlists/partials/new_playlist_btn" %>
+    </div>
+  <% end %>
 
   <div id="playlists" class="my-2">
     <% playlists = @playlists %>
