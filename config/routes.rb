@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :profiles
-  resources :playlists, only: [:create, :destroy, :index, :new, :show] do
+  resources :playlists, only: [:create, :destroy, :index, :new, :stories] do
     member do
       post :new
     end
@@ -21,11 +21,8 @@ Rails.application.routes.draw do
     get 'my_stories', to: 'stories#my_stories'
     get 'play/:id', to: 'stories#play', as: 'play'
 
-    resources :languages do
-      collection do
-        post :change
-      end
-    end
+    get 'profiles/:id/stories', to: 'profiles#stories', as: 'profile_stories'
+    get 'profiles/:id/playlists', to: 'profiles#playlists', as: 'profile_playlists'
 
     # Defines the root path route ("/")
     root "stories#index"

@@ -1,28 +1,6 @@
 <%= render 'profiles/partials/profile_navbar' %>
 
-<div class="text-center">
-  <br>
-
-  <div class="mb-4">
-    <% if @user.user_image.attached? %>
-      <%= image_tag url_for(@user.user_image), alt: "Image", class: "profile-img profile-img-lg" %>
-    <% else %>
-      <%= image_tag "user.png" %>
-    <% end %>
-  </div>
-
-  <div class="mb-3">
-    <h3> <%= @user.username %> </h3>
-    <p> <%= @user.stories.size %> <%= "story".pluralize(@user.stories.size) %> </p>
-  </div>
-
-  <div class="mb-3">
-    <% if @user == current_user %>
-      <%= link_to "Endre min konto",  edit_user_registration_path, class: "btn btn-secondary" %>
-    <% end %>
-  </div>
-</div>
-
+<!-- alle bruker sine opplastninger -->
 <div class="container-fluid">
 
   <div class="row py-2">
