@@ -99,10 +99,13 @@
     end
 
     def get_suggestions
-      @suggestions = Story.joins(:categories).where(categories: @story.categories).where.not(id:@story).distinct.order("RANDOM()").limit(6)
-      if @suggestions.count < 5
-        @suggestions = Story.order("RANDOM()").limit(6)
-      end
+      #@suggestions_many = Story.joins(:categories).where(categories: @story.categories).where.not(id:@story).distinct.order("RANDOM()").limit(50)
+      #@suggestions = @suggestions_many.limit(6)
+      #if @suggestions.count < 30
+      #  @suggestions = Story.order("RANDOM()").limit(50)
+      #end
+      #@next = @suggestions.order("RANDOM()").first
+      @suggestions = Story.where("created_at < ? ", @story.created_at).order("created_at DESC")
       @next = @suggestions.first
     end
 
