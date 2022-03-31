@@ -29,12 +29,8 @@
 
       <div class="mb-3">
         <%= f.label :password, t(".new_password") %> <i> <%= t(".leave_empty") %> </i><br />
-        <%= f.password_field :password, autocomplete: "new-password", class: "form-control"%>
+        <%= f.password_field :password, autocomplete: "new-password", class: "form-control",placeholder: "#{@minimum_password_length} #{t(".letters_minimum")}"  %>
         <%= error_message_on(f.object, :password) %>
-        <% if @minimum_password_length %>
-
-          <em><%= @minimum_password_length %> <%= t(".letters_minimum") %> </em>
-        <% end %>
       </div>
 
       <div class="mb-3">
