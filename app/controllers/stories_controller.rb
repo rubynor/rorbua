@@ -110,19 +110,20 @@
     end
 
     def get_previous
-      session[:previous_stories] = Array.new if session[:previous_stories].nil?
-      if params[:previous_id].nil?
-        session[:previous_stories].pop
-        id = session[:previous_stories].last
-        if id.nil?
-          @previous = nil
-        else
-          @previous = Story.find(id)
-        end
-      else
-        session[:previous_stories].push params[:previous_id]
-        @previous = Story.find(session[:previous_stories].last)
-      end
+      #session[:previous_stories] = Array.new if session[:previous_stories].nil?
+      #if params[:previous_id].nil?
+      #  session[:previous_stories].pop
+      #  id = session[:previous_stories].last
+      #  if id.nil?
+      #    @previous = nil
+      #  else
+      #    @previous = Story.find(id)
+      #  end
+      #else
+      #  session[:previous_stories].push params[:previous_id]
+      #  @previous = Story.find(session[:previous_stories].last)
+      #end
+      @previous = Story.where("created_at > ?", @story.created_at).first
     end
 
     def invalid_story
