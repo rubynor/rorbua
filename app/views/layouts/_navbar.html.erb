@@ -14,7 +14,7 @@
           <a data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
 
             <% if current_user.user_image.attached? %>
-              <%= image_tag url_for(current_user.user_image), alt: "Image", class: "small-profile-img" %>
+              <%= image_tag url_for(current_user.user_image), alt: "Image", class: "profile-img profile-img-sm" %>
             <% else %>
               <span class="material-icons" style="color:white">account_circle</span>
             <% end %>

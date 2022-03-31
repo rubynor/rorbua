@@ -26,12 +26,15 @@
 
       <div class="row mb-3" >
         <div style="width:60px">
-          <% if story.user.user_image.attached? %>
-            <%= image_tag url_for( story.user.user_image), alt: "Image", class: "medium-profile-img" %>
-          <% else %>
-            <%= image_tag "user.png", style: "width:50px"%>
+          <%= link_to profile_path(story.user) do %>
+            <% if story.user.user_image.attached? %>
+              <%= image_tag url_for( story.user.user_image), alt: "Image", class: "profile-img profile-img-md" %>
+            <% else %>
+              <%= image_tag "user.png", style: "width:50px"%>
+            <% end %>
           <% end %>
         </div>
+
         <div class="col">
           <%= link_to story.user.username, profile_path(story.user), class: "card-text" %>
           <p class="card-text"><%= story.description %></p>

@@ -1,9 +1,11 @@
+<%= render 'profiles/partials/profile_navbar' %>
+
 <div class="text-center">
   <br>
 
   <div class="mb-4">
     <% if @user.user_image.attached? %>
-      <%= image_tag url_for(@user.user_image), alt: "Image", class: "profile-img" %>
+      <%= image_tag url_for(@user.user_image), alt: "Image", class: "profile-img profile-img-lg" %>
     <% else %>
       <%= image_tag "user.png" %>
     <% end %>
@@ -20,8 +22,6 @@
     <% end %>
   </div>
 </div>
-
-
 
 <div class="container-fluid">
 
