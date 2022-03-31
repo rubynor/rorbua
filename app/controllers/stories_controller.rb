@@ -3,11 +3,11 @@
   before_action :authenticate_user!, except: [:index, :show, :play]
   before_action :correct_user, only: [:edit, :update, :destroy]
   before_action :delete_from_aws, only: [:destroy]
-  rescue_from ActiveRecord::RecordNotFound, with: :invalid_story
 
   # GET /stories or /stories.json
   def index
-    @stories = Story.all.order("created_at DESC")
+    @search = params[:search_ids]
+    index_sort(@search)
   end
 
   def my_stories
@@ -96,14 +96,24 @@
       @story = Story.find(params[:id])
     end
 
-    def invalid_story
-      logger.error "Attempt to access invalid story #{params[:id]}"
-      redirect_to stories_path, notice: 'Ugyldig story'
-    end
-
     # Only allow a list of trusted parameters through.
     def story_params
       params.require(:story).permit(:title, :description, :story_file, :user_id, {:category_ids=>[]})
     end
+
+  def index_sort(id)
+    if id.nil?
+        @stories = Story.all.order("created_at DESC")
+    else
+      categoryArray = []
+      categoryArray = Array.new
+      id.each { |x| categoryArray.push(x) }
+        if categoryArray.length == 1
+          @stories = Story.all.order("created_at DESC")
+        else
+          @stories = Story.joins(:categories).where(categories: categoryArray).distinct
+        end
+    end
+  end
 
 end
