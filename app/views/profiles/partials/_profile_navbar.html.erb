@@ -1,4 +1,5 @@
-<div class="container bg-light" style="padding-top:20px">
+<div class="container-flow bg-light" style="padding-top:20px">
+  <div class="container">
 
   <!-- profilbilde og info -->
   <div class="row align-items-center">
@@ -16,7 +17,7 @@
       <p> <%= @user.stories.size %> <%= "story".pluralize(@user.stories.size) %> </p>
     </div>
     <!-- endre-konto-knapp -->
-    <div style="width:200px">
+    <div style="width:180px">
       <% if @user == current_user %>
         <%= link_to "Endre min konto",  edit_user_registration_path, class: "btn btn-secondary" %>
       <% end %>
@@ -41,4 +42,5 @@
     </nav>
   </div>
 
+  </div>
 </div>
