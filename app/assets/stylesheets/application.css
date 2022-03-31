@@ -28,8 +28,17 @@
     color: black;
 }
 
+a > div {
+    text-decoration: none;
+    color: black;
+}
+a>div:hover {
+    text-decoration: none;
+}
+
 .no-link:hover {
     text-decoration: none;
+    text-underline: none;
     color: black;
 }
 

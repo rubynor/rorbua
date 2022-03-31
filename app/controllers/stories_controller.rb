@@ -21,13 +21,7 @@
     @volume = cookies[:volume]
     $story = @story
     get_suggestions
-    logger.debug params
-    if params[:previous_id].nil?
-      @previous = nil
-    else
-      @previous = Story.find(params[:previous_id])
-    end
-    @next = @suggestions.last
+    get_previous
   end
 
   # GET /stories/1 or /stories/1.json
@@ -105,7 +99,24 @@
     end
 
     def get_suggestions
-      @suggestions = Story.joins(:categories).where.not(id:@story).distinct.order("RANDOM()").limit(6)
+      @suggestions = Story.joins(:categories).where(categories: @story.categories).where.not(id:@story).distinct.order("RANDOM()").limit(6)
+      @next = @suggestions.first
+    end
+
+    def get_previous
+      session[:previous_stories] = Array.new if session[:previous_stories].nil?
+      if params[:previous_id].nil?
+        session[:previous_stories].pop
+        id = session[:previous_stories].last
+        if id.nil?
+          @previous = nil
+        else
+          @previous = Story.find(id)
+        end
+      else
+        session[:previous_stories].push params[:previous_id]
+        @previous = Story.find(session[:previous_stories].last)
+      end
     end
 
     def invalid_story

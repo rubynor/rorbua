@@ -35,7 +35,7 @@
                   <% if @previous.nil? %>
                     <button class="material-icons btn btn-sm btn-dark disabled p-1 rounded-circle p-lg-2">skip_previous</button>
                   <% else %>
-                    <%= button_to "skip_previous", play_path(@previous), class: "material-icons btn btn-sm btn-dark p-1 rounded-circle p-lg-2", style: "color: white", id:"btn-prev", method: :get %>
+                    <%= link_to "skip_previous", play_path(@previous), class: "material-icons btn btn-sm btn-dark p-1 rounded-circle p-lg-2", style: "color: white", id:"btn-prev", method: :get %>
                   <% end %>
                   <button id="button_toggle" class="material-icons btn btn-sm btn-dark mx-2 p-2 rounded-circle p-lg-2" style="color: white" data-action="click->audioplayer#toggle">
                     play_arrow
@@ -43,7 +43,7 @@
                   <% if @next.nil? %>
                     <button class="material-icons btn btn-sm btn-dark disabled p-1 rounded-circle p-lg-2">skip_next</button>
                   <% else %>
-                    <%= button_to "skip_next", play_path(id: @next, previous_id: @story.id), class: "rounded-circle material-icons btn btn-sm btn-dark p-1 p-lg-2", style: "color: white", id:"btn-next", method: :get %>
+                    <%= link_to "skip_next", play_path(id: @next, previous_id: @story), class: "rounded-circle material-icons btn btn-sm btn-dark p-1 p-lg-2", style: "color: white", id:"btn-next", method: :get %>
                   <% end %>
                 </div>
             </div>

@@ -1,12 +1,19 @@
-
-
-  <%= link_to play_path story do %>
-    <div class="card mb-1 mt-1 no-link h-100">
-      <div class="card-body">
-        <h5 class="card-title"><%= story.title %></h5>
-        <p class="card-title"><%= story.user.username %></p>
-        <p class="card-text" ><small class="text-muted"><%= t('.uploaded') %>
-          <%= time_ago_in_words(story.created_at) %> <%= t('.ago') %> </small></p>
+<%= link_to play_path story do %>
+  <div class="card mb-1 mt-1 h-100">
+    <div class="card-body">
+      <h5 class="card-title"><%= story.title %></h5>
+      <small><%= story.duration %></small>
+      <p class="card-title"><%= story.user.username %></p>
+      <div class="">
+        <% i = 0 %>
+        <% story.categories.each do |category| %>
+          <% break if i > 2 %>
+          <button class="btn btn-sm btn-outline-success"><%= category.name %></button>
+          <% i+=1 %>
+        <% end %>
       </div>
+      <p class="card-text" ><small class="text-muted"><%= t('.uploaded') %>
+        <%= time_ago_in_words(story.created_at) %> <%= t('.ago') %> </small></p>
     </div>
-  <% end %>
+  </div>
+<% end %>

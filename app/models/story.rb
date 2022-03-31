@@ -31,6 +31,15 @@ class Story < ApplicationRecord
     Story.where("id > ?", id).order(id: :asc).limit(1).first
   end
 
+  def duration
+    total_seconds = story_file.blob.metadata.fetch(:duration, nil).to_i
+
+    seconds = total_seconds % 60
+    minutes = (total_seconds / 60) % 60
+
+    format("%02d:%02d", minutes, seconds)
+  end
+
   private
 
   def category_is_selected
