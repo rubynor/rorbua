@@ -46,7 +46,7 @@
     </div>
     <div class="col-12">
       <% @story.categories.each do |category| %>
-        <button class="btn btn-sm btn-outline-success"><%= category.name %></button>
+        <%= link_to category.name, stories_path(search_ids: [0, category.id]), class:"btn btn-sm btn-outline-success" %>
       <% end %>
     </div>
     <div class="col-12">
