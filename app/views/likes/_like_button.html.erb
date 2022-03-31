@@ -4,16 +4,16 @@
     <% like = story.likes.find_by(user_id: current_user.id) %>
     <% if like.nil? %>
       <%= button_to likes_path, params: { like: {story_id: story }}, method: :post, class: "action_button"  do %>
-        <span class="material-icons" style="" >thumb_up_off_alt</span>
+        <span class="btn material-icons" style="" >thumb_up_off_alt</span>
       <% end %>
     <% else %>
       <%= button_to like_path(like), method: :delete, class: "action_button"  do %>
-        <span class="material-icons" style="color:royalblue">thumb_up</span>
+        <span class="btn material-icons" style="color:royalblue">thumb_up</span>
       <% end %>
     <% end %>
   <% else %>
     <%= button_to new_user_session_path, method: :get, class: "action_button" do %>
-      <span class="material-icons">thumb_up_off_alt</span>
+      <span class="btn material-icons">thumb_up_off_alt</span>
     <% end %>
   <% end %>
   <p><%= story.likes.count %></p>

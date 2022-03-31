@@ -26,7 +26,7 @@
 
         <% end %>
 
-        <% if current_user == @playlist.user and @playlist.title != "Favoritter" and @playlist.title != "Mine opplastninger" %>
+        <% if current_user == @playlist.user and @playlist.title != "Mine opplastninger" %>
 
           <%= button_to "Fjern fra spilleliste", playlist_story_path(playlist_story), method: :delete, class:"dropdown-item" %>
 

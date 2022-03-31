@@ -1,0 +1,59 @@
+<div class="container-fluid play-story-container">
+  <div class="row">
+    <img src="https://picsum.photos/seed/picsum/200/300" alt="" style="">
+  </div>
+  <div class="row g-2" data-controller="storydescription">
+    <div class="col-12"><h2 class="fw-bold"><%= @story.title %></h2></div>
+    <hr class="my-1">
+    <div class="col-5 col-lg-6 align-self-center">
+      <div class="row">
+        <div class="col-12"><h4><%= @story.user.username %></h4></div>
+        <% if !current_user.nil? %>
+          <% if current_user == @story.user %>
+            <div class="col-12"><%= link_to t('.edit_story'), edit_story_path(@story), class: "btn btn-sm btn-outline-info" %></div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-7 col-lg-6 align-self-center">
+      <div class="d-flex flex-row justify-content-end">
+        <div id="<%= "#{dom_id @story}_like_btn" %>">
+          <%= render "likes/like_button", story: @story %>
+        </div>
+        <div id="<%= "#{dom_id @story}_dislike_btn" %>" class="mx-lg-3">
+          <%= render 'dislikes/dislike_button', story: @story %>
+        </div>
+        <div class="d-flex flex-column justify-content-center">
+            <span type="button" class="btn material-icons" data-bs-toggle="modal" data-bs-target="#playlist-modal" aria-expanded="false" style="color:black;background-color: transparent; border: none">
+              playlist_add
+            </span>
+          <p class="">Lagre</p>
+        </div>
+      </div>
+    </div>
+    <hr class="my-0">
+    <div class="col-12">
+      <div class="" data-storydescription-target="desc_trunc">
+        <%= @story.description.truncate(100) %>
+      </div>
+      <div class="" data-storydescription-target="desc_full" hidden >
+        <div class="row g-2">
+          <div class="col-12">
+            <%= @story.description %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12">
+      <% @story.categories.each do |category| %>
+        <button class="btn btn-sm btn-outline-success"><%= category.name %></button>
+      <% end %>
+    </div>
+    <div class="col-12">
+      <button class="btn btn-sm fw-bold" data-storydescription-target="show_more" data-action="storydescription#toggleDesc">Vis mer</button>
+      <button class="btn btn-sm fw-bold" data-storydescription-target="show_less" data-action="storydescription#toggleDesc" hidden>Vis mindre</button>
+    </div>
+
+  </div>
+</div>
+

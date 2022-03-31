@@ -1,0 +1,23 @@
+<div class="container-fluid mb-2">
+  <br>
+  <h4>Neste i spilleliste</h4>
+  <div class="list-group">
+    <% @next_in_playlist.each do |ps| %>
+
+      <% story = ps.story %>
+
+      <%= link_to playlist_play_story_path(@playlist, ps) do %>
+        <div class="list-group-item list-group-item-action">
+          <h6><%= story.title %></h6>
+          <small><%= story.user.username %></small>
+        </div>
+      <% end %>
+
+    <% end %>
+    <% if @stories_left > 5 %>
+      <div class="list-group-item diabled m-0 pt-0">
+        <small class="text-muted">+<%= @stories_left %> stories</small>
+      </div>
+    <% end %>
+  </div>
+</div>

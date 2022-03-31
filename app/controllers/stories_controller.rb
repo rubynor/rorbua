@@ -3,6 +3,7 @@
   before_action :authenticate_user!, except: [:index, :show, :play]
   before_action :correct_user, only: [:edit, :update, :destroy]
   before_action :delete_from_aws, only: [:destroy]
+  rescue_from ActiveRecord::RecordNotFound, with: :invalid_story
 
   # GET /stories or /stories.json
   def index
@@ -20,6 +21,8 @@
     end
     @volume = cookies[:volume]
     $story = @story
+    get_suggestions
+    get_previous
   end
 
   # GET /stories/1 or /stories/1.json
@@ -94,6 +97,39 @@
     # Use callbacks to share common setup or constraints between actions.
     def set_story
       @story = Story.find(params[:id])
+    end
+
+    def get_suggestions
+      #@suggestions_many = Story.joins(:categories).where(categories: @story.categories).where.not(id:@story).distinct.order("RANDOM()").limit(50)
+      #@suggestions = @suggestions_many.limit(6)
+      #if @suggestions.count < 30
+      #  @suggestions = Story.order("RANDOM()").limit(50)
+      #end
+      #@next = @suggestions.order("RANDOM()").first
+      @suggestions = Story.where("created_at < ? ", @story.created_at).order("created_at DESC")
+      @next = @suggestions.first
+    end
+
+    def get_previous
+      #session[:previous_stories] = Array.new if session[:previous_stories].nil?
+      #if params[:previous_id].nil?
+      #  session[:previous_stories].pop
+      #  id = session[:previous_stories].last
+      #  if id.nil?
+      #    @previous = nil
+      #  else
+      #    @previous = Story.find(id)
+      #  end
+      #else
+      #  session[:previous_stories].push params[:previous_id]
+      #  @previous = Story.find(session[:previous_stories].last)
+      #end
+      @previous = Story.where("created_at > ?", @story.created_at).first
+    end
+
+    def invalid_story
+      logger.error "Attempt to access invalid story #{params[:id]}"
+      redirect_to stories_path, notice: 'Ugyldig story'
     end
 
     # Only allow a list of trusted parameters through.

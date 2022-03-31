@@ -1,0 +1,61 @@
+<% content_for :audio_controls do %>
+  <div class="row align-items-center justify-content-center mb-lg-4">
+    <div class="col col-md-8 col-lg-5">
+      <div class="card shadow w-100 audio-controls px-2 border-secondary py-1"  data-controller="audioplayer">
+        <audio data-audioplayer-target="audio" src="<%= rails_blob_url(@story.story_file) %>" preload="metadata"></audio>
+        <div class="w-100 mt-1">
+          <div class="row">
+            <div class="col col-lg-12">
+              <div class="d-flex flex-row align-items-center justify-content-center m-0 p-0">
+                <p data-audioplayer-target="current_time" class="p-0 m-0">00:00</p>
+                <p class="mx-1 my-0 p-0">/</p>
+                <p data-audioplayer-target="total_time" class="p-0 m-0">00:00</p>
+              </div>
+            </div>
+            <div class="col col-lg-12">
+              <div class="form-check form-switch d-flex justify-content-center">
+                <div>
+                  <% if cookies[:autoplay] == "true" %>
+                    <input class="form-check-input" type="checkbox" role="switch" id="autoplay" data-action="click->audioplayer#toggle_autoplay" checked>
+                  <% else %>
+                    <input class="form-check-input" type="checkbox" role="switch" id="autoplay" data-action="click->audioplayer#toggle_autoplay">
+                  <% end %>
+                </div>
+                <div>
+                  <label class="form-check-label" for="autoplay"> <%= t('.autoplay_next') %> </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <progress data-audioplayer-target="progressbar" max="1" value="0" class="w-100 m-0"></progress>
+        </div>
+        <div class="row justify-content-center mt-0">
+          <div class="col-12 text-align-center">
+            <div class="d-flex flex-row align-items-center justify-content-center">
+              <% if @playlist_story.previous.nil? %>
+                <button class="material-icons btn btn-sm btn-dark disabled p-1 rounded-circle p-lg-2">skip_previous</button>
+              <% else %>
+                <%= button_to "skip_previous", playlist_play_story_path(id: @playlist_story.previous, playlist_id: @playlist_story.playlist), class: "material-icons btn btn-sm btn-dark p-1 rounded-circle p-lg-2", style: "color: white", id:"btn-prev", method: :get %>
+              <% end %>
+              <button id="button_toggle" class="material-icons btn btn-sm btn-dark mx-2 p-2 rounded-circle p-lg-2" style="color: white" data-action="click->audioplayer#toggle">
+                play_arrow
+              </button>
+              <% if @playlist_story.next.nil? %>
+                <button class="material-icons btn btn-sm btn-dark disabled p-1 rounded-circle p-lg-2">skip_next</button>
+              <% else %>
+                <%= button_to "skip_next", playlist_play_story_path(id: @playlist_story.next, playlist_id: @playlist_story.playlist), class: "rounded-circle material-icons btn btn-sm btn-dark p-1 p-lg-2", style: "color: white", id:"btn-next", method: :get %>
+              <% end %>
+            </div>
+          </div>
+          <div class="d-none d-lg-flex col-8 col-lg-6 col-xl-5">
+            <div class="d-flex justify-content-center w-100">
+              <span class="material-icons">volume_down</span>
+              <input type="range" id="volume-control" class="w-75 mw-lg-25 mx-1" data-audioplayer-target="volume" value="<%= @volume %>">
+              <span class="material-icons">volume_up</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -8,7 +8,6 @@ class PlaylistStoriesController < ApplicationController
     respond_to do |format|
       if @playlist_story.save
         format.turbo_stream do
-
         end
       else
         flash[:notice] = @playlist_story.errors.full_messages.to_sentence
@@ -35,6 +34,7 @@ class PlaylistStoriesController < ApplicationController
       cookies[:volume] = 75
     end
     @volume = cookies[:volume]
+
   end
 
   private
@@ -45,6 +45,11 @@ class PlaylistStoriesController < ApplicationController
 
   def set_variables
     @playlist_story = PlaylistStory.find_by(id: params[:id])
+    @playlist = @playlist_story.playlist
+    @story = @playlist_story.story
+    @suggestions = Story.joins(:categories).where.not(id:@story).distinct.order("RANDOM()").limit(5)
+    @next_in_playlist = @playlist.playlist_stories.where('created_at < ?', @playlist_story.created_at).order(created_at: :desc).limit(5)
+    @stories_left = @playlist.playlist_stories.where('created_at < ?', @playlist_story.created_at).count
   end
 
 end
