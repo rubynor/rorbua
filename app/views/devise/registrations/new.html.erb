@@ -18,10 +18,8 @@
 
       <div class="mb-3">
         <%= f.label :password, t(".password") %>
-        <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %> tegn minimum)</em>
-        <% end %><br />
-        <%= f.password_field :password, autocomplete: "new-password", class: "form-control"%>
+        <br />
+        <%= f.password_field :password, autocomplete: "new-password", class: "form-control",placeholder: "#{@minimum_password_length} tegn minimum" %>
         <%= error_message_on(f.object, :password) %>
       </div>
 
