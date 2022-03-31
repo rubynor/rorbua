@@ -7,7 +7,18 @@
     <hr class="my-1">
     <div class="col-5 col-lg-6 align-self-center">
       <div class="row">
-        <div class="col-12"><h4><%= @story.user.username %></h4></div>
+        <div class="col-12 d-flex flex-row">
+          <div style="width:60px">
+            <%= link_to profile_stories_path(@story.user) do %>
+              <% if @story.user.user_image.attached? %>
+                <%= image_tag url_for( @story.user.user_image), alt: "Image", class: "rounded-circle profile-img-md" %>
+              <% else %>
+                <%= image_tag "user.png", style: "width:50px"%>
+              <% end %>
+            <% end %>
+          </div>
+          <h4><%= link_to @story.user.username, profile_stories_path(@story.user), class: "no-link" %></h4>
+        </div>
         <% if !current_user.nil? %>
           <% if current_user == @story.user %>
             <div class="col-12"><%= link_to t('.edit_story'), edit_story_path(@story), class: "btn btn-sm btn-outline-info" %></div>
