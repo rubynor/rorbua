@@ -4,17 +4,22 @@
 <div class="container">
 
   <div class="row py-2">
+
     <div class="col">
-      <h2>Opplastninger</h2>
+      <h2>Stories</h2>
     </div>
+
     <div class="col text-end">
       <% if @playlist.playlist_stories.count > 0 %>
         <%= link_to "Spill av alle", playlist_play_story_path(@playlist, @playlist.playlist_stories.last), class:"btn btn-primary" %>
       <% else %>
-        <h5>Denne spillelisten er tom</h5>
-        <%= link_to "Utforsk stories", root_path, class:"btn btn-secondary my-3" %>
+        <h5>Ingen stories lagt ut enda</h5>
+        <% if @user == current_user %>
+          <%= link_to "Utforsk stories", root_path, class:"btn btn-secondary my-3" %>
+        <% end %>
       <% end %>
     </div>
+
   </div>
 
   <div class="row">
