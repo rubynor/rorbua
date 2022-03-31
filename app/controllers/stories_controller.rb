@@ -7,7 +7,8 @@
 
   # GET /stories or /stories.json
   def index
-    @stories = Story.all.order("created_at DESC")
+    @search = params[:search_ids]
+    index_sort(@search)
   end
 
   def my_stories
@@ -135,5 +136,20 @@
     def story_params
       params.require(:story).permit(:title, :description, :story_file, :user_id, {:category_ids=>[]})
     end
+
+  def index_sort(id)
+    if id.nil?
+        @stories = Story.all.order("created_at DESC")
+    else
+      categoryArray = []
+      categoryArray = Array.new
+      id.each { |x| categoryArray.push(x) }
+        if categoryArray.length == 1
+          @stories = Story.all.order("created_at DESC")
+        else
+          @stories = Story.joins(:categories).where(categories: categoryArray).distinct
+        end
+    end
+  end
 
 end
