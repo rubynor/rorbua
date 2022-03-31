@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :dislikes, dependent: :destroy
   has_many :playlists, dependent: :destroy
 
+  has_one_attached :user_image
+
   validates :username, presence: true
   validates :username, uniqueness: true
   validates :username, length: { maximum: 50 }

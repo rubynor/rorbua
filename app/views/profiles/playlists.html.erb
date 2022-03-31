@@ -1,0 +1,21 @@
+<%= render 'profiles/partials/profile_navbar' %>
+
+<!-- alle bruker sine spillelister -->
+<div class="container small-container">
+
+  <h2 class="py-2">Spillelister</h2>
+
+  <% if @user == current_user %>
+    <div id="new_playlist_div">
+      <%= render "playlists/partials/new_playlist_btn" %>
+    </div>
+  <% end %>
+
+  <div id="playlists" class="my-2">
+    <% playlists = @playlists %>
+    <% playlists.each do |playlist| %>
+      <%= render "playlists/partials/test_playlist", playlist: playlist %>
+    <% end %>
+  </div>
+
+</div>

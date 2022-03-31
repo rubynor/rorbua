@@ -11,14 +11,20 @@
      <!-- render 'layouts/language_selector' -->
       <% if user_signed_in? %>
         <li class="nav-item dropdown">
-          <a class="nav-link" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
-            <span class="material-icons" style="color:white">account_circle</span>
+          <a data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
+
+            <% if current_user.user_image.attached? %>
+              <%= image_tag url_for(current_user.user_image), alt: "Image", class: "profile-img profile-img-sm" %>
+            <% else %>
+              <span class="material-icons" style="color:white">account_circle</span>
+            <% end %>
+
           </a>
           <ul class="dropdown-menu dropdown-menu-end settings-tab">
-                <li><%= link_to t(".edit_user_settings"),  edit_user_registration_path, class: "dropdown-item"%></li>
-              <li class="dropdown-item">
-                  <%= button_to t(".log_out"), destroy_user_session_path, method: :delete %>
-              </li>
+            <li><%= link_to "Min konto",  profile_stories_path(current_user), class: "dropdown-item"%></li>
+            <li class="dropdown-item">
+                <%= button_to t(".log_out"), destroy_user_session_path, method: :delete %>
+            </li>
           </ul>
         </li>
       <% else %>

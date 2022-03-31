@@ -85,7 +85,7 @@ class PlaylistsController < ApplicationController
   end
 
   def set_playlist
-    @playlist = current_user.playlists.find(params[:id])
+    @playlist = Playlist.find(params[:id])
     Rails.logger.debug @playlist.title
   end
 

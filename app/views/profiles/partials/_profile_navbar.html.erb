@@ -1,0 +1,47 @@
+<div class="bg-light" style="padding-top:20px">
+  <div class="container">
+
+  <!-- profilbilde og info -->
+  <div class="row align-items-center">
+    <!-- bilde -->
+    <div style="width:100px">
+      <% if @user.user_image.attached? %>
+        <%= image_tag url_for(@user.user_image), alt: "Image", class: "profile-img profile-img-lg" %>
+      <% else %>
+        <%= image_tag "user.png", style: "width:80px" %>
+      <% end %>
+    </div>
+    <!-- brukernavn og antall stories -->
+    <div class="col">
+      <h3> <%= @user.username %> </h3>
+      <p> <%= @user.stories.size %> <%= "story".pluralize(@user.stories.size) %> </p>
+    </div>
+    <!-- endre-konto-knapp -->
+    <div style="width:180px">
+      <% if @user == current_user %>
+        <%= link_to "Endre min konto",  edit_user_registration_path, class: "btn btn-secondary" %>
+      <% end %>
+    </div>
+  </div>
+
+
+  <!-- navbar -->
+    <div class="row">
+    <nav class="navbar navbar-expand navbar-light bg-light">
+      <div class="row py-2 text-center">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <%= link_to "Stories", profile_stories_path(@user), class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Spillelister", profile_playlists_path(@user), class: "nav-link" %>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  </div>
+</div>
