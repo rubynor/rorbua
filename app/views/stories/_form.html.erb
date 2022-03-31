@@ -34,13 +34,14 @@
     <div class ="field" id="checkboxes">
       <%= form.label :story, "Velg en til flere kategorier:", class: "form-label" %>
       <span class="material-icons mx-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Legg til en eller flere kategorier">
-      info_outline
-    </span>
+        info_outline
+      </span>
       <br>
       <%= collection_check_boxes(:story, :category_ids, Category.all, :id, :name) do |b|
         b.label(:"data-value" => b.value) { b.check_box + b.label }
       end %>
       <%= error_message_on(form.object, :category_ids) %>
+
     </div>
 
     <div class="mb-4">
