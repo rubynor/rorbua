@@ -2,14 +2,12 @@
 
 <div id="stories" class="feed_stories_container">
   <div class="container-fluid">
-    <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#category-modal" aria-expanded="false">Søk i stories</button>
+    <button type="button" class="btn btn-secondary mt-1 " data-bs-toggle="modal" data-bs-target="#category-modal" aria-expanded="false" margin-top="1">Søk i stories</button>
 
     <div class="row">
-
       <% @stories.each do |story| %>
         <%= render "stories/partials/story_card", story: story %>
       <% end %>
-
     </div>
   </div>
 </div>
