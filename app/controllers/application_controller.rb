@@ -18,5 +18,16 @@ class ApplicationController < ActionController::Base
   def after_sign_up_path_for(resource)
     redirect_to profile_path(current_user)
   end
+
+  private
+
+  def delete_from_aws(keyId)
+    s3 = Aws::S3::Client.new(
+      region: "eu-north-1",
+      access_key_id: Rails.application.credentials.dig(:aws, :access_key_id),
+      secret_access_key: Rails.application.credentials.dig(:aws, :secret_access_key)
+    )
+    s3.delete_object(bucket: 'rorbua', key: keyId)
+  end
 end
 
