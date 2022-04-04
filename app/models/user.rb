@@ -12,6 +12,9 @@ class User < ApplicationRecord
 
   has_one_attached :user_image
 
+  validates :user_image, file_size: { less_than_or_equal_to: 10000.kilobytes },
+            file_content_type: { allow: ['image/jpeg', 'image/png'] }
+
   validates :username, presence: true
   validates :username, uniqueness: true
   validates :username, length: { maximum: 50 }
