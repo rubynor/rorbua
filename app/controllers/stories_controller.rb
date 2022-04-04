@@ -74,7 +74,7 @@
 
   # DELETE /stories/1 or /stories/1.json
   def destroy
-    #@story.destroy
+    @story.destroy
 
     respond_to do |format|
       format.html { redirect_to stories_url, notice: "Story slettet." }
