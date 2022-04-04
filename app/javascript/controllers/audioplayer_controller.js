@@ -11,7 +11,6 @@ export default class extends Controller {
         var autoplay = document.getElementById("autoplay");
         var volume = this.volumeTarget;
 
-        var self = this
 
         audio.addEventListener("loadedmetadata", function () {
 
@@ -21,9 +20,6 @@ export default class extends Controller {
             total_time.innerHTML = display_time(audio.duration);
             progressbar.value = this.currentTime/this.duration;
             audio.volume = volume.value / 100;
-            // Spill av story når data er lastet inn
-            self.play();
-
 
             audio.addEventListener('timeupdate', function(){
                 current_time.innerHTML = display_time(audio.currentTime); // Display ny tid

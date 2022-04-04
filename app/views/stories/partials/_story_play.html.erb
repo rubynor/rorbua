@@ -5,19 +5,13 @@
   <div class="row g-2" data-controller="storydescription">
     <div class="col-12"><h2 class="fw-bold"><%= @story.title %></h2></div>
     <hr class="my-1">
-    <div class="col-5 col-lg-6 align-self-center">
+    <div class="col-12 col-lg-6 align-self-center">
       <div class="row">
-        <div class="col-12 d-flex flex-row">
+        <div class="col-12 d-flex flex-row align-items-center">
           <div style="width:60px">
-            <%= link_to profile_stories_path(@story.user) do %>
-              <% if @story.user.user_image.attached? %>
-                <%= image_tag url_for( @story.user.user_image), alt: "Image", class: "rounded-circle profile-img-md" %>
-              <% else %>
-                <%= image_tag "user.png", style: "width:50px"%>
-              <% end %>
-            <% end %>
+            <%= render "profiles/partials/profile_picture_small" %>
           </div>
-          <h4><%= link_to @story.user.username, profile_stories_path(@story.user), class: "no-link" %></h4>
+          <h4 class="m-0"><%= link_to @story.user.username, profile_stories_path(@story.user), class: "no-link" %></h4>
         </div>
         <% if !current_user.nil? %>
           <% if current_user == @story.user %>
@@ -26,8 +20,8 @@
         <% end %>
       </div>
     </div>
-    <div class="col-7 col-lg-6 align-self-center">
-      <div class="d-flex flex-row justify-content-end">
+    <div class="col-12 col-lg-6 align-self-center">
+      <div class="d-flex flex-row justify-content-center">
         <div id="<%= "#{dom_id @story}_like_btn" %>">
           <%= render "likes/like_button", story: @story %>
         </div>
@@ -44,22 +38,37 @@
     </div>
     <hr class="my-0">
     <div class="col-12">
-      <div class="" data-storydescription-target="desc_trunc">
-          <%= @story.description.truncate(100) %>
-       </div>
+      <div data-storydescription-target="desc_trunc">
+        <div class="row g-2">
+          <div class="col-12">
+            <%= @story.description.truncate(100) %>
+          </div>
+          <div class="col-12">
+            <% i = 0 %>
+            <% @story.categories.each do |category| %>
+              <% break if i > 3 %>
+              <button class="btn btn-sm btn-outline-success"><%= category.name %></button>
+              <% i+=1 %>
+            <% end %>
+          </div>
+        </div>
+
+      </div>
+
       <div class="" data-storydescription-target="desc_full" hidden >
         <div class="row g-2">
           <div class="col-12">
             <%= @story.description %>
           </div>
+          <div class="col-12">
+            <% @story.categories.each do |category| %>
+              <%= link_to category.name, stories_path(search_ids: [0, category.id]), class:"btn btn-sm btn-outline-success" %>
+            <% end %>
+          </div>
         </div>
        </div>
     </div>
-    <div class="col-12">
-      <% @story.categories.each do |category| %>
-        <%= link_to category.name, stories_path(search_ids: [0, category.id]), class:"btn btn-sm btn-outline-success" %>
-      <% end %>
-    </div>
+
     <div class="col-12">
       <button class="btn btn-sm fw-bold" data-storydescription-target="show_more" data-action="storydescription#toggleDesc">Vis mer</button>
       <button class="btn btn-sm fw-bold" data-storydescription-target="show_less" data-action="storydescription#toggleDesc" hidden>Vis mindre</button>
