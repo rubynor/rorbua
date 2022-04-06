@@ -1,29 +1,14 @@
 <%= form_with(model: report) do |form| %>
-  <% if report.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(report.errors.count, "error") %> prohibited this report from being saved:</h2>
-
-      <ul>
-        <% report.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
 
   <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_area :description %>
+    <%= form.text_area :description, class: "form-control", :size => "50x5" %>
+    <%= error_message_on(form.object, :description) %>
   </div>
 
   <div>
-    <%= form.label :status, style: "display: block" %>
-    <%= form.number_field :status %>
-  </div>
-
-  <div>
-    <%= form.label :reportable_id, style: "display: block" %>
-    <%= form.text_field :reportable_id %>
+    <%= form.hidden_field :status, {value: 'Aktiv'} %>
+    <%= form.hidden_field :reportable_id, value: 1 %>
+    <%= form.hidden_field :reportable_type, value: "Story" %>
   </div>
 
   <div>
