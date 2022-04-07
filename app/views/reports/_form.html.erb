@@ -1,5 +1,6 @@
 <%= form_with(model: Report.new) do |form| %>
 
+
   <div>
     <%= form.text_area :description, class: "form-control", :size => "50x5" %>
     <%= error_message_on(form.object, :description) %>
