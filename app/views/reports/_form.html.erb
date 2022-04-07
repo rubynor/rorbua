@@ -1,4 +1,4 @@
-<%= form_with(model: report) do |form| %>
+<%= form_with(model: Report.new) do |form| %>
 
   <div>
     <%= form.text_area :description, class: "form-control", :size => "50x5" %>
@@ -7,7 +7,7 @@
 
   <div>
     <%= form.hidden_field :status, {value: 'Aktiv'} %>
-    <%= form.hidden_field :reportable_id, value: 1 %>
+    <%= form.hidden_field :reportable_id, value: @story.id %>
     <%= form.hidden_field :reportable_type, value: "Story" %>
   </div>
 
