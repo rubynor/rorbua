@@ -26,7 +26,7 @@
                 <% j = 0 %>
                 <% story.categories.each do |category| %>
                   <% break if j > 2 %>
-                  <button class="btn btn-sm btn-outline-success"><%= category.name %></button>
+                  <button class="btn btn-sm btn-outline-success"><%=category.name %></button>
                   <% j+=1 %>
                 <% end %>
               </div>
