@@ -11,7 +11,7 @@
           <div style="width:60px">
             <%= render "profiles/partials/profile_picture_small" %>
           </div>
-          <h4 class="m-0"><%= link_to @story.user.username, profile_stories_path(@story.user), class: "no-link" %></h4>
+          <h4 class="m-0"><%= link_to @story.user.username, profile_path(@story.user), class: "no-link" %></h4>
         </div>
         <% if !current_user.nil? %>
           <% if current_user == @story.user %>
