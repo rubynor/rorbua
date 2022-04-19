@@ -1,17 +1,40 @@
-
-<div class="card mt-2" id="<%= dom_id playlist %>">
-    <% if playlist.title != "Favoritter" and playlist.title != "Mine opplastninger" %>
-      <li class="dropdown position-absolute top-0 end-0 mt-1" style="list-style-type: none;">
-        <a href="#" class="nav-link" data-bs-toggle="dropdown" role="button" aria-expanded="false">
-          <span class="material-icons" style="color:black;">more_vert</span>
-        </a>
-        <ul class="dropdown-menu dropdown-menu-end me-1 justify-content-center">
-          <%= button_to "Slett spilleliste", playlist, method: :delete, class:"dropdown-item", style:"color:red", form: {data: {turbo_confirm: 'Er du sikker?'}}%>
-        </ul>
-      </li>
+<div>
+  <h4><%= link_to playlist.title, playlist, class:"no-link" %></h4>
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+    <% i = 0 %>
+    <% playlist.playlist_stories.reverse_each do |ps| %>
+      <% if i >=3 %>
+        <div class="col-12 col-md-6 col-lg-3">
+          <%= link_to playlist, class:"no-link" do %>
+            <div class="card">
+              <div class="card-body">
+                <h6 class="card-title text-muted">+<%= playlist.playlist_stories.count -3 %> stories</h6>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <% break %>
+      <% end %>
+      <% story = ps.story %>
+      <div class="col-12 col-md-6 col-lg-3">
+        <%= link_to playlist_play_story_path(playlist, ps) do %>
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title"><%= story.title %></h5>
+              <p class="card-title"><%= story.user.username %></p>
+              <div class="">
+                <% j = 0 %>
+                <% story.categories.each do |category| %>
+                  <% break if j > 2 %>
+                  <button class="btn btn-sm btn-outline-success"><%=category.name %></button>
+                  <% j+=1 %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <% i = i+1 %>
     <% end %>
-    <div class="card-body">
-      <h3 class="card-title"><%= link_to playlist.title, playlist, style: "text-decoration:none; color:black" %></h3>
-      <p><%= playlist.playlist_stories.count %> stories</p>
-    </div>
+  </div>
 </div>

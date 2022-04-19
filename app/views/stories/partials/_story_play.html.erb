@@ -38,6 +38,7 @@
     </div>
     <hr class="my-0">
     <div class="col-12">
+
       <div data-storydescription-target="desc_trunc">
         <div class="row g-2">
           <div class="col-12">
@@ -47,12 +48,11 @@
             <% i = 0 %>
             <% @story.categories.each do |category| %>
               <% break if i > 3 %>
-              <button class="btn btn-sm btn-outline-success"><%= category.name %></button>
+              <%= link_to category.name, stories_path(search_ids: [0, category.id]), class:"btn btn-sm btn-outline-success" %>
               <% i+=1 %>
             <% end %>
           </div>
         </div>
-
       </div>
 
       <div class="" data-storydescription-target="desc_full" hidden >

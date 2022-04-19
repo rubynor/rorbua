@@ -33,21 +33,33 @@
     </div>
     <hr class="my-0">
     <div class="col-12">
-      <div class="" data-storydescription-target="desc_trunc">
-        <%= @story.description.truncate(100) %>
+      <div data-storydescription-target="desc_trunc">
+        <div class="row g-2">
+          <div class="col-12">
+            <%= @story.description.truncate(100) %>
+          </div>
+          <div class="col-12">
+            <% i = 0 %>
+            <% @story.categories.each do |category| %>
+              <% break if i > 3 %>
+                <%= link_to category.name, stories_path(search_ids: [0, category.id]), class:"btn btn-sm btn-outline-success" %>
+              <% i+=1 %>
+            <% end %>
+          </div>
+        </div>
       </div>
       <div class="" data-storydescription-target="desc_full" hidden >
         <div class="row g-2">
           <div class="col-12">
             <%= @story.description %>
           </div>
+          <div class="col-12">
+            <% @story.categories.each do |category| %>
+              <%= link_to category.name, stories_path(search_ids: [0, category.id]), class:"btn btn-sm btn-outline-success" %>
+            <% end %>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="col-12">
-      <% @story.categories.each do |category| %>
-        <button class="btn btn-sm btn-outline-success"><%= category.name %></button>
-      <% end %>
     </div>
     <div class="col-12">
       <button class="btn btn-sm fw-bold" data-storydescription-target="show_more" data-action="storydescription#toggleDesc">Vis mer</button>

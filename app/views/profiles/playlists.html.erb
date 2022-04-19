@@ -12,9 +12,11 @@
   <% end %>
 
   <div id="playlists" class="my-2">
+    <hr>
     <% playlists = @playlists %>
     <% playlists.each do |playlist| %>
       <%= render "playlists/partials/test_playlist", playlist: playlist %>
+      <hr>
     <% end %>
   </div>
 
