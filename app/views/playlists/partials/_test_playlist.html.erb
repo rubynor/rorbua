@@ -1,5 +1,14 @@
 <div>
-  <h4><%= link_to playlist.title, playlist, class:"no-link" %></h4>
+  <div class="row justify-content-start">
+    <div class="col">
+      <div class="d-flex align-items-center">
+        <h4><%= link_to playlist.title, playlist, class:"no-link" %></h4>
+        <% if playlist.playlist_stories.count > 0 %>
+          <%= link_to "play_circle_outline", playlist_play_story_path(playlist, playlist.playlist_stories.last), class:"btn material-icons" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
   <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
     <% i = 0 %>
     <% playlist.playlist_stories.reverse_each do |ps| %>
