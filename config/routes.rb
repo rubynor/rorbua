@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   scope '(:locale)' do
     resources :favourites
-    devise_for :users
+    devise_for :users, :controllers => { :registrations => 'registrations' }
     resources :stories
     resources :likes, only: [:create, :destroy]
     resources :dislikes, only: [:create, :destroy]
