@@ -2,9 +2,9 @@
   <div class="row justify-content-start">
     <div class="col">
       <div class="d-flex align-items-center">
-        <h4><%= link_to playlist.title, playlist, class:"no-link" %></h4>
+        <%= link_to playlist.title, playlist, class:"no-link fs-3" %>
         <% if playlist.playlist_stories.count > 0 %>
-          <%= link_to "play_circle_outline", playlist_play_story_path(playlist, playlist.playlist_stories.last), class:"btn material-icons" %>
+          <%= link_to "play_circle_outline", playlist_play_story_path(playlist, playlist.playlist_stories.last), class:"btn btn-sm material-icons" %>
         <% end %>
       </div>
     </div>
