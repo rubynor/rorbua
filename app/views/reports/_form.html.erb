@@ -1,7 +1,6 @@
 <%= form_with(model: Report.new) do |form| %>
 
-
-  <div>
+  <div class="mb-3">
     <%= form.text_area :description, class: "form-control", :size => "50x5" %>
     <%= error_message_on(form.object, :description) %>
   </div>
@@ -10,6 +9,7 @@
     <%= form.hidden_field :status, {value: 'Aktiv'} %>
     <%= form.hidden_field :reportable_id, value: @story.id %>
     <%= form.hidden_field :reportable_type, value: "Story" %>
+    <%= form.number_field :user_id, id: :story_user_id, value: current_user.id, type: :hidden %>
   </div>
 
   <div>

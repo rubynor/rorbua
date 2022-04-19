@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_06_123311) do
+ActiveRecord::Schema.define(version: 2022_04_07_163039) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -106,6 +106,7 @@ ActiveRecord::Schema.define(version: 2022_04_06_123311) do
     t.integer "reportable_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
     t.index ["reportable_type", "reportable_id"], name: "index_reports_on_reportable"
   end
 
