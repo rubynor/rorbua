@@ -1,5 +1,6 @@
 class ReportsController < ApplicationController
   before_action :set_report, only: %i[ show edit update destroy ]
+  before_action :authenticate_admin!
 
   # GET /reports or /reports.json
   def index
