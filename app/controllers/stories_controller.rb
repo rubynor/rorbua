@@ -128,7 +128,7 @@
 
     # Only allow a list of trusted parameters through.
     def story_params
-      params.require(:story).permit(:title, :description, :story_file, :user_id, {:category_ids=>[]})
+      params.require(:story).permit(:title, :description, :story_file, :thumbnail, :user_id, {:category_ids=>[]})
     end
 
   def index_sort(id)

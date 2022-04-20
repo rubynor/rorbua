@@ -1,6 +1,10 @@
 <div class="container-fluid play-story-container">
   <div class="row">
-    <img src="https://picsum.photos/seed/picsum/200/300" alt="" style="">
+    <% if @story.thumbnail.blob.nil? %>
+      <img src="https://picsum.photos/seed/picsum/200/300" alt="" style="">
+    <% else %>
+      <%= image_tag @story.thumbnail%>
+    <% end %>
   </div>
   <div class="row g-2" data-controller="storydescription">
     <div class="col-12"><h2 class="fw-bold"><%= @story.title %></h2></div>
