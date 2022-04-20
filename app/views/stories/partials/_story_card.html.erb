@@ -2,7 +2,13 @@
   <div class="card mb-1 mt-1 h-100">
     <div class="card-body">
       <h5 class="card-title"><%= story.title %></h5>
-      <p class="card-title"><%= story.user.username %></p>
+      <% if story.thumbnail.blob.nil? %>
+        <%= image_tag "https://picsum.photos/seed/picsum/300/300",class:"card-img-top rounded"  %>
+      <% else %>
+        <%= image_tag story.thumbnail,class:"card-img-top rounded story-img" %>
+      <% end %>
+
+      <p class="card-title mt-2"><%= story.user.username %></p>
       <div class="">
         <% i = 0 %>
         <% story.categories.each do |category| %>
