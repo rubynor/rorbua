@@ -12,7 +12,8 @@ class ProfilesController < ApplicationController
     respond_to do |format|
       format.turbo_stream do
         render turbo_stream: [
-          turbo_stream.update("profile-content", partial: "profiles/partials/stories")
+          turbo_stream.update("profile-content", partial: "profiles/partials/stories"),
+          turbo_stream.update("profile-nav", partial:"profiles/partials/nav_items", locals: {stories: true, playlists: false})
         ]
       end
     end
@@ -24,7 +25,8 @@ class ProfilesController < ApplicationController
     respond_to do |format|
       format.turbo_stream do
         render turbo_stream: [
-          turbo_stream.update("profile-content", partial: "profiles/partials/playlists")
+          turbo_stream.update("profile-content", partial: "profiles/partials/playlists"),
+          turbo_stream.update("profile-nav", partial:"profiles/partials/nav_items", locals: {stories: false, playlists: true})
         ]
       end
     end

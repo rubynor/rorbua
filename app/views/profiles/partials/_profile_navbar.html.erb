@@ -31,8 +31,7 @@
       <div class="row py-2 text-center">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <div class="navbar-nav mr-auto" id="profile-nav">
-            <%= button_to "Stories", profile_stories_path(@user), class: "nav-link btn"%>
-            <%= button_to "Spillelister", profile_playlists_path(@user), class: "nav-link btn" %>
+            <%= render partial: 'profiles/partials/nav_items', locals: {stories: true, playlists: false} %>
           </div>
         </div>
       </div>
