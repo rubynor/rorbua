@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_15_123813) do
+ActiveRecord::Schema.define(version: 2022_04_20_081902) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -97,6 +97,17 @@ ActiveRecord::Schema.define(version: 2022_03_15_123813) do
     t.boolean "public"
     t.boolean "display"
     t.index ["user_id"], name: "index_playlists_on_user_id"
+  end
+
+  create_table "reports", force: :cascade do |t|
+    t.text "description"
+    t.integer "status", default: 0
+    t.integer "userId"
+    t.string "reportable_type", null: false
+    t.integer "reportable_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["reportable_type", "reportable_id"], name: "index_reports_on_reportable"
   end
 
   create_table "stories", force: :cascade do |t|

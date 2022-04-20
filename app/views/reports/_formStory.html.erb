@@ -1,0 +1,19 @@
+<%= form_with(model: Report.new ) do |form| %>
+
+  <div>
+    <%= form.label :description, style: "display: block" %>
+    <%= form.text_area :description, class: "form-control", :size => "50x5"%>
+    <%= error_message_on(form.object, :description) %>
+  </div>
+
+  <div>
+    <%= form.hidden_field :status, value: "Aktiv" %>
+    <%= form.hidden_field :userId, value: current_user.id %>
+    <%= form.hidden_field :reportable_id, value: @story.id %>
+    <%= form.hidden_field :reportable_type, value: "Story" %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
