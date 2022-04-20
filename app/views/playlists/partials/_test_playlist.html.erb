@@ -3,9 +3,6 @@
     <div class="col">
       <div class="d-flex align-items-center">
         <%= link_to playlist.title, playlist, class:"no-link fs-3" %>
-        <% if playlist.playlist_stories.count > 0 %>
-          <%= link_to "play_circle_outline", playlist_play_story_path(playlist, playlist.playlist_stories.last), class:"btn btn-sm material-icons" %>
-        <% end %>
       </div>
     </div>
   </div>
@@ -46,4 +43,12 @@
       <% i = i+1 %>
     <% end %>
   </div>
+  <% if playlist.playlist_stories.count > 0 %>
+    <%= link_to playlist_play_story_path(playlist, playlist.playlist_stories.last), class:"no-link" do %>
+      <div class="d-flex align-items-center btn my-2">
+        <h6 class="m-0 mr-2">Spill av spilleliste</h6>
+        <span class="material-icons">play_circle_filled</span>
+      </div>
+    <% end %>
+  <% end %>
 </div>

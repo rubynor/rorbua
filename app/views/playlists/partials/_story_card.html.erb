@@ -14,11 +14,13 @@
   <% end %>
 
   <li class="dropdown position-absolute top-0 end-0 mt-1" style="list-style-type: none;">
+    <% if user_signed_in? and current_user == @playlist.user %>
     <a href="#" class="nav-link" data-bs-toggle="dropdown" role="button" aria-expanded="false">
       <span class="material-icons" style="color:black;">more_vert</span>
     </a>
+
     <ul class="dropdown-menu dropdown-menu-end me-1">
-      <% if user_signed_in? %>
+
 
         <% if @playlist.title == "Mine opplastninger" and current_user == @playlist.user %>
 
@@ -26,14 +28,14 @@
 
         <% end %>
 
-        <% if current_user == @playlist.user and @playlist.title != "Mine opplastninger" %>
+        <% if @playlist.title != "Mine opplastninger" %>
 
           <%= button_to "Fjern fra spilleliste", playlist_story_path(playlist_story), method: :delete, class:"dropdown-item" %>
 
         <% end %>
 
-      <% end %>
     </ul>
+    <% end %>
   </li>
 
 </div>
