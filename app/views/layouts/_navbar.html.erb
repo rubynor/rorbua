@@ -27,6 +27,8 @@
             </li>
           </ul>
         </li>
+      <% elsif admin_signed_in? %>
+        <%= button_to t(".log_out"), destroy_admin_session_path, style:"color:red", method: :delete %>
       <% else %>
         <%= link_to t(".log_in"), new_user_session_path, class: "nav-item btn btn-sm btn-info" %>
       <% end %>
