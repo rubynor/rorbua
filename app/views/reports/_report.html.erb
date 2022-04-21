@@ -1,22 +1,14 @@
 <div id="<%= dom_id report %>">
-  <p>
-    <strong>Description:</strong>
-    <%= report.description %>
-  </p>
-
-  <p>
-    <strong>Status:</strong>
-    <%= report.status %>
-  </p>
-
-  <p>
-    <strong>Userid:</strong>
-    <%= report.userId %>
-  </p>
-
-  <p>
-    <strong>Reportable:</strong>
-    <%= report.reportable_id %>
-  </p>
-
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">Tittel skal komme</h5>
+      <p class="card-text"><%= report.description %></p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Status => <%= report.status %></li>
+      <li class="list-group-item">User => <%= report.userId %></li>
+      <li class="list-group-item"><%= report.reportable_type %> => <%= report.reportable_id %></li>
+    </ul>
+  </div>
 </div>
+

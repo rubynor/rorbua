@@ -1,10 +1,12 @@
-<h1>Editing report</h1>
+<div class="container">
+  <h1>Editing report</h1>
 
-<%= render "formStory", report: @report %>
+  <%= render "reports/partials/formAdmin", report: @report %>
 
-<br>
+  <br>
 
-<div>
-  <%= link_to "Show this report", @report %> |
-  <%= link_to "Back to reports", reports_path %>
+  <div>
+    <%= link_to "Show this report", @report %> |
+    <%= link_to "Back to reports", reports_path %>
+  </div>
 </div>

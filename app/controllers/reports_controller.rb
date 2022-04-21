@@ -1,6 +1,6 @@
 class ReportsController < ApplicationController
   before_action :set_report, only: %i[ show edit update destroy ]
-  before_action :authenticate_admin!
+  before_action :authenticate_admin!, except: [:create]
 
   # GET /reports or /reports.json
   def index
@@ -23,7 +23,6 @@ class ReportsController < ApplicationController
   # POST /reports or /reports.json
   def create
     @report = Report.new(report_params)
-
     respond_to do |format|
       if @report.save
         #Her burdet det være en notice!

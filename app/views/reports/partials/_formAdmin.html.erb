@@ -1,0 +1,19 @@
+<%= form_with(model: report ) do |form| %>
+
+  <div>
+    <%= form.label :status, style: "display: block" %>
+    <%= form.select :status, Report.statuses.keys %>
+    <%= error_message_on(form.object, :status) %>
+  </div>
+
+  <div>
+    <%= form.hidden_field :description, value: @report.description %>
+    <%= form.hidden_field :userId, value: @report.userId %>
+    <%= form.hidden_field :reportable_id, value: @report.reportable_id %>
+    <%= form.hidden_field :reportable_type, value: @report.reportable_type %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
