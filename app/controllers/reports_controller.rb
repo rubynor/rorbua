@@ -7,6 +7,10 @@ class ReportsController < ApplicationController
     @reports = Report.where("status = 0")
   end
 
+  def arkiv
+    @reports = Report.where("status = 1")
+  end
+
   # GET /reports/1 or /reports/1.json
   def show
   end

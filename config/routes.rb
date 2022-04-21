@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :admins
   resources :reports
+  get '/arkiv' => 'reports#arkiv'
 
   resources :playlists, only: [:create, :destroy, :index, :new, :show] do
     member do

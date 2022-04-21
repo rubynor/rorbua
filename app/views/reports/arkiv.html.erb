@@ -1,0 +1,39 @@
+<div class="container">
+
+  <h1>Reports</h1>
+
+  <%= link_to "Aktive", reports_path, class: "btn btn-secondary" %>
+
+  <div id="reports">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th scope="col">Status</th>
+        <th scope="col">Bruker Id</th>
+        <th scope="col">Type</th>
+        <th scope="col">Link</th>
+        <th scope="col">Tidspunkt</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @reports.each do |report| %>
+        <tr>
+          <td><%= report.status %></td>
+          <td><%= report.userId %></td>
+          <td><%= report.reportable_type %></td>
+          <td><%= link_to "Show this report", report %></td>
+          <td>
+            <p class="card-text" >
+              <small class="text-muted">
+                <%= t('.uploaded') %>
+                <%= time_ago_in_words(report.created_at) %>
+                <%= t('.ago') %>
+              </small>
+            </p>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
