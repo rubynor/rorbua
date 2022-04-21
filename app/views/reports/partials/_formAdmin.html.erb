@@ -2,7 +2,7 @@
 
   <div>
     <%= form.label :status, style: "display: block" %>
-    <%= form.select :phone_number_type, Report.statuses %>
+    <%= form.select :status, Report.statuses.keys %>
     <%= error_message_on(form.object, :status) %>
   </div>
 
