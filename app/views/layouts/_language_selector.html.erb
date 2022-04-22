@@ -1,7 +1,6 @@
-
-<aside>
-  <%= form_tag change_languages_path, class: 'locale' do %>
-    <%= select_tag 'set_locale', options_for_select(LANGUAGES, I18n.locale.to_s),
+<aside class="mr-3">
+  <%= form_tag change_language_path(I18n.locale.to_s) do %>
+    <%= select_tag 'locale', options_for_select(LANGUAGES, I18n.locale.to_s),
                    onchange: 'this.form.submit()', class: "form-select"%>
   <% end %>
 </aside>

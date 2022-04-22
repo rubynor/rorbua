@@ -1,18 +1,26 @@
 Rails.application.routes.draw do
 
-  resources :playlists, only: [:create, :destroy, :index, :new, :show] do
-    member do
-      post :new
-    end
-  end
-  post "cancel_playlist_form", to:"playlists#cancel", as: 'cancel_playlist_form'
-  resources :playlist_stories, only: [:create, :destroy]
-  get 'my_stories', to: 'playlists#my_stories', as: "my_stories"
-  get 'my_favourites', to: 'playlists#my_favourites', as: "my_favourites"
-  get 'playlist/play/:id', to: 'playlists#play', as: 'playlist_play'
-  get 'playlist/:playlist_id/:id', to: 'playlist_stories#play', as: 'playlist_play_story'
-
   scope '(:locale)' do
+
+    resources :languages do
+      member do
+        post :change
+      end
+    end
+
+    resources :playlists, only: [:create, :destroy, :index, :new, :show] do
+      member do
+        post :new
+      end
+    end
+
+    post "cancel_playlist_form", to:"playlists#cancel", as: 'cancel_playlist_form'
+    resources :playlist_stories, only: [:create, :destroy]
+    get 'my_stories', to: 'playlists#my_stories', as: "my_stories"
+    get 'my_favourites', to: 'playlists#my_favourites', as: "my_favourites"
+    get 'playlist/play/:id', to: 'playlists#play', as: 'playlist_play'
+    get 'playlist/:playlist_id/:id', to: 'playlist_stories#play', as: 'playlist_play_story'
+
     resources :favourites
     devise_for :users, :controllers => { :registrations => 'registrations' }
     resources :stories

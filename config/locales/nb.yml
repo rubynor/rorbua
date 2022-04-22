@@ -97,9 +97,13 @@ nb:
   stories:
     form:
       title: "Tittel"
+      add_a_title_to_your_story: "Legg til en tittel for ditt innlegg"
       description: "Beskrivelse"
       choose_file: "Velg fil"
+      choose_image_file: "Velg bildefil"
       create_story: "Opprett story"
+      choose_one_or_more_categories: "Velg en til flere kategorier"
+
     story:
       edit_story: "Endre story"
     story_card:

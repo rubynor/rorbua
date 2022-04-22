@@ -28,7 +28,7 @@
     </div>
 
     <div class="mb-5" id="thumbnail-input">
-      <%= form.label :thumbnail, "Velg bildefil", class:"form-label" %>
+      <%= form.label :thumbnail, t('.choose_image_file'), class:"form-label" %>
       <span class="material-icons mx-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Velg bilde som skal vises">
         info_outline
       </span>
@@ -41,7 +41,7 @@
     </div>
 
     <div class ="field" id="checkboxes">
-      <%= form.label :story, "Velg en til flere kategorier:", class: "form-label" %>
+      <%= form.label :story, t('.choose_one_or_more_categories'), class: "form-label" %>
       <span class="material-icons mx-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Legg til en eller flere kategorier">
         info_outline
       </span>
