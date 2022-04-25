@@ -17,8 +17,6 @@
 
   # GET /stories or /stories.json
   def index
-    #@tester = params[:search_ids]
-    #logger.debug "<------------------Array ting: #{@tester.type}"
     index_sort(params[:search_ids])
   end
 
