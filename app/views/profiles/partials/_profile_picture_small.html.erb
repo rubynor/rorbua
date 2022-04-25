@@ -1,4 +1,4 @@
-<%= link_to profile_stories_path(@story.user) do %>
+<%= link_to profile_path(@story.user) do %>
   <% if @story.user.user_image.attached? %>
     <%= image_tag url_for( @story.user.user_image), alt: "Image", class: "rounded-circle profile-img-md" %>
   <% else %>

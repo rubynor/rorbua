@@ -27,6 +27,15 @@
       <%= error_message_on(form.object, :story_file) %>
     </div>
 
+    <div class="mb-5" id="thumbnail-input">
+      <%= form.label :thumbnail, "Velg bildefil", class:"form-label" %>
+      <span class="material-icons mx-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Velg bilde som skal vises">
+        info_outline
+      </span>
+      <%= form.file_field :thumbnail, class: "form-control", accept:'image/*' %>
+      <%= error_message_on(form.object, :thumbnail) %>
+    </div>
+
     <div>
       <%= form.number_field :user_id, id: :story_user_id, value: current_user.id, type: :hidden %>
     </div>

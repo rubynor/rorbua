@@ -24,8 +24,9 @@ Rails.application.routes.draw do
     get 'my_stories', to: 'stories#my_stories'
     get 'play/:id', to: 'stories#play', as: 'play'
 
-    get 'profiles/:id/stories', to: 'profiles#stories', as: 'profile_stories'
-    get 'profiles/:id/playlists', to: 'profiles#playlists', as: 'profile_playlists'
+    post 'profiles/:id/stories', to: 'profiles#stories', as: 'profile_stories'
+    post 'profiles/:id/playlists', to: 'profiles#playlists', as: 'profile_playlists'
+    get 'profiles/:id', to: "profiles#index", as: 'profile'
 
     # Defines the root path route ("/")
     root "stories#index"
