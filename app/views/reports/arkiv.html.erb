@@ -8,6 +8,7 @@
     <table class="table table-striped">
       <thead>
       <tr>
+        <th scope="col">Tittle</th>
         <th scope="col">Status</th>
         <th scope="col">Bruker Id</th>
         <th scope="col">Type</th>
@@ -18,6 +19,7 @@
       <tbody>
       <% @reports.each do |report| %>
         <tr>
+          <td><%= report.tittle %></td>
           <td><%= report.status %></td>
           <td><%= report.userId %></td>
           <td><%= report.reportable_type %></td>
