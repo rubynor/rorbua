@@ -17,6 +17,8 @@
 
   # GET /stories or /stories.json
   def index
+    #@tester = params[:search_ids]
+    #logger.debug "<------------------Array ting: #{@tester.type}"
     index_sort(params[:search_ids])
   end
 
@@ -138,17 +140,15 @@
     end
 
   def index_sort(id)
+    #collection_boxes sender [0] alltid som "". Dermed må man sjekke om den har lengde på større enn 1, for å filtrere
     if id.nil?
         @stories = Story.all.order("created_at DESC")
     else
-      categoryArray = []
-      categoryArray = Array.new
-      id.each { |x| categoryArray.push(x) }
-        if categoryArray.length == 1
-          @stories = Story.all.order("created_at DESC")
-        else
-          @stories = Story.joins(:categories).where(categories: categoryArray).distinct
-        end
+      if id.length == 1
+        @stories = Story.all.order("created_at DESC")
+      else
+        @stories = Story.joins(:categories).where(categories: id).distinct
+      end
     end
   end
 
