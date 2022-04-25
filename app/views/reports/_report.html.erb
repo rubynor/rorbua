@@ -1,16 +1,22 @@
 <div id="<%= dom_id report %>">
-  <div class="card" style="width: 18rem;">
-    <div class="card-body">
-      <h5 class="card-title">Tittel skal komme</h5>
-      <p class="card-text"><%= report.description %></p>
+  <div class="card">
+    <div class="card-header">
+      <h2>
+      <%= report.tittle %>
+      </h2>
     </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">Status => <%= report.status %></li>
-      <li class="list-group-item">User => <%= link_to "Profile", profile_path(report.userId) %></li>
-      <% if report.reportable_type == "Story"%>
-        <li class="list-group-item"><%= report.reportable_type %> => <%= link_to "Story", play_path(report.reportable_id) %></li>
-      <% end %>
-    </ul>
+    <div class="card-body">
+      <h5 class="card-title"><%= report.status %></h5>
+      <p class="card-text">
+        <%= report.description %>
+        <br>
+        <br>
+        User => <%= link_to "Profile", profile_path(report.userId) %>
+        <% if report.reportable_type == "Story"%>
+          <%= report.reportable_type %> => <%= link_to "Story", play_path(report.reportable_id) %>
+        <% end %>
+      </p>
+    </div>
   </div>
 </div>
 
