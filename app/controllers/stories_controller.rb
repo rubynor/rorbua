@@ -3,9 +3,16 @@
   before_action :authenticate_user!, except: [:index, :show, :play]
   before_action :correct_user, only: [:edit, :update, :destroy]
   #before_action :delete_from_aws, only: [:destroy]
-  before_action only: [:destroy] do
-    delete_from_aws("#{@story.story_file.key}")
-  end
+  #
+  # uncomment for production
+  #before_action only: [:destroy] do
+  #  delete_from_aws("#{@story.story_file.key}")
+  #end
+  #before_action only: [:destroy, :update] do
+  #  if @story.thumbnail.attached?
+  #    delete_from_aws("#{@story.thumbnail.key}")
+  #  end
+  #end
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_story
 
   # GET /stories or /stories.json
@@ -128,7 +135,7 @@
 
     # Only allow a list of trusted parameters through.
     def story_params
-      params.require(:story).permit(:title, :description, :story_file, :user_id, {:category_ids=>[]})
+      params.require(:story).permit(:title, :description, :story_file, :thumbnail, :user_id, {:category_ids=>[]})
     end
 
   def index_sort(id)

@@ -1,14 +1,20 @@
 <div>
-  <h4><%= link_to playlist.title, playlist, class:"no-link" %></h4>
-  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+  <div class="row justify-content-start">
+    <div class="col">
+      <div class="d-flex align-items-center">
+        <%= link_to playlist.title, playlist, class:"no-link fs-3" %>
+      </div>
+    </div>
+  </div>
+  <div class="row g-4">
     <% i = 0 %>
     <% playlist.playlist_stories.reverse_each do |ps| %>
       <% if i >=3 %>
         <div class="col-12 col-md-6 col-lg-3">
           <%= link_to playlist, class:"no-link" do %>
-            <div class="card">
+            <div class="card text-center">
               <div class="card-body">
-                <h6 class="card-title text-muted">+<%= playlist.playlist_stories.count -3 %> stories</h6>
+                <h4 class="card-title text-muted">+<%= pluralize (playlist.playlist_stories.count-3), 'story' %></h4>
               </div>
             </div>
           <% end %>
@@ -21,6 +27,11 @@
           <div class="card h-100">
             <div class="card-body">
               <h5 class="card-title"><%= story.title %></h5>
+              <% if story.thumbnail.blob.nil? %>
+                <%= image_tag "https://picsum.photos/seed/picsum/300/300",class:"card-img-top rounded"  %>
+              <% else %>
+                <%= image_tag story.thumbnail,class:"card-img-top rounded story-img" %>
+              <% end %>
               <p class="card-title"><%= story.user.username %></p>
               <div class="">
                 <% j = 0 %>
@@ -37,4 +48,14 @@
       <% i = i+1 %>
     <% end %>
   </div>
+  <% if playlist.playlist_stories.count > 0 %>
+    <div>
+      <%= link_to playlist_play_story_path(playlist, playlist.playlist_stories.last), class:"no-link" do %>
+        <div class="d-flex align-items-center btn btn-success my-2">
+          <h6 class="m-0 mr-2">Spill av spilleliste</h6>
+          <span class="material-icons">play_circle_filled</span>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 </div>

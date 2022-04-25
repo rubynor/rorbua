@@ -1,11 +1,16 @@
-<div id="<%= dom_id playlist_story %>" class="col-xl-3 col-lg-4 col-md-6 mb-2">
+<div id="<%= dom_id playlist_story %>">
 
   <% story = playlist_story.story %>
 
   <%= link_to playlist_play_story_path playlist_story, playlist_id: playlist_story.playlist do %>
-    <div class="card mb-3 mt-1 no-link ">
+    <div class="card mb-3 mt-1 no-link h-100">
       <div class="card-body">
         <h5 class="card-title"><%= story.title %></h5>
+        <% if story.thumbnail.blob.nil? %>
+          <%= image_tag "https://picsum.photos/seed/picsum/300/300",class:"card-img-top rounded"  %>
+        <% else %>
+          <%= image_tag story.thumbnail,class:"card-img-top rounded story-img" %>
+        <% end %>
         <p class="card-title"><%= story.user.username %></p>
         <p class="card-text" ><small class="text-muted"> <%= t('.uploaded') %>
           <%= time_ago_in_words(story.created_at) %> <%= t('.ago') %> </small></p>
@@ -14,11 +19,13 @@
   <% end %>
 
   <li class="dropdown position-absolute top-0 end-0 mt-1" style="list-style-type: none;">
+    <% if user_signed_in? and current_user == @playlist.user %>
     <a href="#" class="nav-link" data-bs-toggle="dropdown" role="button" aria-expanded="false">
       <span class="material-icons" style="color:black;">more_vert</span>
     </a>
+
     <ul class="dropdown-menu dropdown-menu-end me-1">
-      <% if user_signed_in? %>
+
 
         <% if @playlist.title == "Mine opplastninger" and current_user == @playlist.user %>
 
@@ -26,14 +33,14 @@
 
         <% end %>
 
-        <% if current_user == @playlist.user and @playlist.title != "Mine opplastninger" %>
+        <% if @playlist.title != "Mine opplastninger" %>
 
           <%= button_to "Fjern fra spilleliste", playlist_story_path(playlist_story), method: :delete, class:"dropdown-item" %>
 
         <% end %>
 
-      <% end %>
     </ul>
+    <% end %>
   </li>
 
 </div>
