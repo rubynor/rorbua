@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   devise_for :admins
-  resources :reports
+
+  resources :reports, only: [:create, :destroy, :index, :new, :show] do
+    member do
+      post :new
+    end
+  end
   get '/arkiv' => 'reports#arkiv'
 
   resources :playlists, only: [:create, :destroy, :index, :new, :show] do
