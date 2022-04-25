@@ -15,7 +15,7 @@
   <div>
     <%= form.hidden_field :status, value: "Aktiv" %>
     <%= form.hidden_field :userId, value: current_user.id %>
-    <%= form.hidden_field :reportable_id, value: @story.id %>
+    <%= form.hidden_field :reportable_id, value: $story.id %>
     <%= form.hidden_field :reportable_type, value: "Story" %>
   </div>
 
