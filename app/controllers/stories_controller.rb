@@ -4,15 +4,15 @@
   before_action :correct_user, only: [:edit, :update, :destroy]
   #before_action :delete_from_aws, only: [:destroy]
   #
-  before_action only: [:destroy] do
-    delete_from_aws("#{@story.story_file.key}")
-  end
-
-  before_action only: [:destroy, :update] do
-    if @story.thumbnail.attached?
-      delete_from_aws("#{@story.thumbnail.key}")
-    end
-  end
+  # uncomment for production
+  #before_action only: [:destroy] do
+  #  delete_from_aws("#{@story.story_file.key}")
+  #end
+  #before_action only: [:destroy, :update] do
+  #  if @story.thumbnail.attached?
+  #    delete_from_aws("#{@story.thumbnail.key}")
+  #  end
+  #end
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_story
 
   # GET /stories or /stories.json
