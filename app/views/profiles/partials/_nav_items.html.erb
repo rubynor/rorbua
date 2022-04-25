@@ -1,0 +1,11 @@
+<% if stories == true %>
+  <%= button_to "Stories", profile_stories_path(@user), class: "nav-link active btn"%>
+<% else %>
+  <%= button_to "Stories", profile_stories_path(@user), class: "nav-link btn"%>
+<% end %>
+
+<% if playlists == true %>
+  <%= button_to "Spillelister", profile_playlists_path(@user), class: "nav-link active btn" %>
+<% else %>
+  <%= button_to "Spillelister", profile_playlists_path(@user), class: "nav-link btn" %>
+<% end %>

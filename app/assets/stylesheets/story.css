@@ -12,3 +12,32 @@
     transition: 0.3s;
     cursor: pointer;
 }
+
+.story-img{
+    max-height: 60vw;
+    object-fit: contain;
+}
+
+@media screen and (min-width: 576px) {
+
+    .story-img{
+        max-height: 50vw;
+    }
+
+}
+
+@media screen and (min-width: 768px) {
+
+    .story-img{
+        max-height: 30vw;
+    }
+
+}
+
+@media screen and (min-width: 990px) {
+
+    .story-img{
+        max-height: 15vw;
+    }
+
+}
