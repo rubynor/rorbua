@@ -140,11 +140,14 @@
   def index_sort(id)
     #collection_boxes sender [0] alltid som "". Dermed må man sjekke om den har lengde på større enn 1, for å filtrere
     if id.nil?
+      # Når man åpner index vil arraylsiten alltid være null, fordi man sjekker bruker ikke filter metoden
         @stories = Story.all.order("created_at DESC")
     else
       if id.length == 1
+        # Trykker man søk utenom å ha valgt noe i modalen, skal alle vises
         @stories = Story.all.order("created_at DESC")
       else
+        # Viser valgte stories, som hører til de kategoriene som er valgt
         @stories = Story.joins(:categories).where(categories: id).distinct
       end
     end
