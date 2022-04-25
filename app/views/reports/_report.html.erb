@@ -6,8 +6,10 @@
     </div>
     <ul class="list-group list-group-flush">
       <li class="list-group-item">Status => <%= report.status %></li>
-      <li class="list-group-item">User => <%= report.userId %></li>
-      <li class="list-group-item"><%= report.reportable_type %> => <%= report.reportable_id %></li>
+      <li class="list-group-item">User => <%= link_to "Profile", profile_path(report.userId) %></li>
+      <% if report.reportable_type == "Story"%>
+        <li class="list-group-item"><%= report.reportable_type %> => <%= link_to "Story", play_path(report.reportable_id) %></li>
+      <% end %>
     </ul>
   </div>
 </div>
