@@ -1,6 +1,6 @@
 <aside class="mr-3">
   <%= form_tag change_language_path(I18n.locale.to_s) do %>
     <%= select_tag 'locale', options_for_select(LANGUAGES, I18n.locale.to_s),
-                   onchange: 'this.form.submit()', class: "form-select"%>
+                   onchange: 'this.form.submit()', style: "padding: 2px 2px 2px 8px; width: 96px", class: "form-select"%>
   <% end %>
 </aside>

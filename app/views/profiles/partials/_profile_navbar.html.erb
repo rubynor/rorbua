@@ -19,11 +19,10 @@
     <!-- endre-konto-knapp -->
     <div style="width:180px">
       <% if @user == current_user %>
-        <%= link_to "Endre min konto",  edit_user_registration_path, class: "btn btn-secondary" %>
+        <%= link_to t('.edit_my_account'),  edit_user_registration_path, class: "btn btn-secondary" %>
       <% end %>
     </div>
   </div>
-
 
   <!-- navbar -->
     <div class="row">

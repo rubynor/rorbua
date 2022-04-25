@@ -6,10 +6,10 @@
     </div>
     <div class="col text-end">
       <% if @playlist.playlist_stories.count > 0 %>
-        <%= link_to "Spill av spilleliste", playlist_play_story_path(@playlist, @playlist.playlist_stories.last), class:"btn btn-primary" %>
+        <%= link_to t('.play_all'), playlist_play_story_path(@playlist, @playlist.playlist_stories.last), class:"btn btn-primary" %>
       <% else %>
-        <h5>Denne spillelisten er tom</h5>
-        <%= link_to "Utforsk stories", root_path, class:"btn btn-secondary my-3" %>
+        <h5> <%= t('.this_playlist_is_empty') %> </h5>
+        <%= link_to t('.discorver stories'), root_path, class:"btn btn-secondary my-3" %>
       <% end %>
     </div>
   </div>

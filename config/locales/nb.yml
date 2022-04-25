@@ -91,10 +91,45 @@ nb:
     sidebar:
       home: "Hjem"
       new_story: "Ny story"
+      my_playlists: "Mine spillelister"
       my_stories: "Mine stories"
-      favorites: "Favoritter"
+    welcome_alert:
+      welcome_alert_text: "Storytime er en app hvor brukere kan dele og høre på morsomme historier.
+      Vær hyggelig og ha det gøy!"
+
+  playlists:
+    partials:
+      new_playlist_btn:
+        create_new_playlist: "Lag ny spilleliste"
+      story_card:
+        uploaded: "Lastet opp for"
+        ago: "siden"
+    show:
+      play_all: "Spill av spilleliste"
+      this_playlist_is_empty: "Denne spillelisten er tom"
+      discorver stories: "Utforsk stories"
+
+  profiles:
+    partials:
+      nav_items:
+        playlists: "Spillelister"
+      playlists:
+        playlists: "Spillelister"
+      profile_navbar:
+        edit_my_account: "Endre min konto"
 
   stories:
+    partials:
+      audio_controls:
+        autoplay_next: "Spill av neste automatisk"
+      story_card:
+        uploaded: "Lastet opp for"
+        ago: "siden"
+      story_play:
+        edit_story: "Endre Story"
+        add: "Lagre"
+        show_more: "Vis mer"
+        show_less: "Vis mindre"
     form:
       title: "Tittel"
       add_a_title_to_your_story: "Legg til en tittel for ditt innlegg"
@@ -103,16 +138,14 @@ nb:
       choose_image_file: "Velg bildefil"
       create_story: "Opprett story"
       choose_one_or_more_categories: "Velg en til flere kategorier"
-
     story:
       edit_story: "Endre story"
-    story_card:
-        uploaded: "Lastet opp for"
-        ago: "siden"
     edit:
       delete_story: "Slett story"
       show_story: "Vis story"
       back_to_stories: "Tilbake"
+    index:
+      search_for_stories: "Søk i stories"
     my_stories:
       title: "Mine stories"
     new:

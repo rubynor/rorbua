@@ -63,3 +63,11 @@ nb:
       not_saved:
         one: "1 feil forhindret dette %{resource} i å bli lagret:"
         other: "%{count} feil forhindrer dette %{resource} i å bli lagret:"
+  stories:
+    partials:
+      audio_controls:
+        autoplay_next: ""
+  playlists:
+    partials:
+      story_card:
+        uploaded: ""
