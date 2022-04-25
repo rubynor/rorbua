@@ -17,8 +17,7 @@
 
   # GET /stories or /stories.json
   def index
-    @search = params[:search_ids]
-    index_sort(@search)
+    index_sort(params[:search_ids])
   end
 
   def my_stories
