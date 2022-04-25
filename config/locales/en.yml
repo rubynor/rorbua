@@ -44,6 +44,7 @@ en:
     registrations:
       edit:
         title: "Edit account"
+        profile_picture: "Profile picture"
         username: "Username"
         new_password: "New password"
         leave_empty: "(leave empty if you dont want to change)"
@@ -57,6 +58,7 @@ en:
       new:
         username: "Username"
         password: "Password"
+        letters_minimum: "letters minimum"
         confirm_password: "Confirm Password"
         already_have_an_account: "Already have an account?"
         log_in: "Log in"

@@ -44,6 +44,7 @@ nb:
     registrations:
       edit:
         title: "Endre konto"
+        profile_picture: "Profilbilde"
         username: "Brukernavn"
         new_password: "Nytt passord"
         leave_empty: "(la stå tom viss du ikke vil endre)"
@@ -57,6 +58,7 @@ nb:
       new:
         username: "Brukernavn"
         password: "Passord"
+        letters_minimum: "tegn minimum"
         confirm_password: "Bekreft passord"
         already_have_an_account: "Har du allerede en konto?"
         log_in: "Logg inn"
