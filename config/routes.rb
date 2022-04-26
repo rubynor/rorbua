@@ -1,12 +1,10 @@
 Rails.application.routes.draw do
-  devise_for :admins
-
   resources :reports, only: [:create, :destroy, :index, :new, :show] do
     member do
       post :new
     end
   end
-  #devise_for :admins
+  devise_for :admins, controllers: { sessions: 'admins/sessions' }
   resources :reports
   get '/arkiv' => 'reports#arkiv'
 
@@ -15,6 +13,7 @@ Rails.application.routes.draw do
       post :new
     end
   end
+
   post "cancel_playlist_form", to:"playlists#cancel", as: 'cancel_playlist_form'
   resources :playlist_stories, only: [:create, :destroy]
   get 'my_stories', to: 'playlists#my_stories', as: "my_stories"
