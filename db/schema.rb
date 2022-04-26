@@ -82,6 +82,12 @@ ActiveRecord::Schema.define(version: 2022_04_25_103602) do
     t.index ["user_id"], name: "index_favourites_on_user_id"
   end
 
+  create_table "languages", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "likes", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "story_id", null: false
@@ -109,12 +115,6 @@ ActiveRecord::Schema.define(version: 2022_04_25_103602) do
     t.boolean "public"
     t.boolean "display"
     t.index ["user_id"], name: "index_playlists_on_user_id"
-  end
-
-  create_table "report_titles", force: :cascade do |t|
-    t.string "title"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "reports", force: :cascade do |t|

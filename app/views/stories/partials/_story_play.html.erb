@@ -8,7 +8,6 @@
   </div>
   <div class="row g-2" data-controller="storydescription">
     <div class="col-12"><h2 class="fw-bold"><%= @story.title %></h2></div>
-    <button type="button" class="btn btn-secondary mt-1 " data-bs-toggle="modal" data-bs-target="#reportStory-modal" aria-expanded="false" margin-top="1">Report meg</button>
     <hr class="my-1">
     <div class="col-12 col-lg-6 align-self-center">
       <div class="row">
@@ -18,11 +17,6 @@
           </div>
           <h4 class="m-0"><%= link_to @story.user.username, profile_path(@story.user), class: "no-link" %></h4>
         </div>
-        <% if !current_user.nil? %>
-          <% if current_user == @story.user %>
-            <div class="col-12"><%= link_to t('.edit_story'), edit_story_path(@story), class: "btn btn-sm btn-outline-info" %></div>
-          <% end %>
-        <% end %>
       </div>
     </div>
     <div class="col-12 col-lg-6 align-self-center">
@@ -80,5 +74,23 @@
     </div>
 
   </div>
+  <li class="dropdown position-absolute top-0 end-0 mt-1" style="list-style-type: none;">
+      <a href="#" class="nav-link" data-bs-toggle="dropdown" role="button" aria-expanded="false">
+        <span class="material-icons" style="color:black;">more_vert</span>
+      </a>
+
+      <ul class="dropdown-menu dropdown-menu-end me-1">
+
+        <% if user_signed_in? && @story.user == current_user %>
+
+          <%= link_to t('.edit_story'), edit_story_path(@story), class: "btn dropdown-item" %>
+
+        <% end %>
+
+
+        <button type="button" class="btn dropdown-item" style="color: red" data-bs-toggle="modal" data-bs-target="#reportStory-modal" aria-expanded="false" margin-top="1">Rapporter</button>
+
+      </ul>
+  </li>
 </div>
 

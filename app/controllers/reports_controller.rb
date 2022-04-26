@@ -18,6 +18,13 @@ class ReportsController < ApplicationController
   # GET /reports/new
   def new
     @report = Report.new
+    respond_to do |format|
+      format.turbo_stream do
+        render turbo_stream: [
+          turbo_stream.replace("report_container", partial: "reports/formStory", locals:{report: @report})
+        ]
+      end
+    end
   end
 
   # GET /reports/1/edit
@@ -29,10 +36,17 @@ class ReportsController < ApplicationController
     @report = Report.new(report_params)
     respond_to do |format|
       if @report.save
-        #Her burdet det være en notice!
+        format.turbo_stream do
+          render turbo_stream: [
+            turbo_stream.replace("report_container", partial: "reports/partials/report_submitted")
+          ]
+        end
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @report.errors, status: :unprocessable_entity }
+        format.turbo_stream do
+          render turbo_stream: [
+            turbo_stream.replace("report_container", partial: "reports/formStory", locals:{report: Report.new, status: :unprocessable_entity})
+          ]
+        end
       end
     end
   end
