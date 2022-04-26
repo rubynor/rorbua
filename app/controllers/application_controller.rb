@@ -29,5 +29,6 @@ class ApplicationController < ActionController::Base
     )
     s3.delete_object(bucket: 'rorbua', key: keyId)
   end
+
 end
 
