@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_15_123813) do
+ActiveRecord::Schema.define(version: 2022_04_25_103602) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -38,6 +38,18 @@ ActiveRecord::Schema.define(version: 2022_03_15_123813) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "admins", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at", precision: 6
+    t.datetime "remember_created_at", precision: 6
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_admins_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
   create_table "categories", force: :cascade do |t|
@@ -97,6 +109,24 @@ ActiveRecord::Schema.define(version: 2022_03_15_123813) do
     t.boolean "public"
     t.boolean "display"
     t.index ["user_id"], name: "index_playlists_on_user_id"
+  end
+
+  create_table "report_titles", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "reports", force: :cascade do |t|
+    t.text "description"
+    t.integer "status"
+    t.integer "userId"
+    t.string "reportable_type", null: false
+    t.integer "reportable_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "tittle"
+    t.index ["reportable_type", "reportable_id"], name: "index_reports_on_reportable"
   end
 
   create_table "stories", force: :cascade do |t|
