@@ -21,7 +21,7 @@ class ReportsController < ApplicationController
     respond_to do |format|
       format.turbo_stream do
         render turbo_stream: [
-          turbo_stream.replace("report_container", partial: "reports/formStory")
+          turbo_stream.replace("report_container", partial: "reports/formStory", locals:{report: @report})
         ]
       end
     end
@@ -42,7 +42,11 @@ class ReportsController < ApplicationController
           ]
         end
       else
-
+        format.turbo_stream do
+          render turbo_stream: [
+            turbo_stream.replace("report_container", partial: "reports/formStory", locals:{report: Report.new, status: :unprocessable_entity})
+          ]
+        end
       end
     end
   end

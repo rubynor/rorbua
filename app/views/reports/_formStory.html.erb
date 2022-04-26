@@ -1,5 +1,5 @@
 <div id="report_container">
-  <%= form_with(model: Report.new ) do |form| %>
+  <%= form_with(model: Report.new) do |form| %>
 
     <div>
       <%= form.label :tittle, style: "display: block" %>
@@ -9,7 +9,7 @@
 
     <div>
       <%= form.label :description, style: "display: block" %>
-      <%= form.text_area :description, class: "form-control mb-2", :size => "50x5"%>
+      <%= form.text_area :description, class: "form-control mb-2", :size => "50x5", required: true%>
       <%= error_message_on(form.object, :description) %>
     </div>
 
