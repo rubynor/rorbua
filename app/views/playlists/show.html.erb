@@ -14,10 +14,14 @@
     </div>
   </div>
 
-  <div class="row">
-    <% @playlist.playlist_stories.reverse_each do |playlist_story| %>
-      <%= render "playlists/partials/story_card", playlist_story: playlist_story %>
-    <% end %>
+  <div class="col">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
+      <% @playlist.playlist_stories.reverse_each do |playlist_story| %>
+        <div class="col-12 col-md-6 col-lg-3">
+          <%= render "playlists/partials/story_card", playlist_story: playlist_story %>
+        </div>
+      <% end %>
+    </div>
   </div>
 
 </div>

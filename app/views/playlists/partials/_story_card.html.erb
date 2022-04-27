@@ -3,7 +3,7 @@
   <% story = playlist_story.story %>
 
   <%= link_to playlist_play_story_path playlist_story, playlist_id: playlist_story.playlist do %>
-    <div class="card mb-3 mt-1 no-link h-100">
+    <div class="card mb-3 mt-1 no-link h-100 w-100">
       <div class="card-body">
         <h5 class="card-title"><%= story.title %></h5>
         <% if story.thumbnail.blob.nil? %>
