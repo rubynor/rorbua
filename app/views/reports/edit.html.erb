@@ -1,0 +1,12 @@
+<div class="container">
+  <h1>Editing report</h1>
+
+  <%= render "reports/partials/formAdmin", report: @report %>
+
+  <br>
+
+  <div>
+    <%= link_to "Show this report", @report, class: "btn btn-secondary" %> |
+    <%= link_to "Back to reports", reports_path, class: "btn btn-secondary" %>
+  </div>
+</div>

@@ -1,0 +1,43 @@
+<div class="container">
+
+    <h1>Reports</h1>
+
+    <%= link_to "Innaktive", arkiv_path, class: "btn btn-secondary mb-2" %>
+
+    <div id="reports">
+      <table class="table table-striped sortable">
+        <thead>
+          <tr>
+            <th scope ="col">Tittle</th>
+            <th scope="col">Status</th>
+            <th scope="col">Bruker Id</th>
+            <th scope="col">Type</th>
+            <th scope="col">Link</th>
+            <th scope="col">Tidspunkt</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @reports.each do |report| %>
+            <tr>
+              <td><%= report.tittle %></td>
+              <td><%= report.status %></td>
+              <td><%= report.userId %></td>
+              <td><%= report.reportable_type %></td>
+              <td><%= link_to "Show this report", report %></td>
+              <td>
+                <p class="card-text" >
+                  <small class="text-muted">
+                    <%= (report.created_at) %>
+                  </small>
+                </p>
+              </td>
+            </tr>
+        <% end %>
+        </tbody>
+        </table>
+    </div>
+</div>
+
+<link href="https://tofsjonas.github.io/sortable/sortable.css" rel="stylesheet" />
+<script src="https://tofsjonas.github.io/sortable/sortable.js"></script>
+

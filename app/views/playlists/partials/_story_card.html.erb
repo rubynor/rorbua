@@ -1,11 +1,16 @@
-<div id="<%= dom_id playlist_story %>" class="col-xl-3 col-lg-4 col-md-6 mb-2">
+<div id="<%= dom_id playlist_story %>">
 
   <% story = playlist_story.story %>
 
   <%= link_to playlist_play_story_path playlist_story, playlist_id: playlist_story.playlist do %>
-    <div class="card mb-3 mt-1 no-link ">
+    <div class="card mb-3 mt-1 no-link h-100 w-100">
       <div class="card-body">
         <h5 class="card-title"><%= story.title %></h5>
+        <% if story.thumbnail.blob.nil? %>
+          <%= image_tag "https://picsum.photos/seed/picsum/300/300",class:"card-img-top rounded"  %>
+        <% else %>
+          <%= image_tag story.thumbnail,class:"card-img-top rounded story-img" %>
+        <% end %>
         <p class="card-title"><%= story.user.username %></p>
         <p class="card-text" ><small class="text-muted"> <%= t('.uploaded') %>
           <%= time_ago_in_words(story.created_at) %> <%= t('.ago') %> </small></p>

@@ -1,0 +1,13 @@
+<div class="container">
+  <p style="color: green"><%= notice %></p>
+
+  <%= render @report %>
+
+  <br>
+    <%= link_to "Edit this report", edit_report_path(@report), class: "btn btn-secondary"%> |
+    <%= link_to "Back to reports", reports_path, class: "btn btn-secondary" %>
+    <br>
+    <br>
+    <%= button_to "Destroy this report", @report, method: :delete,  form: {data: {turbo_confirm: 'Are you sure?'}},
+                  class: "btn btn-danger" %>
+</div>

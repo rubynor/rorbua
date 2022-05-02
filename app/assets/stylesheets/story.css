@@ -18,11 +18,15 @@
     object-fit: contain;
 }
 
+
+
 @media screen and (min-width: 576px) {
 
     .story-img{
         max-height: 50vw;
     }
+
+
 
 }
 
@@ -38,6 +42,10 @@
 
     .story-img{
         max-height: 15vw;
+    }
+
+    #suggestions > div > div > a > div > div img {
+        max-width: 15vw;
     }
 
 }
