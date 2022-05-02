@@ -5,7 +5,7 @@
 <% end %>
 
 <% if playlists == true %>
-  <%= button_to "Spillelister", profile_playlists_path(@user), class: "nav-link active btn" %>
+  <%= button_to t('.playlists'), profile_playlists_path(@user), class: "nav-link active btn" %>
 <% else %>
-  <%= button_to "Spillelister", profile_playlists_path(@user), class: "nav-link btn" %>
+  <%= button_to t('.playlists'), profile_playlists_path(@user), class: "nav-link btn" %>
 <% end %>

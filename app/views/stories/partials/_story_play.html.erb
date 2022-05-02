@@ -31,7 +31,7 @@
             <span type="button" class="btn material-icons" data-bs-toggle="modal" data-bs-target="#playlist-modal" aria-expanded="false" style="color:black;background-color: transparent; border: none">
               playlist_add
             </span>
-          <p class="">Lagre</p>
+          <p class=""> <%= t('.add') %> </p>
         </div>
       </div>
     </div>
@@ -69,8 +69,8 @@
     </div>
 
     <div class="col-12">
-      <button class="btn btn-sm fw-bold" data-storydescription-target="show_more" data-action="storydescription#toggleDesc">Vis mer</button>
-      <button class="btn btn-sm fw-bold" data-storydescription-target="show_less" data-action="storydescription#toggleDesc" hidden>Vis mindre</button>
+      <button class="btn btn-sm fw-bold" data-storydescription-target="show_more" data-action="storydescription#toggleDesc"> <%= t('.show_more') %> </button>
+      <button class="btn btn-sm fw-bold" data-storydescription-target="show_less" data-action="storydescription#toggleDesc" hidden> <%= t('.show_less') %>  </button>
     </div>
 
   </div>

@@ -44,6 +44,7 @@ en:
     registrations:
       edit:
         title: "Edit account"
+        profile_picture: "Profile picture"
         username: "Username"
         new_password: "New password"
         leave_empty: "(leave empty if you dont want to change)"
@@ -57,6 +58,7 @@ en:
       new:
         username: "Username"
         password: "Password"
+        letters_minimum: "letters minimum"
         confirm_password: "Confirm Password"
         already_have_an_account: "Already have an account?"
         log_in: "Log in"
@@ -79,7 +81,7 @@ en:
       ago: "ago"
       remove_from_favourites: "Remove from favourites"
     favourites_counter:
-      videoes: "videoes"
+      videoes: "videos"
     index:
       title: "Favourites"
 
@@ -91,24 +93,61 @@ en:
     sidebar:
       home: "Home"
       new_story: "New story"
+      my_playlists: "My Playlists"
       my_stories: "My stories"
-      favorites: "Favorites"
+    welcome_alert:
+      welcome_alert_text: "Storytime is an app where users can share and listen to funny stories. 
+      Be nice and have fun!"
+
+  playlists:
+    partials:
+      new_playlist_btn:
+        create_new_playlist: "Create new playlist"
+      story_card:
+        uploaded: "Uploaded"
+        ago: "ago"
+    show:
+      play_all: "Play all"
+      this_playlist_is_empty: "This playlist is empty"
+      discorver stories: "Discover stories"
+
+  profiles:
+    partials:
+      nav_items:
+        playlists: "Playlists"
+      playlists:
+        playlists: "Playlists"
+      profile_navbar:
+        edit_my_account: "Edit my account"
 
   stories:
+    partials:
+      audio_controls:
+        autoplay_next: "Autoplay next"
+      story_card:
+        uploaded: "Uploaded"
+        ago: "ago"
+      story_play:
+        edit_story: "Edit Story"
+        add: "Add"
+        show_more: "Show more"
+        show_less: "Show less"
     form:
       title: "Title"
+      add_a_title_to_your_story: "Add a title to your story"
       description: "Description"
       choose_file: "Choose file"
+      choose_image_file: "Choose image file"
       create_story: "Create story"
+      choose_one_or_more_categories: "Choose one or more categories"
     story:
       edit_story: "Edit story"
-    story_card:
-      uploaded: "Uploaded"
-      ago: "ago"
     edit:
       delete_story: "Delete story"
       show_story: "Show story"
       back_to_stories: "Back to stories"
+    index:
+      search_for_stories: "Search for stories"
     my_stories:
       title: "My stories"
     new:
