@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   get 'my_favourites', to: 'playlists#my_favourites', as: "my_favourites"
   get 'playlist/play/:id', to: 'playlists#play', as: 'playlist_play'
   get 'playlist/:playlist_id/:id', to: 'playlist_stories#play', as: 'playlist_play_story'
+
   scope '(:locale)' do
 
     resources :languages do
@@ -41,7 +42,6 @@ Rails.application.routes.draw do
     get 'playlist/play/:id', to: 'playlists#play', as: 'playlist_play'
     get 'playlist/:playlist_id/:id', to: 'playlist_stories#play', as: 'playlist_play_story'
 
-  scope '(:locale)' do
     resources :favourites
     devise_for :users, :controllers => { :registrations => 'registrations' }
     resources :stories
@@ -56,6 +56,6 @@ Rails.application.routes.draw do
 
     # Defines the root path route ("/")
     root "stories#index"
-
   end
+
 end
